@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">GachonGO-AOS</string>
+    <string name="kakao_login_msg">간편하게 로그인하고\n다양한 서비스를 이용해 보세요</string>
 </resources>
