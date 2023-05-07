@@ -1,7 +1,11 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
 }
+
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
 
 android {
     namespace 'com.example.gachongo_aos'
@@ -15,6 +19,11 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField "String", "KAKAO_API_KEY", properties['kakao_api_key']
+        resValue "string", "KAKAO_API_KEY", properties['kakao_api_key']
+        buildConfigField "String", "KAKAO_OAUTH_KEY", properties['kakao_oauth_key']
+        resValue "string", "KAKAO_OAUTH_KEY", properties['kakao_oauth_key']
     }
 
     buildTypes {
@@ -30,21 +39,29 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-    buildFeatures{
+
+    buildFeatures {
         viewBinding true
+        dataBinding true
     }
 }
 
 dependencies {
-
-    implementation 'androidx.core:core-ktx:1.7.0'
+    implementation 'androidx.core:core-ktx:1.10.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.8.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    implementation 'androidx.core:core-ktx:+'
-    implementation 'androidx.databinding:databinding-runtime:7.1.2'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+
+    // kakao login API
+    implementation "com.kakao.sdk:v2-user:2.13.0" // 카카오 로그인
+    kapt 'com.android.databinding:compiler:3.1.4'
+
+    // lottie
+    implementation 'com.airbnb.android:lottie:3.0.7'
+
     implementation "androidx.fragment:fragment-ktx:1.2.5"
+    // implementation 'androidx.databinding:databinding-runtime:7.1.2'
 }
