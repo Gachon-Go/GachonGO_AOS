@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.example.gachongo.login.KakaoLoginActivity
-import com.example.gachongo_aos.R
 import com.example.gachongo_aos.databinding.ActivityMainBinding
 import com.kakao.sdk.user.UserApiClient
 
@@ -17,7 +16,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-//        // 로그인 정보 확인
+        // 로그인 정보 확인
         UserApiClient.instance.accessTokenInfo { tokenInfo, error ->
             if (error != null) {
                 Log.d(ContentValues.TAG, "로그인 필요")

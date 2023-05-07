@@ -72,6 +72,7 @@ class KakaoLoginActivity : AppCompatActivity() {
 
                 // 이메일 인증 창으로 넘어가기
 
+
                 // 서버에 토큰값 넘겨주기
 
                 // 서버에서 받아온 사용자 정보 저장
