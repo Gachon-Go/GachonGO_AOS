@@ -3,6 +3,6 @@ package com.example.gachongo.util.extension
 import android.app.Activity
 import android.view.View
 
-fun Activity.hideKeyboard(){
+fun Activity.hideKeyboard() {
     hideKeyboard(currentFocus ?: View(this))
 }

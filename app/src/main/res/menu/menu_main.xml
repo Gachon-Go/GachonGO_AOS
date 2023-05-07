@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_home"
+        android:icon="@drawable/ic_main_home"
+        android:title="홈" />
+    <item
+        android:id="@+id/menu_delivery"
+        android:icon="@drawable/ic_main_delivery"
+        android:title="배달" />
+    <item
+        android:id="@+id/menu_alarm"
+        android:icon="@drawable/ic_main_alarm"
+        android:title="알림" />
+    <item
+        android:id="@+id/menu_mypage"
+        android:icon="@drawable/ic_main_mypage"
+        android:title="마이페이지" />
+</menu>
