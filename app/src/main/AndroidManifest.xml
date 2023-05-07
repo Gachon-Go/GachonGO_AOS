@@ -14,19 +14,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GachonGOAOS"
         tools:targetApi="31">
-        <activity android:name="com.example.gachongo.login.KakaoLoginActivity" android:exported="true" />
-        <activity android:name="com.example.gachongo.login.EmailAuthActivity" android:exported="false" />
-        <activity android:name="com.example.gachongo.login.NicknameActivity" android:exported="false" />
-        <activity android:name="com.example.gachongo.login.WelcomeActivity" android:exported="true">
+        <activity android:name="com.example.gachongo.presentation.main.MainActivity" android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name="com.example.gachongo.MainActivity" android:exported="true" >
-
-        </activity>
+        <activity android:name="com.example.gachongo.login.KakaoLoginActivity" android:exported="true" />
+        <activity android:name="com.example.gachongo.login.EmailAuthActivity" android:exported="false" />
+        <activity android:name="com.example.gachongo.login.NicknameActivity" android:exported="false" />
+        <activity android:name="com.example.gachongo.login.WelcomeActivity" android:exported="false" />
 
         <activity
             android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity"
