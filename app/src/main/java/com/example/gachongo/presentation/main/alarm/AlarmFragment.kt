@@ -1,4 +1,4 @@
-package com.example.gachongo.presentation.alarm
+package com.example.gachongo.presentation.main.alarm
 
 import androidx.fragment.app.Fragment
 

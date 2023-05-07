@@ -1,14 +1,14 @@
-package com.example.gachongo.presentation // ktlint-disable package-name
+package com.example.gachongo.presentation.main // ktlint-disable package-name
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
-import com.example.gachongo.presentation.alarm.AlarmFragment
-import com.example.gachongo.presentation.delivery.DeliveryFragment
-import com.example.gachongo.presentation.home.HomeFragment
-import com.example.gachongo.presentation.mypage.MypageFragment
+import com.example.gachongo.presentation.main.alarm.AlarmFragment
+import com.example.gachongo.presentation.main.delivery.DeliveryFragment
+import com.example.gachongo.presentation.main.home.HomeFragment
+import com.example.gachongo.presentation.main.mypage.MypageFragment
 import com.example.gachongo_aos.R
 import com.example.gachongo_aos.databinding.ActivityMainBinding
 

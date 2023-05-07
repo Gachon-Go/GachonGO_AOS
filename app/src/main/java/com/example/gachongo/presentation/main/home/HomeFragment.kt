@@ -1,4 +1,4 @@
-package com.example.gachongo.presentation.home
+package com.example.gachongo.presentation.main.home
 
 import androidx.fragment.app.Fragment
 
