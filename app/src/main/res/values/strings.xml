@@ -3,4 +3,23 @@
     <string name="binding_error">Binding not initialized to reference the view</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="confirm">확인</string>
+    <string name="next">다음</string>
+    <string name="kakao_login_msg">간편하게 로그인하고\n다양한 서비스를 이용해 보세요</string>
+
+    <!-- 이메일 인증 View -->
+    <string name="email_auth_explanation">Gachon Go 사용을 위해선\n학교 이메일 인증이 필요해요.</string>
+    <string name="email_auth_check_form">가천대학교 이메일을 입력해주세요</string>
+    <string name="email_auth_auth_btn">인증하기</string>
+    <string name="email_auth_et_hint1">가천대학교 이메일 입력하기</string>
+    <string name="email_auth_et_hint2">인증번호 입력하기</string>
+
+    <!-- 닉네임 입력 View -->
+    <string name="nickname_explanation">사용하실 닉네임을\n입력해주세요!</string>
+    <string name="nickname_et_hint">닉네임 입력하기</string>
+    <string name="nickname_duplicate">중복된 닉네임이에요</string>
+
+    <!-- ~님 환영합니다 View -->
+    <string name="welcome_message1"> 님,</string>
+    <string name="welcome_message2">너와 나, Gachon Go! 에\n오신걸 환영해요!</string>
 </resources>
