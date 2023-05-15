@@ -39,11 +39,10 @@ class HomeFragment : Fragment() {
     }
 
     private fun initQRClickListener() {
-        binding.layoutHomeQr.setOnClickListener{
+        binding.layoutHomeQr.setOnClickListener {
             val intent = Intent(getActivity(), QrActivity::class.java)
             startActivity(intent)
         }
-
     }
 
     private fun initGoDeliveryClickListener() {
@@ -55,7 +54,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun initPointClickListener() {
-        binding.layoutHomePoint.setOnClickListener{
+        binding.layoutHomePoint.setOnClickListener {
             val intent = Intent(getActivity(), PointActivity::class.java)
             startActivity(intent)
         }
