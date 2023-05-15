@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
-import com.example.gachongo.login.KakaoLoginActivity
+import com.example.gachongo.presentation.main.login.KakaoLoginActivity
 import com.example.gachongo.presentation.main.alarm.AlarmFragment
 import com.example.gachongo.presentation.main.delivery.DeliveryFragment
 import com.example.gachongo.presentation.main.home.HomeFragment
@@ -16,26 +16,55 @@ import com.example.gachongo.presentation.main.mypage.MypageFragment
 import com.example.gachongo_aos.R
 import com.example.gachongo_aos.databinding.ActivityMainBinding
 import com.kakao.sdk.user.UserApiClient
+import android.net.Uri
+import com.example.gachongo.api.LoginService
+import com.example.gachongo.api.LoginView
+import com.example.gachongo.api.NicknameService
+import com.example.gachongo.data.Login
+import com.example.gachongo.data.LoginResponseResult
+import com.example.gachongo.util.extension.showToast
+import com.example.gachongo.util.getUserLoginProvider
+import com.example.gachongo.util.getUserToken
+import com.example.gachongo.util.saveUserId
+import com.example.gachongo.util.saveUserJwt
+import com.google.firebase.messaging.FirebaseMessaging
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), LoginView {
     private lateinit var binding: ActivityMainBinding
+
+    private var fcmId: String = ""
+    private var provider: String = ""
+    private var token: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        initFirebase()
         initBnvItemSelectedListener()
 
         // 로그인 정보 확인
         UserApiClient.instance.accessTokenInfo { tokenInfo, error ->
             if (error != null) {
-                Log.d(ContentValues.TAG, "로그인 필요")
+                Log.d(ContentValues.TAG, "카카오 로그인 필요")
                 startActivity(Intent(this, KakaoLoginActivity::class.java))
             }
             else if (tokenInfo != null) {   // 카카오 로그인이 이미 되어있으면
-                Log.d(ContentValues.TAG, "로그인 유지 성공")
+                Log.d(ContentValues.TAG, "카카오 로그인 유지 성공")
+                login()
             }
+        }
+    }
+
+    private fun initFirebase() {
+        FirebaseMessaging.getInstance().token.addOnCompleteListener {
+            if (!it.isSuccessful) {
+                // 토큰 요청 실패
+                return@addOnCompleteListener
+            }
+            // 토큰 요청 성공
+            fcmId = it.result
         }
     }
 
@@ -58,5 +87,24 @@ class MainActivity : AppCompatActivity() {
         supportFragmentManager.commit {
             replace<T>(R.id.fcv_main_container, T::class.java.canonicalName)
         }
+    }
+
+    private fun login() {
+        // 정보 불러오기
+        provider = getUserLoginProvider(this)
+        token = getUserToken(this)
+
+        val loginService = LoginService(this)
+        loginService.login(Login(fcmId, provider, token))
+    }
+
+    override fun onGetLoginResultSuccess(result: LoginResponseResult) {
+        Log.d("서버 로그인", "성공")
+        saveUserId(this, result.id)
+        saveUserJwt(this, result.jwt)
+    }
+
+    override fun onGetLoginResultFailure(message: String) {
+        showToast(message)
     }
 }
