@@ -32,6 +32,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="com.example.gachongo.presentation.main.login.KakaoLoginActivity" android:exported="true" />
+        <activity android:name="com.example.gachongo.presentation.main.login.EmailAuthActivity" android:exported="false" />
+        <activity android:name="com.example.gachongo.presentation.main.login.NicknameActivity" android:exported="false" />
+        <activity android:name="com.example.gachongo.presentation.main.login.WelcomeActivity" android:exported="false" />
+
         <activity
             android:name="com.example.gachongo.login.KakaoLoginActivity"
             android:exported="true" />

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "168005597914",
+    "project_id": "gachon-go",
+    "storage_bucket": "gachon-go.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:168005597914:android:213b994877c9b760cd03e3",
+        "android_client_info": {
+          "package_name": "com.example.gachongo_aos"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "168005597914-j21o80nqh2g1c7uf78msoe1e3dol5kca.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC-BQsTP9gcBta4x6XIHBCvfzIerpz5EBo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "168005597914-j21o80nqh2g1c7uf78msoe1e3dol5kca.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

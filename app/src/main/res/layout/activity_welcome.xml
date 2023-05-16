@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/welcome_main_cl"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -21,8 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:text="김똘똘"
-        android:fontFamily="@font/pretendard_semibold"
-        android:textSize="20sp"
+        style="@style/PretendardSemibold20"
         android:textColor="@color/gray900"
         app:layout_constraintTop_toBottomOf="@id/welcome_close_iv"
         app:layout_constraintStart_toStartOf="parent"
@@ -34,8 +34,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/welcome_message1"
-        android:fontFamily="@font/pretendard_semibold"
-        android:textSize="20sp"
+        style="@style/PretendardSemibold20"
         android:textColor="@color/gray900"
         app:layout_constraintTop_toTopOf="@id/welcome_nickname_tv"
         app:layout_constraintStart_toEndOf="@id/welcome_nickname_tv"/>
@@ -45,8 +44,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/welcome_message2"
-        android:fontFamily="@font/pretendard_semibold"
-        android:textSize="20sp"
+        style="@style/PretendardSemibold20"
         android:textColor="@color/gray900"
         app:layout_constraintTop_toBottomOf="@id/welcome_nickname_tv"
         app:layout_constraintStart_toStartOf="@id/welcome_nickname_tv"/>
