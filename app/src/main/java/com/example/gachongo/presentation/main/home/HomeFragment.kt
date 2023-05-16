@@ -32,14 +32,14 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        initQRClickListener()
+        initPayClickListener()
         initGoDeliveryClickListener()
         initWantDeliveryClickListener()
         initPointClickListener()
     }
 
-    private fun initQRClickListener() {
-        binding.layoutHomeQr.setOnClickListener {
+    private fun initPayClickListener() {
+        binding.layoutHomePay.setOnClickListener {
             val intent = Intent(getActivity(), QrActivity::class.java)
             startActivity(intent)
         }
