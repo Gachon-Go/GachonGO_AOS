@@ -28,21 +28,17 @@
         <activity android:name="com.example.gachongo.login.EmailAuthActivity" android:exported="false" />
         <activity android:name="com.example.gachongo.login.NicknameActivity" android:exported="false" />
         <activity android:name="com.example.gachongo.login.WelcomeActivity" android:exported="false" />
-        <activity
-            android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity"
-            android:exported="true">
+        <activity android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity" android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
 
-                <!-- Redirect URI: "kakao${NATIVE_APP_KEY}://oauth" -->
-                <data android:host="oauth" android:scheme="@string/KAKAO_OAUTH_KEY" />
+                <data android:host="oauth" android:scheme="kakao${kakaoApiKey}" />
             </intent-filter>
         </activity>
-        <meta-data
-            android:name="com.naver.maps.map.CLIENT_ID"
-            android:value="psggnxubhf" />
+
+        <meta-data android:name="com.naver.maps.map.CLIENT_ID" android:value="${naverMapClientId}" />
     </application>
 
 </manifest>

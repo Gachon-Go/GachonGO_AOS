@@ -7,6 +7,9 @@ plugins {
 Properties properties = new Properties()
 properties.load(project.rootProject.file('local.properties').newDataInputStream())
 
+def naverMapClientId = properties.getProperty('naver_map_client_id')
+def kakaoApiKey = properties.getProperty('kakao_api_key')
+
 android {
     namespace 'com.example.gachongo_aos'
     compileSdk 33
@@ -19,11 +22,12 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField 'String', 'kakaoApiKey', kakaoApiKey
 
-        buildConfigField "String", "KAKAO_API_KEY", properties['kakao_api_key']
-        resValue "string", "KAKAO_API_KEY", properties['kakao_api_key']
-        buildConfigField "String", "KAKAO_OAUTH_KEY", properties['kakao_oauth_key']
-        resValue "string", "KAKAO_OAUTH_KEY", properties['kakao_oauth_key']
+        manifestPlaceholders = [
+                naverMapClientId: naverMapClientId,
+                kakaoApiKey: kakaoApiKey
+        ]
     }
 
     buildTypes {
@@ -66,5 +70,5 @@ dependencies {
 
     // naver map
     implementation 'com.naver.maps:map-sdk:3.15.0'
-    implementation 'com.google.android.gms:play-services-location:21.0.1'
+    implementation "com.google.android.gms:play-services-location:20.0.0"
 }
