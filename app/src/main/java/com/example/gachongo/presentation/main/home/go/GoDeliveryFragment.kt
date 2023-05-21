@@ -1,35 +1,26 @@
 package com.example.gachongo.presentation.main.home.go
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.gachongo.util.binding.BindingFragment
+import com.example.gachongo_aos.R
 import com.example.gachongo_aos.databinding.FragmentGoDeliveryBinding
 
-class GoDeliveryFragment : Fragment() {
-    private var _binding: FragmentGoDeliveryBinding? = null
-    private val binding: FragmentGoDeliveryBinding
-        get() = requireNotNull(_binding)
+class GoDeliveryFragment :
+    BindingFragment<FragmentGoDeliveryBinding>(R.layout.fragment_go_delivery) {
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?,
-    ): View? {
-        _binding = FragmentGoDeliveryBinding.inflate(inflater, container, false)
-        return binding.root
-    }
+    private var goDeliveryAdapter: GoDeliveryAdapter? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.rvGoDelivery.adapter = GoDeliveryAdapter()
+
+        initAdapter()
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+    private fun initAdapter() {
+        goDeliveryAdapter = GoDeliveryAdapter()
+        binding.rvGoDelivery.adapter = goDeliveryAdapter
+        binding.rvGoDelivery.layoutManager = LinearLayoutManager(requireContext())
     }
-
-
 }

@@ -18,6 +18,15 @@
             android:name="com.example.gachongo.presentation.main.WriteActivity"
             android:exported="false" />
         <activity
+            android:name="com.example.gachongo.presentation.main.WriteActivity"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name="com.example.gachongo.presentation.qr.QrActivity"
             android:exported="false" />
         <activity
@@ -32,22 +41,29 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.gachongo.presentation.main.login.KakaoLoginActivity" android:exported="true" />
-        <activity android:name="com.example.gachongo.presentation.main.login.EmailAuthActivity" android:exported="false" />
-        <activity android:name="com.example.gachongo.presentation.main.login.NicknameActivity" android:exported="false" />
-        <activity android:name="com.example.gachongo.presentation.main.login.WelcomeActivity" android:exported="false" />
-
         <activity
-            android:name="com.example.gachongo.login.KakaoLoginActivity"
+            android:name="com.example.gachongo.presentation.main.login.KakaoLoginActivity"
             android:exported="true" />
         <activity
-            android:name="com.example.gachongo.login.EmailAuthActivity"
+            android:name="com.example.gachongo.presentation.main.login.EmailAuthActivity"
             android:exported="false" />
         <activity
-            android:name="com.example.gachongo.login.NicknameActivity"
+            android:name="com.example.gachongo.presentation.main.login.NicknameActivity"
             android:exported="false" />
         <activity
-            android:name="com.example.gachongo.login.WelcomeActivity"
+            android:name="com.example.gachongo.presentation.main.login.WelcomeActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.example.gachongo.presentation.main.login.KakaoLoginActivity"
+            android:exported="true" />
+        <activity
+            android:name="com.example.gachongo.presentation.main.login.EmailAuthActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.example.gachongo.presentation.main.login.NicknameActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.example.gachongo.presentation.main.login.WelcomeActivity"
             android:exported="false" />
         <activity
             android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity"

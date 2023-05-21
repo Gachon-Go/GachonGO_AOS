@@ -1,57 +1,26 @@
 package com.example.gachongo.presentation.main.home.want
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import com.example.gachongo.presentation.main.home.ARG_PARAM1
-import com.example.gachongo.presentation.main.home.ARG_PARAM2
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.gachongo.util.binding.BindingFragment
 import com.example.gachongo_aos.R
+import com.example.gachongo_aos.databinding.FragmentWantDeliveryBinding
 
-/**
- * A simple [Fragment] subclass.
- * Use the [WantDeliveryFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class WantDeliveryFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+class WantDeliveryFragment :
+    BindingFragment<FragmentWantDeliveryBinding>(R.layout.fragment_want_delivery) {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+    private var wantDeliveryAdapter: WantDeliveryAdapter? = null
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        initAdapter()
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_want_delivery, container, false)
-    }
-
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment WantDeliveryFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            WantDeliveryFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    private fun initAdapter() {
+        wantDeliveryAdapter = WantDeliveryAdapter()
+        binding.rvWantDelivery.adapter = wantDeliveryAdapter
+        binding.rvWantDelivery.layoutManager = LinearLayoutManager(requireContext())
     }
 }
