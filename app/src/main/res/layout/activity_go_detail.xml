@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/gray100">
+
+        <TextView
+            android:id="@+id/tv_go_delivery_detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="배달갈게요"
+            style="@style/PretendardBold20"
+            android:textColor="@color/gray900"
+            android:background="@android:color/transparent"
+            android:layout_marginTop="25dp"
+            android:paddingStart="30dp"
+            android:paddingVertical="12dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_go_detail_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_gray050_fill_10_rect"
+            android:paddingStart="20dp"
+            android:paddingEnd="10dp"
+            android:paddingVertical="10dp"
+            android:layout_marginHorizontal="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_go_delivery_detail">
+
+            <ImageView
+                android:id="@+id/iv_delivery_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:src="@drawable/ic_delivery_time"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_delivery_time"
+                app:layout_constraintEnd_toStartOf="@id/tv_delivery_time"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_delivery_time"
+                style="@style/PretendardMedium12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:text="17:00"
+                android:textColor="@color/gray900"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <TextView
+                android:id="@+id/tv_go_detail_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="해달조아"
+                style="@style/PretendardMedium16"
+                android:textColor="@color/gray900"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+            <TextView
+                android:id="@+id/tv_go_detail_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="AI 공학관, 매머드 커피 필요하신 분 "
+                style="@style/PretendardMedium14"
+                android:layout_marginTop="28dp"
+                android:textColor="@color/gray900"
+                app:layout_constraintTop_toBottomOf="@id/tv_go_detail_name"
+                app:layout_constraintStart_toStartOf="parent"/>
+            <TextView
+                android:id="@+id/tv_go_detail_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="3시에 AI관 도착예정입니다.\n 수고비 메뉴당 500원. "
+                style="@style/PretendardMedium14"
+                android:layout_marginTop="12dp"
+                android:textColor="@color/gray900"
+                app:layout_constraintTop_toBottomOf="@id/tv_go_detail_title"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_go_delivery_detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="12dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layout_go_detail_content"
+            tools:listitem="@layout/item_delivery_comment" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_detail_comment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/gray100"
+            android:paddingHorizontal="4dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <EditText
+                android:id="@+id/et_comment_input"
+                style="@style/PretendardMedium12"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:hint="댓글을 입력해주세요."
+                android:textColor="@color/gray900"
+                android:textColorHint="@color/gray700"
+                app:layout_constraintEnd_toStartOf="@+id/imageView"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_check_enabled"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

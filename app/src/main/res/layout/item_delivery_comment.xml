@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:shadowColor="@color/gray100"
+        app:cardCornerRadius="4dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="30dp"
+            android:paddingVertical="10dp">
+
+            <TextView
+                android:id="@+id/tv_comment_name"
+                style="@style/PretendardMedium14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="해달조아"
+                android:textColor="@color/gray700"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/tv_comment_detail"
+                style="@style/PretendardMedium14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="아이스 아메리카노 2잔 가능한가요?"
+                android:layout_marginTop="5dp"
+                android:textColor="@color/gray900"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_comment_name" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+</layout>
