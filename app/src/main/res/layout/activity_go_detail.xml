@@ -109,7 +109,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/gray100"
-            android:paddingHorizontal="4dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
@@ -120,6 +119,7 @@
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:hint="댓글을 입력해주세요."
+                android:layout_marginHorizontal="16dp"
                 android:textColor="@color/gray900"
                 android:textColorHint="@color/gray700"
                 app:layout_constraintEnd_toStartOf="@+id/imageView"
