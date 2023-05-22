@@ -8,16 +8,13 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class OthersPositionService(val othersPositionView: OthersPositionView) {
-    fun getOthersPosition() {
+    fun getOthersPosition(jwt: String) {
         val othersPositionService = NetworkModule.retrofit.create(OthersPositionInterface::class.java)
 
-        othersPositionService.getOthersPosition().enqueue(object :
-            Callback<OthersPositionResponse> {
-            override fun onResponse(
-                call: Call<OthersPositionResponse>,
-                response: Response<OthersPositionResponse>
-            ) {
+        othersPositionService.getOthersPosition("Bearer $jwt").enqueue(object : Callback<OthersPositionResponse> {
+            override fun onResponse(call: Call<OthersPositionResponse>, response: Response<OthersPositionResponse>) {
                 val resp = response.body()
+                Log.d("resp", resp.toString())
                 if (resp != null) {
                     when (resp.code) {
                         1000 -> othersPositionView.onGetOthersPositionResultSuccess(resp.result)

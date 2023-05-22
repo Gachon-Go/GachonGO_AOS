@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
+    id 'com.google.gms.google-services'
 }
 
 Properties properties = new Properties()
@@ -72,7 +73,6 @@ dependencies {
     implementation 'com.naver.maps:map-sdk:3.15.0'
     implementation "com.google.android.gms:play-services-location:20.0.0" // 버전 변경 금지
 
-    implementation "androidx.fragment:fragment-ktx:1.5.7"
 
     // FCM
     implementation platform('com.google.firebase:firebase-bom:30.3.2')

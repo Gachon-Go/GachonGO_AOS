@@ -16,10 +16,8 @@ import com.example.gachongo.presentation.main.mypage.MypageFragment
 import com.example.gachongo_aos.R
 import com.example.gachongo_aos.databinding.ActivityMainBinding
 import com.kakao.sdk.user.UserApiClient
-import android.net.Uri
 import com.example.gachongo.api.LoginService
 import com.example.gachongo.api.LoginView
-import com.example.gachongo.api.NicknameService
 import com.example.gachongo.data.Login
 import com.example.gachongo.data.LoginResponseResult
 import com.example.gachongo.util.extension.showToast

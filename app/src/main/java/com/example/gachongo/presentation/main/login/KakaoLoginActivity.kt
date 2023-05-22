@@ -3,7 +3,6 @@ package com.example.gachongo.presentation.main.login
 import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
-import android.provider.ContactsContract.CommonDataKinds.Email
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
