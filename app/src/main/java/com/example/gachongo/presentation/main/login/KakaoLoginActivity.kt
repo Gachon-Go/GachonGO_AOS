@@ -1,4 +1,4 @@
-package com.example.gachongo.login
+package com.example.gachongo.presentation.main.login
 
 import android.content.ContentValues.TAG
 import android.os.Bundle

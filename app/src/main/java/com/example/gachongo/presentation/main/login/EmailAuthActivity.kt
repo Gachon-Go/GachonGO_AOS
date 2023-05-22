@@ -1,4 +1,4 @@
-package com.example.gachongo.login
+package com.example.gachongo.presentation.main.login
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

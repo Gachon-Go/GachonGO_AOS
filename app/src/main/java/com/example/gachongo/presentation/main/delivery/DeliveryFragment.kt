@@ -11,6 +11,9 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
+import com.example.gachongo.api.OthersPositionService
+import com.example.gachongo.api.OthersPositionView
 import com.example.gachongo_aos.R
 import com.example.gachongo_aos.databinding.FragmentDeliveryBinding
 import com.naver.maps.map.LocationTrackingMode
@@ -18,8 +21,10 @@ import com.naver.maps.map.MapFragment
 import com.naver.maps.map.NaverMap
 import com.naver.maps.map.OnMapReadyCallback
 import com.naver.maps.map.util.FusedLocationSource
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
-class DeliveryFragment : Fragment(), OnMapReadyCallback {
+class DeliveryFragment : Fragment(), OnMapReadyCallback, OthersPositionView {
     private lateinit var locationSource: FusedLocationSource
     private lateinit var naverMap: NaverMap
     private lateinit var binding: FragmentDeliveryBinding
@@ -31,9 +36,15 @@ class DeliveryFragment : Fragment(), OnMapReadyCallback {
     ): View? {
         binding = FragmentDeliveryBinding.inflate(inflater, container, false)
 
-//         위치권한 얻어오기
+        // 위치권한 얻어오기
         if (!hasLocationPermission()) requestLocationPermission()
         else initMapView()
+
+        // 다른 사용자들의 위치들을 받아와요
+        lifecycleScope.launch {
+            getOthersPosition()
+            delay(5000)
+        }
 
         return binding.root
     }
@@ -49,6 +60,7 @@ class DeliveryFragment : Fragment(), OnMapReadyCallback {
         mapFragment.getMapAsync(this)
         locationSource = FusedLocationSource(this, LOCATION_PERMISSION_REQUEST_CODE)
     }
+
     override fun onMapReady(naverMap: NaverMap) {
         this.naverMap = naverMap
         naverMap.locationSource = locationSource
@@ -89,6 +101,19 @@ class DeliveryFragment : Fragment(), OnMapReadyCallback {
 
     private fun disableLocationTracking() {
         naverMap.locationTrackingMode = LocationTrackingMode.None
+    }
+
+    private fun getOthersPosition() {
+        val othersPositionService = OthersPositionService(this)
+        othersPositionService.getOthersPosition(purpose, postId)
+    }
+
+    override fun onGetOthersPositionResultSuccess() {
+
+    }
+
+    override fun onGetOthersPositionResultFailure(message: String) {
+
     }
 
     companion object {

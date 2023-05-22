@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
-import com.example.gachongo.login.KakaoLoginActivity
+import com.example.gachongo.presentation.main.login.KakaoLoginActivity
 import com.example.gachongo.presentation.main.alarm.AlarmFragment
 import com.example.gachongo.presentation.main.delivery.DeliveryFragment
 import com.example.gachongo.presentation.main.home.HomeFragment
