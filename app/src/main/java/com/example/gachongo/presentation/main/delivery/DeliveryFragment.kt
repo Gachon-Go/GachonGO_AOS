@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.example.gachongo.api.OthersPositionService
 import com.example.gachongo.api.OthersPositionView
+import com.example.gachongo.data.OthersPositionResult
 import com.example.gachongo_aos.R
 import com.example.gachongo_aos.databinding.FragmentDeliveryBinding
 import com.naver.maps.map.LocationTrackingMode
@@ -42,6 +43,7 @@ class DeliveryFragment : Fragment(), OnMapReadyCallback, OthersPositionView {
 
         // 다른 사용자들의 위치들을 받아와요
         lifecycleScope.launch {
+            Log.d("map_positions", "위치 정보 요청중..")
             getOthersPosition()
             delay(5000)
         }
@@ -105,15 +107,15 @@ class DeliveryFragment : Fragment(), OnMapReadyCallback, OthersPositionView {
 
     private fun getOthersPosition() {
         val othersPositionService = OthersPositionService(this)
-        othersPositionService.getOthersPosition(purpose, postId)
+        othersPositionService.getOthersPosition()
     }
 
-    override fun onGetOthersPositionResultSuccess() {
-
+    override fun onGetOthersPositionResultSuccess(result: OthersPositionResult) {
+        Log.d("map_positions", result.mapPoints.toString())
     }
 
     override fun onGetOthersPositionResultFailure(message: String) {
-
+        Log.d("map_positions", message)
     }
 
     companion object {

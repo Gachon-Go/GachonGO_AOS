@@ -8,8 +8,5 @@ import retrofit2.http.Query
 interface OthersPositionInterface {
     // 사용자들의 위치를 받아와요
     @GET("/map")
-    fun getOthersPosition(
-        @Query("purpose") purpose: String,
-        @Query("postId") postId: Int
-    ): Call<OthersPositionResponse>
+    fun getOthersPosition(): Call<OthersPositionResponse>
 }

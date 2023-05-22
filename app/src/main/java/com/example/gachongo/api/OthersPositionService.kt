@@ -8,10 +8,10 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class OthersPositionService(val othersPositionView: OthersPositionView) {
-    fun getOthersPosition(purpose: String, postId: Int) {
+    fun getOthersPosition() {
         val othersPositionService = NetworkModule.retrofit.create(OthersPositionInterface::class.java)
 
-        othersPositionService.getOthersPosition(purpose, postId).enqueue(object :
+        othersPositionService.getOthersPosition().enqueue(object :
             Callback<OthersPositionResponse> {
             override fun onResponse(
                 call: Call<OthersPositionResponse>,
@@ -20,7 +20,7 @@ class OthersPositionService(val othersPositionView: OthersPositionView) {
                 val resp = response.body()
                 if (resp != null) {
                     when (resp.code) {
-                        1000 -> othersPositionView.onGetOthersPositionResultSuccess()
+                        1000 -> othersPositionView.onGetOthersPositionResultSuccess(resp.result)
                         else -> othersPositionView.onGetOthersPositionResultFailure(resp.message)
                     }
                 }
