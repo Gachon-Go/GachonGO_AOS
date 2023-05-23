@@ -15,17 +15,14 @@
         android:theme="@style/Theme.GachonGOAOS"
         tools:targetApi="31">
         <activity
-            android:name="com.example.gachongo.presentation.main.WriteActivity"
+            android:name="com.example.gachongo.presentation.main.home.want.WantDeliveryActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.example.gachongo.presentation.main.home.go.GoDeliveryActivity"
             android:exported="false" />
         <activity
             android:name="com.example.gachongo.presentation.main.WriteActivity"
-            android:exported="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="false" />
         <activity
             android:name="com.example.gachongo.presentation.qr.QrActivity"
             android:exported="false" />
@@ -41,18 +38,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name="com.example.gachongo.presentation.main.login.KakaoLoginActivity"
-            android:exported="true" />
-        <activity
-            android:name="com.example.gachongo.presentation.main.login.EmailAuthActivity"
-            android:exported="false" />
-        <activity
-            android:name="com.example.gachongo.presentation.main.login.NicknameActivity"
-            android:exported="false" />
-        <activity
-            android:name="com.example.gachongo.presentation.main.login.WelcomeActivity"
-            android:exported="false" />
         <activity
             android:name="com.example.gachongo.presentation.main.login.KakaoLoginActivity"
             android:exported="true" />
