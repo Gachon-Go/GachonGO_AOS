@@ -2,7 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.example.gachongo.presentation.main.WriteActivity">
+    tools:context="com.example.gachongo.presentation.main.write.WriteActivity">
 
     <data>
 
@@ -39,8 +39,12 @@
                 style="@style/PretendardBold20"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="5dp"
                 android:text="완료"
                 android:textColor="@color/blue400"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -109,10 +113,11 @@
             android:background="@drawable/shape_blue100_fill_20_rect"
             android:paddingVertical="16dp"
             android:paddingStart="20dp"
-            android:text="예상 배달 시간 선택하기"
+            android:text="예상 배달 시간을 입력해주세요."
             android:textColor="@color/blue400"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/et_write_content" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

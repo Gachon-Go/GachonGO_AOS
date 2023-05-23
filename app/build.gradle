@@ -8,6 +8,9 @@ plugins {
 Properties properties = new Properties()
 properties.load(project.rootProject.file('local.properties').newDataInputStream())
 
+def naverMapClientId = properties.getProperty('naver_map_client_id')
+def kakaoApiKey = properties.getProperty('kakao_api_key')
+
 android {
     namespace 'com.example.gachongo_aos'
     compileSdk 33
@@ -20,11 +23,12 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField 'String', 'kakaoApiKey', kakaoApiKey
 
-        buildConfigField "String", "KAKAO_API_KEY", properties['kakao_api_key']
-        resValue "string", "KAKAO_API_KEY", properties['kakao_api_key']
-        buildConfigField "String", "KAKAO_OAUTH_KEY", properties['kakao_oauth_key']
-        resValue "string", "KAKAO_OAUTH_KEY", properties['kakao_oauth_key']
+        manifestPlaceholders = [
+                naverMapClientId: naverMapClientId,
+                kakaoApiKey: kakaoApiKey
+        ]
     }
 
     buildTypes {
@@ -33,17 +37,20 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_17
         targetCompatibility JavaVersion.VERSION_17
     }
+
     kotlinOptions {
-        jvmTarget = 17
+        jvmTarget = '17'
     }
 
     buildFeatures {
         viewBinding true
         dataBinding true
+        buildConfig true
     }
 }
 
@@ -52,10 +59,10 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.9.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    implementation 'androidx.core:core-ktx:1.10.1'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    implementation "androidx.fragment:fragment-ktx:1.5.7"
 
     // kakao login API
     implementation "com.kakao.sdk:v2-user:2.13.0" // 카카오 로그인
@@ -64,14 +71,8 @@ dependencies {
     // lottie
     implementation 'com.airbnb.android:lottie:3.0.7'
 
-    implementation "androidx.fragment:fragment-ktx:1.5.7"
-    // implementation 'androidx.databinding:databinding-runtime:7.1.2'
-
     // FCM
     implementation platform('com.google.firebase:firebase-bom:30.3.2')
     implementation 'com.google.firebase:firebase-analytics-ktx'
     implementation 'com.google.firebase:firebase-messaging-ktx'
-
-    apply plugin: 'com.google.gms.google-services'
-
 }

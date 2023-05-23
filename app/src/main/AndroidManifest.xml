@@ -20,6 +20,10 @@
         <activity
             android:name="com.example.gachongo.presentation.main.point.PointActivity"
             android:exported="false" />
+
+        <activity android:name="com.example.gachongo.presentation.main.write.WriteActivity"
+            android:exported="false">
+        </activity>
         <activity
             android:name="com.example.gachongo.presentation.main.MainActivity"
             android:exported="true">
@@ -35,18 +39,6 @@
         <activity android:name="com.example.gachongo.presentation.main.login.WelcomeActivity" android:exported="false" />
 
         <activity
-            android:name="com.example.gachongo.login.KakaoLoginActivity"
-            android:exported="true" />
-        <activity
-            android:name="com.example.gachongo.login.EmailAuthActivity"
-            android:exported="false" />
-        <activity
-            android:name="com.example.gachongo.login.NicknameActivity"
-            android:exported="false" />
-        <activity
-            android:name="com.example.gachongo.login.WelcomeActivity"
-            android:exported="false" />
-        <activity
             android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity"
             android:exported="true">
             <intent-filter>
@@ -58,7 +50,7 @@
                 <!-- Redirect URI: "kakao${NATIVE_APP_KEY}://oauth" -->
                 <data
                     android:host="oauth"
-                    android:scheme="@string/KAKAO_OAUTH_KEY" />
+                    android:scheme="kakao${kakaoApiKey}" />
             </intent-filter>
         </activity>
     </application>
