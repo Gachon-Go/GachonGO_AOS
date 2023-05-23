@@ -91,7 +91,7 @@ fun saveUserJwt(context: Context, jwt: String) {
     val spf = context.getSharedPreferences("jwt", AppCompatActivity.MODE_PRIVATE)
     val editor = spf.edit()
 
-    editor.putString("jwt", jwt)
+    editor.putString("jwt", "Bearer $jwt")
     editor.apply()
 }
 
