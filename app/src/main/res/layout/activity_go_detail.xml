@@ -92,7 +92,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_go_delivery_detail"
+            android:id="@+id/rv_detail_comment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="12dp"
@@ -105,7 +105,7 @@
             tools:listitem="@layout/item_delivery_comment" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/layout_detail_comment"
+            android:id="@+id/layout_detail_comment_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/gray100"

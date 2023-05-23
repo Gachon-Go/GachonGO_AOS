@@ -5,12 +5,13 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.example.gachongo.data.GoDeliveryInfo
+import com.example.gachongo.data.ResponseDeliveryDto
+import com.example.gachongo.presentation.main.home.detail.GoDetailActivity
 import com.example.gachongo_aos.databinding.ItemDeliveryBinding
 
 class GoDeliveryAdapter : RecyclerView.Adapter<GoDeliveryAdapter.GoDeliveryViewHolder>() {
 
-    private var data = mutableListOf<GoDeliveryInfo>()
+    private var data = mutableListOf<ResponseDeliveryDto.Result>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GoDeliveryViewHolder {
         val binding =
@@ -24,7 +25,7 @@ class GoDeliveryAdapter : RecyclerView.Adapter<GoDeliveryAdapter.GoDeliveryViewH
         holder.bind(data[position])
     }
 
-    fun replaceList(newList: MutableList<GoDeliveryInfo>) {
+    fun replaceList(newList: MutableList<ResponseDeliveryDto.Result>) {
         data = newList.toMutableList()
         // 어댑터의 데이터가 변했다는 notify를 날린다
         notifyDataSetChanged()
@@ -32,13 +33,14 @@ class GoDeliveryAdapter : RecyclerView.Adapter<GoDeliveryAdapter.GoDeliveryViewH
 
     class GoDeliveryViewHolder(private val binding: ItemDeliveryBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: GoDeliveryInfo) {
+        fun bind(item: ResponseDeliveryDto.Result) {
             binding.tvDeliveryTitle.text = item.title
-            binding.tvDeliveryTime.text = item.time
-            binding.tvDeliveryComment.text = item.comment.toString()
+            binding.tvDeliveryTime.text = item.estimatedTime
+            binding.tvDeliveryComment.text = item.commentNum.toString()
+
             binding.root.setOnClickListener {
                 val intent = Intent(binding.root.context, GoDetailActivity::class.java)
-//                            intent.putExtra("contentId", item.key) 이 부분 처리 논의
+                intent.putExtra("deliveryId", item.deliveryId)
                 ContextCompat.startActivity(binding.root.context, intent, null)
             }
         }
