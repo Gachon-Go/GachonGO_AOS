@@ -1,7 +1,8 @@
 package com.example.gachongo.api
 
 import com.example.gachongo.data.BaseResponse
-import com.example.gachongo.data.ResponseDeliveryDto
+import com.example.gachongo.data.request.RequestCommentDto
+import com.example.gachongo.data.response.ResponseDeliveryDto
 import com.example.gachongo.data.request.RequestDeliveryDto
 import com.example.gachongo.data.response.ResponseDeliveryCommentDto
 import com.example.gachongo.data.response.ResponseDeliveryDetailDto
@@ -38,6 +39,7 @@ interface DeliveryInterface {
     @POST("/delivery/{deliveryPostId}/comment")
     fun postDeliveryDetailComment(
         @Path("deliveryPostId") deliveryPostId: Int,
+        @Body requestBody: RequestCommentDto,
     ): Call<BaseResponse>
 
     // 배달 게시물 고객 선택
