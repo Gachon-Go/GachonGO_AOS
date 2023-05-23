@@ -27,8 +27,11 @@ class WriteActivity :
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        initTimePickerBtnClickListener()
         initWriteFinishBtnClickLisnter()
+    }
 
+    private fun initTimePickerBtnClickListener() {
         binding.btnWriteTime.setOnClickListener {
             var cal = Calendar.getInstance()
             val timeSetListener = TimePickerDialog.OnTimeSetListener { _, hour, minute ->
