@@ -16,7 +16,6 @@ import androidx.lifecycle.lifecycleScope
 import com.example.gachongo.api.OthersPositionService
 import com.example.gachongo.api.OthersPositionView
 import com.example.gachongo.data.OthersPositionResult
-import com.example.gachongo.util.getUserJwt
 import com.example.gachongo_aos.R
 import com.example.gachongo_aos.databinding.FragmentDeliveryBinding
 import com.naver.maps.geometry.LatLng
@@ -28,6 +27,7 @@ import com.naver.maps.map.overlay.Marker
 import com.naver.maps.map.overlay.OverlayImage
 import com.naver.maps.map.util.FusedLocationSource
 import com.naver.maps.map.util.MarkerIcons
+import getUserJwt
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
