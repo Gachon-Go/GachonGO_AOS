@@ -1,5 +1,3 @@
-package com.example.gachongo.util
-
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 

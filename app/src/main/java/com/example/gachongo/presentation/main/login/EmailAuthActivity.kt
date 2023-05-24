@@ -12,9 +12,9 @@ import com.example.gachongo.api.EmailView
 import com.example.gachongo.util.extension.backPressed
 import com.example.gachongo.util.extension.hideKeyboard
 import com.example.gachongo.util.extension.showToast
-import com.example.gachongo.util.saveUserEmail
 import com.example.gachongo_aos.R
 import com.example.gachongo_aos.databinding.ActivityEmailAuthBinding
+import saveUserEmail
 
 class EmailAuthActivity: AppCompatActivity(), EmailView, EmailCodeView {
     private lateinit var binding: ActivityEmailAuthBinding

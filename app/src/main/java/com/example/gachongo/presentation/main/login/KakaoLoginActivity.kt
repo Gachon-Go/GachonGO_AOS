@@ -6,13 +6,13 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.gachongo.util.saveUserLoginProvider
-import com.example.gachongo.util.saveUserProfileImg
-import com.example.gachongo.util.saveUserToken
 import com.example.gachongo_aos.databinding.ActivityKakaoLoginBinding
 import com.kakao.sdk.auth.model.OAuthToken
 import com.kakao.sdk.common.model.AuthErrorCause
 import com.kakao.sdk.user.UserApiClient
+import saveUserLoginProvider
+import saveUserProfileImg
+import saveUserToken
 
 class KakaoLoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityKakaoLoginBinding

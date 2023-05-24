@@ -10,8 +10,8 @@ import retrofit2.Response
 class OthersPositionService(val othersPositionView: OthersPositionView) {
     fun getOthersPosition(jwt: String) {
         val othersPositionService = NetworkModule.retrofit.create(OthersPositionInterface::class.java)
-
-        othersPositionService.getOthersPosition(jwt).enqueue(object : Callback<OthersPositionResponse> {
+        Log.d("DeliveryFragment", "jwt: $jwt")
+        othersPositionService.getOthersPosition("Bearer $jwt").enqueue(object : Callback<OthersPositionResponse> {
             override fun onResponse(call: Call<OthersPositionResponse>, response: Response<OthersPositionResponse>) {
                 val resp = response.body()
                 Log.d("resp", resp.toString())

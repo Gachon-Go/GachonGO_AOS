@@ -10,9 +10,9 @@ import com.example.gachongo.api.NicknameService
 import com.example.gachongo.api.NicknameView
 import com.example.gachongo.util.extension.backPressed
 import com.example.gachongo.util.extension.hideKeyboard
-import com.example.gachongo.util.saveUserNickname
 import com.example.gachongo_aos.R
 import com.example.gachongo_aos.databinding.ActivityNicknameBinding
+import saveUserNickname
 
 class NicknameActivity: AppCompatActivity(), NicknameView {
     private lateinit var binding: ActivityNicknameBinding
