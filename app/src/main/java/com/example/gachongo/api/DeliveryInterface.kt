@@ -2,10 +2,10 @@ package com.example.gachongo.api
 
 import com.example.gachongo.data.BaseResponse
 import com.example.gachongo.data.request.RequestCommentDto
-import com.example.gachongo.data.response.ResponseDeliveryDto
 import com.example.gachongo.data.request.RequestDeliveryDto
 import com.example.gachongo.data.response.ResponseDeliveryCommentDto
 import com.example.gachongo.data.response.ResponseDeliveryDetailDto
+import com.example.gachongo.data.response.ResponseDeliveryDto
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET

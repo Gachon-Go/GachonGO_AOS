@@ -1,17 +1,29 @@
 package com.example.gachongo.data.response
 
+import com.google.gson.annotations.SerializedName
+
 data class ResponseOrderDetailDto(
+    @SerializedName("code")
     val code: Int,
+    @SerializedName("isSuccess")
     val isSuccess: Boolean,
+    @SerializedName("message")
     val message: String,
-    val result: Result
+    @SerializedName("result")
+    val result: List<ResponseDeliveryDto.Result>,
 ) {
     data class Result(
+        @SerializedName("commentNum")
         val commentNum: Int,
+        @SerializedName("content")
         val content: String,
+        @SerializedName("estimatedTime")
         val estimatedTime: String,
+        @SerializedName("mine")
         val mine: Boolean,
+        @SerializedName("title")
         val title: String,
-        val writer: String
+        @SerializedName("writer")
+        val writer: String,
     )
 }

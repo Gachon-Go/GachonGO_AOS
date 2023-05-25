@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.example.gachongo.data.ResponseDeliveryDto
+import com.example.gachongo.data.response.ResponseDeliveryDto
 import com.example.gachongo.presentation.main.home.detail.GoDetailActivity
 import com.example.gachongo_aos.databinding.ItemDeliveryBinding
 
