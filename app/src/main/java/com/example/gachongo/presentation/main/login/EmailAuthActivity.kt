@@ -94,7 +94,6 @@ class EmailAuthActivity: AppCompatActivity(), EmailView, EmailCodeView {
     }
 
     private fun changeEmailAttr() {
-
         // 이메일 유효
         if(validEmail) {
             // 밑줄 검정 + 에러메세지 안보이게

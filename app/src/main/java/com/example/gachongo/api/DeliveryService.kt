@@ -11,44 +11,30 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class DeliveryService() {
+class DeliveryService(val deliveryView: DeliveryView) {
     val deliveryService = NetworkModule.retrofit.create(DeliveryInterface::class.java)
 
-    fun getItemList() {
-        deliveryService.getDeliveryList().enqueue(object :
-            Callback<List<ResponseDeliveryDto.Result>> {
+    fun getItemList(jwt: String, page: Int, size: Int) {
+        deliveryService.getDeliveryList(jwt, page, size).enqueue(object :
+            Callback<ResponseDeliveryDto> {
             override fun onResponse(
-                call: Call<List<ResponseDeliveryDto.Result>>,
-                response: Response<List<ResponseDeliveryDto.Result>>,
+                call: Call<ResponseDeliveryDto>,
+                response: Response<ResponseDeliveryDto>,
             ) {
-                TODO("Not yet implemented")
+                val resp = response.body()
+                if (resp != null) {
+                    when (resp.code) {
+                        1000 -> deliveryView.onGetDeliveryResultSuccess(resp.result)
+                        else -> deliveryView.onGetDeliveryResultFailure(resp.message)
+                    }
+                }
             }
 
-            override fun onFailure(call: Call<List<ResponseDeliveryDto.Result>>, t: Throwable) {
-                TODO("Not yet implemented")
-            }
-        })
-    }
-
-    fun postDelivery(jwt: String, body: RequestDeliveryDto) {
-
-        deliveryService.postDelivery("Bearer $jwt",body).enqueue(object : Callback<BaseResponse> {
-            override fun onResponse(call: Call<BaseResponse>, response: Response<BaseResponse>) {
-//                val resp = response.body()
-//                if (resp != null) {
-//                    when (resp.code) {
-//                        1000 -> deliveryView.onGetDeliveryResultSuccess()
-//                        else -> deliveryView.onGetDeliveryResultFailure(resp.message)
-//                    }
-//                }
-            }
-
-            override fun onFailure(call: Call<BaseResponse>, t: Throwable) {
+            override fun onFailure(call: Call<ResponseDeliveryDto>, t: Throwable) {
                 TODO("Not yet implemented")
             }
         })
     }
-
     fun postDeliveryDone(deliveryPostId: Int) {
         deliveryService.postDeliveryDone(deliveryPostId).enqueue(object : Callback<BaseResponse> {
             override fun onResponse(call: Call<BaseResponse>, response: Response<BaseResponse>) {

@@ -2,8 +2,9 @@ package com.example.gachongo.presentation.main.write
 
 import android.app.TimePickerDialog
 import android.os.Bundle
-import com.example.gachongo.api.DeliveryService
-import com.example.gachongo.api.DeliveryWriteView
+import android.util.Log
+import com.example.gachongo.api.write.DeliveryWriteService
+import com.example.gachongo.api.write.DeliveryWriteView
 import com.example.gachongo.data.request.RequestDeliveryDto
 import com.example.gachongo.util.binding.BindingActivity
 import com.example.gachongo.util.extension.showToast
@@ -14,15 +15,14 @@ import java.text.SimpleDateFormat
 import java.util.Calendar
 
 class WriteActivity :
-    BindingActivity<ActivityWriteBinding>(R.layout.activity_write),
-    DeliveryWriteView {
-//    private lateinit var content: String
-//    private lateinit var time: String
-//    private lateinit var title: String
-
-    var content: String = "빨리 와"
-    var time: String = " "
-    var title: String = "배달 ㄱ"
+    BindingActivity<ActivityWriteBinding>(R.layout.activity_write), DeliveryWriteView {
+    private lateinit var content: String
+    private lateinit var time: String
+    private lateinit var title: String
+//
+//    var content: String = "빨리 와"
+//    var time: String = " "
+//    var title: String = "배달 ㄱ"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,27 +55,23 @@ class WriteActivity :
             time = binding.btnWriteTime.text.toString()
             title = binding.etWriteTitle.text.toString()
 
-            writeDeliveryPost()
+            postDelivery()
             finish()
         }
     }
 
-    private fun writeDeliveryPost() {
+    private fun postDelivery() {
         val jwt: String = getUserJwt(this)
-//        val requestDeliveryWrite = RequestDeliveryWrite(content, time, title)
-//
-//        val deliveryWriteService = DeliveryWriteService(this)
-//        deliveryWriteService.deliveryWrite(jwt, requestDeliveryWrite)
-        val requestDeliveryDto = RequestDeliveryDto(content, time, title)
-        val deliveryService = DeliveryService()
-        deliveryService.postDelivery(jwt, requestDeliveryDto)
+
+        val deliveryWriteService = DeliveryWriteService(this)
+        deliveryWriteService.postDelivery(jwt, body = RequestDeliveryDto(content, time, title))
     }
 
-    override fun onGetDeliveryWriteResultSuccess(result: String) {
-        showToast("게시글 작성 완료되었습니다.")
+    override fun onGetDeliveryWriteResultSuccess() {
+        showToast("글 작성이 완료되었습니다.")
     }
 
     override fun onGetDeliveryWriteResultFailure(messageDigest: String) {
-        showToast(messageDigest)
+        TODO("Not yet implemented")
     }
 }

@@ -12,11 +12,16 @@ import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.POST
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface DeliveryInterface {
     // 배달 게시물 조회
     @GET("/delivery")
-    fun getDeliveryList(): Call<List<ResponseDeliveryDto.Result>>
+    fun getDeliveryList(
+        @Header("Authorization") jwt: String,
+        @Query("page") page: Int,
+        @Query("size") size: Int,
+    ): Call<ResponseDeliveryDto>
 
     // 배달 게시물 작성
     @POST("/delivery")

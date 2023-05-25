@@ -1,6 +1,6 @@
-package com.example.gachongo.api
+package com.example.gachongo.api.write
 
 interface DeliveryWriteView {
-    fun onGetDeliveryWriteResultSuccess(result: String)
+    fun onGetDeliveryWriteResultSuccess()
     fun onGetDeliveryWriteResultFailure(messageDigest: String)
 }
