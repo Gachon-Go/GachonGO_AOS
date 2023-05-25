@@ -9,9 +9,7 @@ import com.example.gachongo.data.response.ResponseDeliveryDto
 import com.example.gachongo.presentation.main.home.detail.GoDetailActivity
 import com.example.gachongo_aos.databinding.ItemDeliveryBinding
 
-class GoDeliveryAdapter : RecyclerView.Adapter<GoDeliveryAdapter.GoDeliveryViewHolder>() {
-
-    private var data = mutableListOf<ResponseDeliveryDto.Result>()
+class GoDeliveryAdapter(var result: MutableList<ResponseDeliveryDto.Result>) : RecyclerView.Adapter<GoDeliveryAdapter.GoDeliveryViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GoDeliveryViewHolder {
         val binding =
@@ -19,14 +17,14 @@ class GoDeliveryAdapter : RecyclerView.Adapter<GoDeliveryAdapter.GoDeliveryViewH
         return GoDeliveryViewHolder(binding)
     }
 
-    override fun getItemCount(): Int = data.size
+    override fun getItemCount(): Int = result.size
 
     override fun onBindViewHolder(holder: GoDeliveryViewHolder, position: Int) {
-        holder.bind(data[position])
+        holder.bind(result[position])
     }
 
     fun replaceList(newList: MutableList<ResponseDeliveryDto.Result>) {
-        data = newList.toMutableList()
+        result = newList
         // 어댑터의 데이터가 변했다는 notify를 날린다
         notifyDataSetChanged()
     }
@@ -40,7 +38,7 @@ class GoDeliveryAdapter : RecyclerView.Adapter<GoDeliveryAdapter.GoDeliveryViewH
 
             binding.root.setOnClickListener {
                 val intent = Intent(binding.root.context, GoDetailActivity::class.java)
-                intent.putExtra("deliveryId", item.deliveryId)
+                intent.putExtra("deliveryPostId", item.commentNum)
                 ContextCompat.startActivity(binding.root.context, intent, null)
             }
         }
