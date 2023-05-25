@@ -164,7 +164,7 @@ class MainActivity : AppCompatActivity(), LoginView {
         if (isLocationServiceRunning()) {
             val intent = Intent(applicationContext, LocationService::class.java)
             intent.action = Constants.ACTION_STOP_LOCATION_SERVICE
-            startService(intent)
+            stopService(intent)
             showToast("Location service stopped")
             Log.d("LOCATION_UPDATE", "위치정보 서비스 종료")
         }

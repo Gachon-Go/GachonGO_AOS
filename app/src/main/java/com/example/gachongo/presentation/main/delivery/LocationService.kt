@@ -13,21 +13,25 @@ import android.os.Looper
 import android.util.Log
 import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
+import com.example.gachongo.api.SendPositionService
+import com.example.gachongo.api.SendPositionView
+import com.example.gachongo.data.Position
 import com.example.gachongo_aos.R
 import com.google.android.gms.location.LocationCallback
 import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationResult
 import com.google.android.gms.location.LocationServices
+import getUserJwt
 
-class LocationService : Service() {
+class LocationService: Service(), SendPositionView {
+
     private val mLocationCallback = object : LocationCallback() {
         override fun onLocationResult(locationResult: LocationResult) {
             super.onLocationResult(locationResult)
-            Log.d("LOCATION_UPDATE", locationResult.toString())
             if (locationResult.lastLocation != null) {
                 val latitude = locationResult.lastLocation!!.latitude
                 val longitude = locationResult.lastLocation!!.longitude
-                Log.d("LOCATION_UPDATE", "$latitude, $longitude")
+                sendMyPosition(latitude, longitude)
             }
         }
     }
@@ -58,7 +62,7 @@ class LocationService : Service() {
         }
 
         val locationRequest = LocationRequest.create()
-        locationRequest.interval = 4000
+        locationRequest.interval = 5000
         locationRequest.fastestInterval = 2000
         locationRequest.priority = LocationRequest.PRIORITY_HIGH_ACCURACY
 
@@ -100,6 +104,18 @@ class LocationService : Service() {
             }
         }
         return super.onStartCommand(intent, flags, startId)
+    }
+
+    private fun sendMyPosition(latitude: Double, longitude: Double) {
+        val sendPositionService = SendPositionService(this)
+        sendPositionService.sendPosition(getUserJwt(applicationContext), Position(latitude, longitude))
+    }
+    override fun onGetSendPositionResultSuccess() {
+        Log.d("LOCATION_UPDATE", "내 위치 전송 성공")
+    }
+
+    override fun onGetSendPositionResultFailure(message: String) {
+        Log.d("LOCATION_UPDATE", "내 위치 전송 실패")
     }
 }
 

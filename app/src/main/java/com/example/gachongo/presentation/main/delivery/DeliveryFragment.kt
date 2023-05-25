@@ -2,8 +2,6 @@ package com.example.gachongo.presentation.main.delivery
 
 import android.Manifest
 import android.content.pm.PackageManager
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -122,29 +120,18 @@ class DeliveryFragment : Fragment(), OnMapReadyCallback, OthersPositionView {
     override fun onGetOthersPositionResultSuccess(result: OthersPositionResult) {
         Log.d("DeliveryFragment", result.mapPoints.toString())
 
-//        // Clear existing markers
-//        markerList.forEach { it.map = null }
-//        markerList.clear()
-//
-//        // Create markers for each location
-//        result.mapPoints.forEach { location ->
-//            val marker = Marker()
-//            marker.position = LatLng(location.latitude, location.longitude)
-//            // Set your desired marker properties, such as icon, etc.
-//            // marker.icon = ...
-//            marker.map = naverMap
-//            markerList.add(marker)
-//        }
-
+        // Clear existing markers
         markerList.forEach { it.map = null }
         markerList.clear()
 
-        val marker = Marker()
-        marker.position = LatLng(37.5399847 + (1..10).random().toDouble() / 10000, 127.1186237 + (1..10).random().toDouble() / 10000)
-        marker.icon = OverlayImage.fromResource(R.drawable.ic_location)
-        marker.map = naverMap
-        markerList.add(marker)
-
+        // Create markers for each location
+        result.mapPoints.forEach { location ->
+            val marker = Marker()
+            marker.position = LatLng(location.latitude, location.longitude)
+            marker.icon = OverlayImage.fromResource(R.drawable.ic_location)
+            marker.map = naverMap
+            markerList.add(marker)
+        }
     }
 
     override fun onGetOthersPositionResultFailure(message: String) {
