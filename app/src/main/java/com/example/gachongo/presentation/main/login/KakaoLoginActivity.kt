@@ -10,9 +10,9 @@ import com.example.gachongo_aos.databinding.ActivityKakaoLoginBinding
 import com.kakao.sdk.auth.model.OAuthToken
 import com.kakao.sdk.common.model.AuthErrorCause
 import com.kakao.sdk.user.UserApiClient
-import saveUserLoginProvider
-import saveUserProfileImg
-import saveUserToken
+import com.example.gachongo.util.saveUserLoginProvider
+import com.example.gachongo.util.saveUserProfileImg
+import com.example.gachongo.util.saveUserToken
 
 class KakaoLoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityKakaoLoginBinding
