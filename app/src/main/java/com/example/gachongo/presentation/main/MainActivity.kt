@@ -14,26 +14,25 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
-import com.example.gachongo.presentation.main.login.KakaoLoginActivity
-import com.example.gachongo.presentation.main.alarm.AlarmFragment
-import com.example.gachongo.presentation.main.delivery.DeliveryFragment
-import com.example.gachongo.presentation.main.home.HomeFragment
-import com.example.gachongo.presentation.main.mypage.MypageFragment
-import com.example.gachongo_aos.R
-import com.example.gachongo_aos.databinding.ActivityMainBinding
-import com.kakao.sdk.user.UserApiClient
 import com.example.gachongo.api.LoginService
 import com.example.gachongo.api.LoginView
 import com.example.gachongo.data.Login
 import com.example.gachongo.data.LoginResponseResult
-import com.example.gachongo.presentation.main.delivery.Constants
-import com.example.gachongo.presentation.main.delivery.LocationService
+import com.example.gachongo.presentation.main.alarm.AlarmFragment
+import com.example.gachongo.presentation.main.delivery.DeliveryFragment
+import com.example.gachongo.presentation.main.home.HomeFragment
+import com.example.gachongo.presentation.main.login.KakaoLoginActivity
+import com.example.gachongo.presentation.main.mypage.MypageFragment
 import com.example.gachongo.util.extension.showToast
+import com.example.gachongo.util.getUserLoginProvider
+import com.example.gachongo.util.getUserToken
+import com.example.gachongo.util.saveUserId
+import com.example.gachongo.util.saveUserJwt
+import com.example.gachongo_aos.R
+import com.example.gachongo_aos.databinding.ActivityMainBinding
 import com.google.firebase.messaging.FirebaseMessaging
-import getUserLoginProvider
-import getUserToken
-import saveUserId
-import saveUserJwt
+import com.kakao.sdk.common.util.Utility
+import com.kakao.sdk.user.UserApiClient
 
 class MainActivity : AppCompatActivity(), LoginView {
     private lateinit var binding: ActivityMainBinding
@@ -55,8 +54,7 @@ class MainActivity : AppCompatActivity(), LoginView {
             if (error != null) {
                 Log.d(ContentValues.TAG, "카카오 로그인 필요")
                 startActivity(Intent(this, KakaoLoginActivity::class.java))
-            }
-            else if (tokenInfo != null) {   // 카카오 로그인이 이미 되어있으면
+            } else if (tokenInfo != null) { // 카카오 로그인이 이미 되어있으면
                 Log.d(ContentValues.TAG, "카카오 로그인 유지 성공")
                 login()
             }

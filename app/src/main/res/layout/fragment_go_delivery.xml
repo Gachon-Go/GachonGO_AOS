@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_go_delivery"
+        android:backgroundTint="@color/gray100"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tv_go_delivery"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="배달갈게요"
+            style="@style/PretendardBold20"
+            android:textColor="@color/gray900"
+            android:background="@android:color/transparent"
+            android:layout_marginTop="25dp"
+            android:paddingStart="30dp"
+            android:paddingVertical="12dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_go_delivery"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:layout_marginTop="20dp"
+            android:layout_marginHorizontal="12dp"
+            tools:listitem = "@layout/item_delivery"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_go_delivery" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
