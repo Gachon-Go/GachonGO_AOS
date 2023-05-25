@@ -14,9 +14,22 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GachonGOAOS"
         tools:targetApi="31">
-        <activity android:name="com.example.gachongo.presentation.main.MainActivity" android:exported="true">
+        <activity
+            android:name="com.example.gachongo.presentation.qr.QrActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.example.gachongo.presentation.main.point.PointActivity"
+            android:exported="false" />
+
+        <activity android:name="com.example.gachongo.presentation.main.write.WriteActivity"
+            android:exported="false">
+        </activity>
+        <activity
+            android:name="com.example.gachongo.presentation.main.MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -30,11 +43,14 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
 
                 <!-- Redirect URI: "kakao${NATIVE_APP_KEY}://oauth" -->
-                <data android:host="oauth" android:scheme="@string/KAKAO_OAUTH_KEY" />
+                <data
+                    android:host="oauth"
+                    android:scheme="kakao${kakaoApiKey}" />
             </intent-filter>
         </activity>
     </application>
