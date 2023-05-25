@@ -9,6 +9,7 @@ import com.example.gachongo.data.response.ResponseDeliveryDto
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.Header
 import retrofit2.http.POST
 import retrofit2.http.Path
 
@@ -20,6 +21,7 @@ interface DeliveryInterface {
     // 배달 게시물 작성
     @POST("/delivery")
     fun postDelivery(
+        @Header("Authorization") jwt: String,
         @Body requestBody: RequestDeliveryDto,
     ): Call<BaseResponse>
 

@@ -11,7 +11,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class DeliveryService(val deliveryView: DeliveryView) {
+class DeliveryService() {
     val deliveryService = NetworkModule.retrofit.create(DeliveryInterface::class.java)
 
     fun getItemList() {
@@ -30,16 +30,17 @@ class DeliveryService(val deliveryView: DeliveryView) {
         })
     }
 
-    fun postDelivery(body: RequestDeliveryDto) {
-        deliveryService.postDelivery(body).enqueue(object : Callback<BaseResponse> {
+    fun postDelivery(jwt: String, body: RequestDeliveryDto) {
+
+        deliveryService.postDelivery("Bearer $jwt",body).enqueue(object : Callback<BaseResponse> {
             override fun onResponse(call: Call<BaseResponse>, response: Response<BaseResponse>) {
-                val resp = response.body()
-                if (resp != null) {
-                    when (resp.code) {
-                        1000 -> deliveryView.onGetDeliveryResultSuccess()
-                        else -> deliveryView.onGetDeliveryResultFailure(resp.message)
-                    }
-                }
+//                val resp = response.body()
+//                if (resp != null) {
+//                    when (resp.code) {
+//                        1000 -> deliveryView.onGetDeliveryResultSuccess()
+//                        else -> deliveryView.onGetDeliveryResultFailure(resp.message)
+//                    }
+//                }
             }
 
             override fun onFailure(call: Call<BaseResponse>, t: Throwable) {
@@ -51,13 +52,13 @@ class DeliveryService(val deliveryView: DeliveryView) {
     fun postDeliveryDone(deliveryPostId: Int) {
         deliveryService.postDeliveryDone(deliveryPostId).enqueue(object : Callback<BaseResponse> {
             override fun onResponse(call: Call<BaseResponse>, response: Response<BaseResponse>) {
-                val resp = response.body()
-                if (resp != null) {
-                    when (resp.code) {
-                        1000 -> deliveryView.onGetDeliveryResultSuccess()
-                        else -> deliveryView.onGetDeliveryResultFailure(resp.message)
-                    }
-                }
+//                val resp = response.body()
+//                if (resp != null) {
+//                    when (resp.code) {
+//                        1000 -> deliveryView.onGetDeliveryResultSuccess()
+//                        else -> deliveryView.onGetDeliveryResultFailure(resp.message)
+//                    }
+//                }
             }
 
             override fun onFailure(call: Call<BaseResponse>, t: Throwable) {
@@ -92,13 +93,13 @@ class DeliveryService(val deliveryView: DeliveryView) {
                     call: Call<BaseResponse>,
                     response: Response<BaseResponse>,
                 ) {
-                    val resp = response.body()
-                    if (resp != null) {
-                        when (resp.code) {
-                            1000 -> deliveryView.onGetDeliveryResultSuccess()
-                            else -> deliveryView.onGetDeliveryResultFailure(resp.message)
-                        }
-                    }
+//                    val resp = response.body()
+//                    if (resp != null) {
+//                        when (resp.code) {
+//                            1000 -> deliveryView.onGetDeliveryResultSuccess()
+//                            else -> deliveryView.onGetDeliveryResultFailure(resp.message)
+//                        }
+//                    }
                 }
 
                 override fun onFailure(call: Call<BaseResponse>, t: Throwable) {
@@ -114,13 +115,13 @@ class DeliveryService(val deliveryView: DeliveryView) {
                     call: Call<BaseResponse>,
                     response: Response<BaseResponse>,
                 ) {
-                    val resp = response.body()
-                    if (resp != null) {
-                        when (resp.code) {
-                            1000 -> deliveryView.onGetDeliveryResultSuccess()
-                            else -> deliveryView.onGetDeliveryResultFailure(resp.message)
-                        }
-                    }
+//                    val resp = response.body()
+//                    if (resp != null) {
+//                        when (resp.code) {
+//                            1000 -> deliveryView.onGetDeliveryResultSuccess()
+//                            else -> deliveryView.onGetDeliveryResultFailure(resp.message)
+//                        }
+//                    }
                 }
 
                 override fun onFailure(call: Call<BaseResponse>, t: Throwable) {

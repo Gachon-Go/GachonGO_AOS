@@ -2,9 +2,9 @@ package com.example.gachongo.presentation.main.write
 
 import android.app.TimePickerDialog
 import android.os.Bundle
-import com.example.gachongo.api.DeliveryWriteService
+import com.example.gachongo.api.DeliveryService
 import com.example.gachongo.api.DeliveryWriteView
-import com.example.gachongo.data.RequestDeliveryWrite
+import com.example.gachongo.data.request.RequestDeliveryDto
 import com.example.gachongo.util.binding.BindingActivity
 import com.example.gachongo.util.extension.showToast
 import com.example.gachongo.util.getUserJwt
@@ -62,10 +62,13 @@ class WriteActivity :
 
     private fun writeDeliveryPost() {
         val jwt: String = getUserJwt(this)
-        val requestDeliveryWrite = RequestDeliveryWrite(content, time, title)
-
-        val deliveryWriteService = DeliveryWriteService(this)
-        deliveryWriteService.deliveryWrite(jwt, requestDeliveryWrite)
+//        val requestDeliveryWrite = RequestDeliveryWrite(content, time, title)
+//
+//        val deliveryWriteService = DeliveryWriteService(this)
+//        deliveryWriteService.deliveryWrite(jwt, requestDeliveryWrite)
+        val requestDeliveryDto = RequestDeliveryDto(content, time, title)
+        val deliveryService = DeliveryService()
+        deliveryService.postDelivery(jwt, requestDeliveryDto)
     }
 
     override fun onGetDeliveryWriteResultSuccess(result: String) {
