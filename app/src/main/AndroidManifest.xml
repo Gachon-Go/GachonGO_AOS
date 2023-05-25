@@ -21,6 +21,9 @@
             android:name="com.example.gachongo.presentation.main.point.PointActivity"
             android:exported="false" />
 
+        <activity android:name="com.example.gachongo.presentation.main.write.WriteActivity"
+            android:exported="false">
+        </activity>
         <activity
             android:name="com.example.gachongo.presentation.main.MainActivity"
             android:exported="true">
