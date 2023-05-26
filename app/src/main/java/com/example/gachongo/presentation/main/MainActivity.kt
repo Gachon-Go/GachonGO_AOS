@@ -19,10 +19,12 @@ import com.example.gachongo.api.LoginView
 import com.example.gachongo.data.Login
 import com.example.gachongo.data.LoginResponseResult
 import com.example.gachongo.presentation.main.alarm.AlarmFragment
+import com.example.gachongo.presentation.main.delivery.Constants
 import com.example.gachongo.presentation.main.delivery.DeliveryFragment
+import com.example.gachongo.presentation.main.delivery.LocationService
 import com.example.gachongo.presentation.main.home.HomeFragment
 import com.example.gachongo.presentation.main.login.KakaoLoginActivity
-import com.example.gachongo.presentation.main.mypage.MypageFragment
+import com.example.gachongo.presentation.main.mypage.MyPageFragment
 import com.example.gachongo.util.extension.showToast
 import com.example.gachongo.util.getUserLoginProvider
 import com.example.gachongo.util.getUserToken
@@ -89,7 +91,7 @@ class MainActivity : AppCompatActivity(), LoginView {
                 R.id.menu_home -> navigateTo<HomeFragment>()
                 R.id.menu_delivery -> navigateTo<DeliveryFragment>()
                 R.id.menu_alarm -> navigateTo<AlarmFragment>()
-                R.id.menu_mypage -> navigateTo<MypageFragment>()
+                R.id.menu_mypage -> navigateTo<MyPageFragment>()
             }
             true
         }

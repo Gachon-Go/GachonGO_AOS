@@ -30,7 +30,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
         super.onMessageReceived(remoteMessage)
 
-        Log.d(TAG, "From: " + remoteMessage!!.from)
+        Log.d(TAG, "From: " + remoteMessage.from)
 
         super.onMessageReceived(remoteMessage)
 
