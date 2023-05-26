@@ -91,7 +91,7 @@ fun saveUserJwt(context: Context, jwt: String) {
     val spf = context.getSharedPreferences("jwt", AppCompatActivity.MODE_PRIVATE)
     val editor = spf.edit()
 
-    editor.putString("jwt", jwt)
+    editor.putString("jwt", "Bearer $jwt")
     editor.apply()
 }
 
@@ -112,5 +112,5 @@ fun saveUserLocationCheck(context: Context, isFirstCheck: Boolean) {
 fun getUserLocationCheck(context: Context): Boolean {
     val spf = context.getSharedPreferences("isFirstCheck", AppCompatActivity.MODE_PRIVATE)
 
-    return spf.getBoolean("isFirstCheck", false)
+    return spf.getBoolean("isFirstCheck", true)
 }

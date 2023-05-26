@@ -4,18 +4,15 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import com.example.gachongo.api.EmailService
 import com.example.gachongo.api.NicknameService
 import com.example.gachongo.api.NicknameView
 import com.example.gachongo.util.extension.backPressed
 import com.example.gachongo.util.extension.hideKeyboard
-import com.example.gachongo.util.extension.showToast
-import com.example.gachongo.util.saveUserNickname
 import com.example.gachongo_aos.R
 import com.example.gachongo_aos.databinding.ActivityNicknameBinding
+import com.example.gachongo.util.saveUserNickname
 
 class NicknameActivity: AppCompatActivity(), NicknameView {
     private lateinit var binding: ActivityNicknameBinding
