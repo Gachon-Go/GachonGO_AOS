@@ -22,4 +22,10 @@
     <!-- ~님 환영합니다 View -->
     <string name="welcome_message1"> 님,</string>
     <string name="welcome_message2">너와 나, Gachon Go! 에\n오신걸 환영해요!</string>
+
+    <!-- 임시 알림 텍스트 -->
+    <string name="alarm_message1">"가천관, 매머드커피.." 게시글에서 배달기사로 선택되었습니다.</string>
+    <string name="alarm_message2">"가천관, 매머드커피.." 에 대한 포인트 13,000P가 전송되었습니다.</string>
+    <string name="alarm_message3">"가천관, 매머드커피.." 배달이 완료되었습니다. 지금 확인해보세요!</string>
+    <string name="alarm_message4">내가 작성한 게시글 "가천관, 매머드커피.." 에 새로운 댓글이 작성되었습니다.</string>
 </resources>
