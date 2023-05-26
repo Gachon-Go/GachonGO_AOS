@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_page_edit_main_cl"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.gachongo.presentation.main.mypage.MyPageEditActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/my_page_edit_top_cl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="22dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" >
+
+        <ImageView
+            android:id="@+id/my_page_edit_back_iv"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="20dp"
+            android:src="@drawable/ic_back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <TextView
+            android:id="@+id/my_page_edit_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="22dp"
+            android:text="@string/my_page_edit"
+            android:textColor="@color/gray900"
+            style="@style/PretendardBold20"
+            app:layout_constraintStart_toEndOf="@id/my_page_edit_back_iv"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/my_page_edit_profile_riv"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="40dp"
+        android:background="@color/gray200"
+        android:scaleType="center"
+        android:src="@drawable/bg_button_default"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/my_page_edit_top_cl"
+        app:riv_mutate_background="true"
+        app:riv_oval="true" />
+
+    <EditText
+        android:id="@+id/my_page_edit_nickname_et"
+        android:layout_width="270dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="24dp"
+        android:maxLines="1"
+        android:inputType="text"
+        android:background="@drawable/bg_stroke_blue_400"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/my_page_edit_profile_riv" />
+    
+    <ImageView
+        android:id="@+id/my_page_edit_iv"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginEnd="25dp"
+        android:src="@drawable/ic_edit"
+        app:layout_constraintEnd_toEndOf="@id/my_page_edit_nickname_et"
+        app:layout_constraintTop_toTopOf="@id/my_page_edit_nickname_et"
+        app:layout_constraintBottom_toBottomOf="@id/my_page_edit_nickname_et" />
+
+    <TextView
+        android:id="@+id/my_page_edit_nickname_check_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
+        android:text="@string/nickname_duplicate"
+        android:textColor="@color/error"
+        style="@style/PretendardMedium14"
+        app:layout_constraintTop_toBottomOf="@id/my_page_edit_nickname_et"
+        app:layout_constraintStart_toStartOf="@id/my_page_edit_nickname_et"
+        android:visibility="gone" />
+    
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/my_page_edit_finish_btn"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginBottom="72dp"
+        android:text="@string/my_page_edit_finish"
+        android:textColor="@color/gray900"
+        style="@style/PretendardSemibold20"
+        android:background="@drawable/bg_blue_100_radius_15"
+        android:stateListAnimator="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
