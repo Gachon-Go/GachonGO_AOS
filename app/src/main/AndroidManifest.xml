@@ -7,6 +7,7 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:name="com.example.gachongo.GlobalApplication"
@@ -41,6 +42,8 @@
         <activity android:name="com.example.gachongo.presentation.main.login.EmailAuthActivity" android:exported="false" />
         <activity android:name="com.example.gachongo.presentation.main.login.NicknameActivity" android:exported="false" />
         <activity android:name="com.example.gachongo.presentation.main.login.WelcomeActivity" android:exported="false" />
+        <activity android:name="com.example.gachongo.presentation.main.mypage.MyPageEditActivity" android:exported="false" />
+        <activity android:name="com.example.gachongo.presentation.main.mypage.PointManageActivity" android:exported="false" />
         <activity android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity" android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />

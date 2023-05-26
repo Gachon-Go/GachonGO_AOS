@@ -22,4 +22,25 @@
     <!-- ~님 환영합니다 View -->
     <string name="welcome_message1"> 님,</string>
     <string name="welcome_message2">너와 나, Gachon Go! 에\n오신걸 환영해요!</string>
+
+    <!-- 마이페이지 -->
+    <string name="my_page_point_balance">포인트 잔액:</string>
+    <string name="my_page_point_unit">P</string>
+    <string name="my_page_order">주문</string>
+    <string name="my_page_delivery">배달</string>
+    <string name="my_page_post">게시글</string>
+    <string name="my_page_edit_btn">편집</string>
+    <string name="my_page_point_manage_btn">포인트 관리</string>
+    <string name="my_page_activity_history">활동 내역</string>
+    <string name="my_page_activity_history_explanation">다양한 곳에 배달을 하여 뱃지를 모을 수 있어요.</string>
+
+    <!-- 프로필 편집 -->
+    <string name="my_page_edit">프로필 편집</string>
+    <string name="my_page_edit_finish">완료</string>
+
+    <!-- 포인트 관리 -->
+    <string name="point_manage">포인트 관리</string>
+    <string name="holding_point">보유 포인트</string>
+    <string name="charging">충전</string>
+    <string name="point_history">적립/사용 내역 </string>
 </resources>

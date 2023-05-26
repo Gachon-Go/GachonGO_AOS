@@ -75,6 +75,11 @@ dependencies {
     implementation 'com.naver.maps:map-sdk:3.15.0'
     implementation "com.google.android.gms:play-services-location:20.0.0" // 버전 변경 금지
 
+    // Rounded ImageView https://github.com/vinc3m1/RoundedImageView
+    implementation 'com.makeramen:roundedimageview:2.3.0'
+
+    // Glide
+    implementation 'com.github.bumptech.glide:glide:4.9.0'
 
     // FCM
     implementation platform('com.google.firebase:firebase-bom:30.3.2')
