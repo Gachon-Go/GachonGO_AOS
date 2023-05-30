@@ -39,8 +39,10 @@ interface DeliveryInterface {
     // 배달 게시물 상세 댓글 조회
     @GET("/delivery/{deliveryPostId}/comment")
     fun getDeliveryDetailComment(
+        @Query("page") page: Int,
+        @Query("size") size: Int,
         @Path("deliveryPostId") deliveryPostId: Int,
-    ): Call<List<ResponseDeliveryCommentDto.Result>>
+    ): Call<ResponseDeliveryCommentDto>
 
     // 배달 게시물 상세 댓글 작성
     @POST("/delivery/{deliveryPostId}/comment")
