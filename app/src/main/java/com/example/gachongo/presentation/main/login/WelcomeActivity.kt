@@ -8,11 +8,11 @@ import com.example.gachongo.api.SignUpView
 import com.example.gachongo.data.User
 import com.example.gachongo.presentation.main.MainActivity
 import com.example.gachongo.util.extension.showToast
+import com.example.gachongo_aos.databinding.ActivityWelcomeBinding
 import com.example.gachongo.util.getUserEmail
 import com.example.gachongo.util.getUserLoginProvider
 import com.example.gachongo.util.getUserNickname
 import com.example.gachongo.util.getUserToken
-import com.example.gachongo_aos.databinding.ActivityWelcomeBinding
 
 class WelcomeActivity: AppCompatActivity(), SignUpView {
     private lateinit var binding: ActivityWelcomeBinding

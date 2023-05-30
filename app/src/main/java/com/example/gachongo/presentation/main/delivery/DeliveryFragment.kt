@@ -1,60 +1,152 @@
 package com.example.gachongo.presentation.main.delivery
 
+import android.Manifest
+import android.content.pm.PackageManager
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
+import com.example.gachongo.api.OthersPositionService
+import com.example.gachongo.api.OthersPositionView
+import com.example.gachongo.data.OthersPositionResult
 import com.example.gachongo_aos.R
+import com.example.gachongo_aos.databinding.FragmentDeliveryBinding
+import com.naver.maps.geometry.LatLng
+import com.naver.maps.map.LocationTrackingMode
+import com.naver.maps.map.MapFragment
+import com.naver.maps.map.NaverMap
+import com.naver.maps.map.OnMapReadyCallback
+import com.naver.maps.map.overlay.Marker
+import com.naver.maps.map.overlay.OverlayImage
+import com.naver.maps.map.util.FusedLocationSource
+import com.example.gachongo.util.getUserJwt
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+class DeliveryFragment : Fragment(), OnMapReadyCallback, OthersPositionView {
+    private lateinit var locationSource: FusedLocationSource
+    private lateinit var naverMap: NaverMap
+    private lateinit var binding: FragmentDeliveryBinding
+    private lateinit var job: Job
+    private val markerList = mutableListOf<Marker>()
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding = FragmentDeliveryBinding.inflate(inflater, container, false)
+        initMapView()
 
-/**
- * A simple [Fragment] subclass.
- * Use the [DeliveryFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class DeliveryFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+        // 위치권한 얻어오기
+        if (!hasLocationPermission()) requestLocationPermission()
+        return binding.root
+    }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+    private fun initMapView() {
+        val fm = childFragmentManager
+        val mapFragment = fm.findFragmentById(R.id.delivery_naver_map) as MapFragment?
+            ?: MapFragment.newInstance().also {
+                fm.beginTransaction().add(R.id.delivery_naver_map, it).commit()
+            }
+
+        // fragment의 getMapAsync() 메서드로 OnMapReadyCallback 콜백을 등록하면 비동기로 NaverMap 객체를 얻을 수 있다.
+        mapFragment.getMapAsync(this)
+        locationSource = FusedLocationSource(this, LOCATION_PERMISSION_REQUEST_CODE)
+    }
+
+    override fun onMapReady(naverMap: NaverMap) {
+        this.naverMap = naverMap
+        naverMap.locationSource = locationSource
+
+        // 현재 위치 버튼 기능
+        naverMap.uiSettings.isLocationButtonEnabled = true
+        // 위치를 추적하면서 카메라도 따라 움직인다.
+        naverMap.locationTrackingMode = LocationTrackingMode.Follow
+
+        // 다른 사용자들의 위치들을 받아와요
+        job = lifecycleScope.launch {
+            while (true) {
+                Log.d("DeliveryFragment", "위치 정보 요청중..")
+                getOthersPosition()
+                delay(2000)
+            }
         }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_delivery, container, false)
+    private fun hasLocationPermission(): Boolean {
+        val permission = Manifest.permission.ACCESS_FINE_LOCATION
+        val result = ContextCompat.checkSelfPermission(requireContext(), permission)
+        return result == PackageManager.PERMISSION_GRANTED
+    }
+
+    private fun requestLocationPermission() {
+        val permission = Manifest.permission.ACCESS_FINE_LOCATION
+
+        val locationPermissionLauncher = registerForActivityResult(
+            ActivityResultContracts.RequestPermission()
+        ) { isGranted: Boolean ->
+            if (isGranted) {
+                // Permission granted, handle accordingly
+                enableLocationTracking()
+            } else {
+                // Permission denied, handle accordingly
+                disableLocationTracking()
+            }
+        }
+
+        locationPermissionLauncher.launch(permission)
+    }
+
+    private fun enableLocationTracking() {
+        naverMap.locationTrackingMode = LocationTrackingMode.Follow
+    }
+
+    private fun disableLocationTracking() {
+        naverMap.locationTrackingMode = LocationTrackingMode.None
+    }
+
+    private fun getOthersPosition() {
+        val othersPositionService = OthersPositionService(this)
+        othersPositionService.getOthersPosition(getUserJwt(requireContext()))
+    }
+
+    override fun onGetOthersPositionResultSuccess(result: OthersPositionResult) {
+        Log.d("DeliveryFragment", result.mapPoints.toString())
+
+        // Clear existing markers
+        markerList.forEach { it.map = null }
+        markerList.clear()
+
+        // Create markers for each location
+        result.mapPoints.forEach { location ->
+            val marker = Marker()
+            marker.position = LatLng(location.latitude, location.longitude)
+            marker.icon = OverlayImage.fromResource(R.drawable.ic_location)
+            marker.map = naverMap
+            markerList.add(marker)
+        }
+    }
+
+    override fun onGetOthersPositionResultFailure(message: String) {
+        Log.d("DeliveryFragment", message)
+    }
+
+    override fun onDestroyView() {
+        if (::job.isInitialized) {
+            Log.d("DeliveryFragment", "위치 정보 업데이트 process 중지")
+            job.cancel() // Cancel the job when the view is destroyed
+        }
+        super.onDestroyView()
     }
 
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment DeliveryFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            DeliveryFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+        private const val LOCATION_PERMISSION_REQUEST_CODE = 1000
     }
+
 }
