@@ -11,8 +11,8 @@ import retrofit2.Response
 class GoDetailService(val goDetailView: GoDetailView) {
     val goDetailService = NetworkModule.retrofit.create(DeliveryInterface::class.java)
 
-    fun getDetail(deliveryPostId: Int) {
-        goDetailService.getDeliveryDetail(deliveryPostId).enqueue(object :
+    fun getDetail(jwt : String, deliveryPostId: Int) {
+        goDetailService.getDeliveryDetail(jwt, deliveryPostId).enqueue(object :
             Callback<ResponseDeliveryDetailDto> {
             override fun onResponse(
                 call: Call<ResponseDeliveryDetailDto>,
@@ -33,8 +33,8 @@ class GoDetailService(val goDetailView: GoDetailView) {
         })
     }
 
-    fun getDeliveryDetailComment(page: Int, size: Int, deliveryPostId: Int) {
-        goDetailService.getDeliveryDetailComment(page, size, deliveryPostId)
+    fun getDeliveryDetailComment(jwt: String, page: Int, size: Int, deliveryPostId: Int) {
+        goDetailService.getDeliveryDetailComment(jwt, page, size, deliveryPostId)
             .enqueue(object : Callback<ResponseDeliveryCommentDto> {
                 override fun onResponse(
                     call: Call<ResponseDeliveryCommentDto>,

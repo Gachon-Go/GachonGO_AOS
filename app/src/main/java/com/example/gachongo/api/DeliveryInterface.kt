@@ -33,12 +33,14 @@ interface DeliveryInterface {
     // 배달 게시물 모집완료
     @POST("/delivery/{deliveryPostId}/done")
     fun postDeliveryDone(
+        @Header("Authorization") jwt: String,
         @Path("deliveryPostId") deliveryPostId: Int,
     ): Call<BaseResponse>
 
     // 배달 게시물 상세 댓글 조회
     @GET("/delivery/{deliveryPostId}/comment")
     fun getDeliveryDetailComment(
+        @Header("Authorization") jwt: String,
         @Query("page") page: Int,
         @Query("size") size: Int,
         @Path("deliveryPostId") deliveryPostId: Int,
@@ -47,6 +49,7 @@ interface DeliveryInterface {
     // 배달 게시물 상세 댓글 작성
     @POST("/delivery/{deliveryPostId}/comment")
     fun postDeliveryDetailComment(
+        @Header("Authorization") jwt: String,
         @Path("deliveryPostId") deliveryPostId: Int,
         @Body requestBody: RequestCommentDto,
     ): Call<BaseResponse>
@@ -54,6 +57,7 @@ interface DeliveryInterface {
     // 배달 게시물 고객 선택
     @POST("/delivery/{deliveryPostId}/comment/{commentId}/select")
     fun postDeliveryDetailCommentSelect(
+        @Header("Authorization") jwt: String,
         @Path("deliveryPostId") deliveryPostId: Int,
         @Path("commentId") commentId: Int,
     ): Call<BaseResponse>
@@ -61,6 +65,7 @@ interface DeliveryInterface {
     // 배달 게시물 상세 조회
     @GET("/delivery/{deliveryPostId}")
     fun getDeliveryDetail(
+        @Header("Authorization") jwt: String,
         @Path("deliveryPostId") deliveryPostId: Int,
     ): Call<ResponseDeliveryDetailDto>
 }
