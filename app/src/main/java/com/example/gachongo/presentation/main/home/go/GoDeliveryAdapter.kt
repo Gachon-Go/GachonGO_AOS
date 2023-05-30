@@ -1,15 +1,18 @@
 package com.example.gachongo.presentation.main.home.go
 
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gachongo.data.response.ResponseDeliveryDto
 import com.example.gachongo.presentation.main.home.detail.GoDetailActivity
+import com.example.gachongo.util.getUserJwt
 import com.example.gachongo_aos.databinding.ItemDeliveryBinding
 
-class GoDeliveryAdapter(var result: MutableList<ResponseDeliveryDto.Result>) : RecyclerView.Adapter<GoDeliveryAdapter.GoDeliveryViewHolder>() {
+class GoDeliveryAdapter(var result: MutableList<ResponseDeliveryDto.Result>) :
+    RecyclerView.Adapter<GoDeliveryAdapter.GoDeliveryViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GoDeliveryViewHolder {
         val binding =
@@ -35,10 +38,13 @@ class GoDeliveryAdapter(var result: MutableList<ResponseDeliveryDto.Result>) : R
             binding.tvDeliveryTitle.text = item.title
             binding.tvDeliveryTime.text = item.estimatedTime
             binding.tvDeliveryComment.text = item.commentNum.toString()
+            val deliveryPostId = item.deliveryId
+            Log.d("before", deliveryPostId.toString())
 
             binding.root.setOnClickListener {
                 val intent = Intent(binding.root.context, GoDetailActivity::class.java)
-                intent.putExtra("deliveryPostId", item.commentNum)
+                intent.putExtra("deliveryPostId", item.deliveryId)
+                Log.d("ID", item.deliveryId.toString())
                 ContextCompat.startActivity(binding.root.context, intent, null)
             }
         }

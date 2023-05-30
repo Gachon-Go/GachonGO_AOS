@@ -2,7 +2,6 @@ package com.example.gachongo.presentation.main.write
 
 import android.app.TimePickerDialog
 import android.os.Bundle
-import android.util.Log
 import com.example.gachongo.api.write.DeliveryWriteService
 import com.example.gachongo.api.write.DeliveryWriteView
 import com.example.gachongo.data.request.RequestDeliveryDto
@@ -19,10 +18,6 @@ class WriteActivity :
     private lateinit var content: String
     private lateinit var time: String
     private lateinit var title: String
-//
-//    var content: String = "빨리 와"
-//    var time: String = " "
-//    var title: String = "배달 ㄱ"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
