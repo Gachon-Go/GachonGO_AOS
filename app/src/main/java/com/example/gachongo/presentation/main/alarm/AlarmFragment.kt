@@ -9,17 +9,36 @@ import android.view.ViewGroup
 import com.example.gachongo.api.NotificationService
 import com.example.gachongo.api.NotificationView
 import com.example.gachongo.data.NotificationBundle
+import com.example.gachongo.data.NotificationContent
 import com.example.gachongo.util.getUserJwt
 import com.example.gachongo_aos.databinding.FragmentAlarmBinding
 
 class AlarmFragment : Fragment(), NotificationView {
     private lateinit var binding: FragmentAlarmBinding
+
+    private lateinit var todayAlarmRVAdapter: AlarmRVAdapter
+    private lateinit var yesterdayAlarmRVAdapter: AlarmRVAdapter
+    private lateinit var pastAlarmRVAdapter: AlarmRVAdapter
+
+    private val todayAlarmList = ArrayList<NotificationContent>()
+    private val yesterdayAlarmList = ArrayList<NotificationContent>()
+    private val pastAlarmList = ArrayList<NotificationContent>()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentAlarmBinding.inflate(inflater, container, false)
         getNotification()
+
+        todayAlarmRVAdapter = AlarmRVAdapter(requireContext(), todayAlarmList)
+        yesterdayAlarmRVAdapter = AlarmRVAdapter(requireContext(), yesterdayAlarmList)
+        pastAlarmRVAdapter = AlarmRVAdapter(requireContext(), pastAlarmList)
+
+        binding.alarmTodayRv.adapter = todayAlarmRVAdapter
+        binding.alarmYesterdayRv.adapter = yesterdayAlarmRVAdapter
+        binding.alarmPastRv.adapter = pastAlarmRVAdapter
+
         return binding.root
     }
 
@@ -30,6 +49,18 @@ class AlarmFragment : Fragment(), NotificationView {
 
     override fun onGetNotificationSuccess(notificationBundle: NotificationBundle) {
         Log.d("Notification", notificationBundle.toString())
+
+        binding.alarmTodayTv.visibility = if (notificationBundle.todayNotificationList.isNullOrEmpty()) View.GONE else View.VISIBLE
+        binding.alarmTodayRv.visibility = if (notificationBundle.todayNotificationList.isNullOrEmpty()) View.GONE else View.VISIBLE
+        binding.alarmYesterdayTv.visibility = if (notificationBundle.yesterdayNotificationList.isNullOrEmpty()) View.GONE else View.VISIBLE
+        binding.alarmYesterdayRv.visibility = if (notificationBundle.yesterdayNotificationList.isNullOrEmpty()) View.GONE else View.VISIBLE
+        binding.alarmPastTv.visibility = if (notificationBundle.pastNotificationList.isNullOrEmpty()) View.GONE else View.VISIBLE
+        binding.alarmPastRv.visibility = if (notificationBundle.pastNotificationList.isNullOrEmpty()) View.GONE else View.VISIBLE
+
+
+        todayAlarmRVAdapter.addNotification(notificationBundle.todayNotificationList)
+        yesterdayAlarmRVAdapter.addNotification(notificationBundle.yesterdayNotificationList)
+        pastAlarmRVAdapter.addNotification(notificationBundle.pastNotificationList)
     }
 
     override fun onGetNotificationFailure(message: String) {
