@@ -43,4 +43,8 @@
     <string name="holding_point">보유 포인트</string>
     <string name="charging">충전</string>
     <string name="point_history">적립/사용 내역 </string>
+    <string name="point_charge">포인트 충전</string>
+    <string name="charge_amount">충전 금액</string>
+    <string name="after_charge">충전 후 금액</string>
+    <string name="finish_charge">충전하기</string>
 </resources>

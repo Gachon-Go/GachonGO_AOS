@@ -44,6 +44,8 @@
         <activity android:name="com.example.gachongo.presentation.main.login.WelcomeActivity" android:exported="false" />
         <activity android:name="com.example.gachongo.presentation.main.mypage.MyPageEditActivity" android:exported="false" />
         <activity android:name="com.example.gachongo.presentation.main.mypage.PointManageActivity" android:exported="false" />
+        <activity android:name="com.example.gachongo.presentation.main.mypage.PointChargeActivity" android:exported="false" />
+        <activity android:name="com.example.gachongo.presentation.main.mypage.KakaoPayActivity" android:exported="true" />
         <activity android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity" android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />

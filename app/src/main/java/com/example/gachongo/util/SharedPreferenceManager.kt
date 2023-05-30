@@ -101,16 +101,16 @@ fun getUserJwt(context: Context): String {
     return spf.getString("jwt", "")!!
 }
 
-fun saveUserLocationCheck(context: Context, isFirstCheck: Boolean) {
-    val spf = context.getSharedPreferences("isFirstCheck", AppCompatActivity.MODE_PRIVATE)
+fun saveUserPoint(context: Context, point: Int) {
+    val spf = context.getSharedPreferences("point", AppCompatActivity.MODE_PRIVATE)
     val editor = spf.edit()
 
-    editor.putBoolean("isFirstCheck", isFirstCheck)
+    editor.putInt("point", point)
     editor.apply()
 }
 
-fun getUserLocationCheck(context: Context): Boolean {
-    val spf = context.getSharedPreferences("isFirstCheck", AppCompatActivity.MODE_PRIVATE)
+fun getUserPoint(context: Context): Int {
+    val spf = context.getSharedPreferences("point", AppCompatActivity.MODE_PRIVATE)
 
-    return spf.getBoolean("isFirstCheck", true)
+    return spf.getInt("point", 0)
 }

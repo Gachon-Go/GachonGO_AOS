@@ -1,5 +1,6 @@
 package com.example.gachongo.presentation.main.mypage
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
@@ -24,6 +25,11 @@ class PointManageActivity : AppCompatActivity(), PointView, PointHistoryView {
 
         binding.pointManageBackIv.setOnClickListener {
             backPressed()
+        }
+
+        binding.pointManageChargingBtn.setOnClickListener {
+            startActivity(Intent(this, PointChargeActivity::class.java))
+            finish()
         }
     }
 
