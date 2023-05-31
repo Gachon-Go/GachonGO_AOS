@@ -2,11 +2,15 @@ package com.example.gachongo.presentation.main // ktlint-disable package-name
 
 import android.Manifest
 import android.app.ActivityManager
+import android.app.AlertDialog
+import android.app.NotificationManager
 import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Bundle
+import android.provider.Settings
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
@@ -61,6 +65,11 @@ class MainActivity : AppCompatActivity(), LoginView {
                 Log.d(ContentValues.TAG, "카카오 로그인 유지 성공")
                 login()
             }
+        }
+
+        // 알림 허용 메세지
+        if (!isNotificationPermissionGranted(this)) {
+            showNotificationPermissionDialog(this)
         }
 
         // 백그라운드로 위치정보 전송
@@ -187,5 +196,38 @@ class MainActivity : AppCompatActivity(), LoginView {
             showToast("Location service stopped")
             Log.d("LOCATION_UPDATE", "위치정보 서비스 종료")
         }
+    }
+
+    // Function to check if notification permission is granted
+    private fun isNotificationPermissionGranted(context: Context): Boolean {
+        val notificationManager =
+            context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+
+        // Check if the notification permission is granted
+        return notificationManager.areNotificationsEnabled()
+    }
+
+    // Function to prompt the user to enable notification permission
+    private fun showNotificationPermissionDialog(context: Context) {
+        val builder = AlertDialog.Builder(context)
+        builder.setTitle("알림 권한 허용 요청")
+            .setMessage("이 앱을 사용하시려면 알림을 활성화해주세요.")
+            .setPositiveButton("설정") { dialog, _ ->
+                // Open the app settings to enable notification permission
+                openAppSettings(context)
+                dialog.dismiss()
+            }
+            .setNegativeButton("취소") { dialog, _ ->
+                dialog.dismiss()
+            }
+            .setCancelable(false)
+            .show()
+    }
+
+    // Function to open the app settings screen
+    private fun openAppSettings(context: Context) {
+        val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
+        intent.data = Uri.fromParts("package", context.packageName, null)
+        context.startActivity(intent)
     }
 }
