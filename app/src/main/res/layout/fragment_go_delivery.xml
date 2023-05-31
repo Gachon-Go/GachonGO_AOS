@@ -9,7 +9,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layout_go_delivery"
-        android:backgroundTint="@color/gray100"
+        android:background="@drawable/shape_gray100_fill_rect"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
