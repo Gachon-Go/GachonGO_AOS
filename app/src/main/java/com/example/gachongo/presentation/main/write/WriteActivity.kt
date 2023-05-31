@@ -2,8 +2,10 @@ package com.example.gachongo.presentation.main.write
 
 import android.app.TimePickerDialog
 import android.os.Bundle
+import android.util.Log
 import com.example.gachongo.api.write.DeliveryWriteService
 import com.example.gachongo.api.write.DeliveryWriteView
+import com.example.gachongo.data.BaseResponse
 import com.example.gachongo.data.request.RequestDeliveryDto
 import com.example.gachongo.util.binding.BindingActivity
 import com.example.gachongo.util.extension.showToast
@@ -23,7 +25,7 @@ class WriteActivity :
         super.onCreate(savedInstanceState)
 
         initTimePickerBtnClickListener()
-        initWriteFinishBtnClickLisnter()
+        initWriteFinishBtnClickListener()
     }
 
     private fun initTimePickerBtnClickListener() {
@@ -44,7 +46,7 @@ class WriteActivity :
         }
     }
 
-    private fun initWriteFinishBtnClickLisnter() {
+    private fun initWriteFinishBtnClickListener() {
         binding.btnWriteFinish.setOnClickListener() {
             content = binding.etWriteContent.text.toString()
             time = binding.btnWriteTime.text.toString()
@@ -59,10 +61,14 @@ class WriteActivity :
         val jwt: String = getUserJwt(this)
 
         val deliveryWriteService = DeliveryWriteService(this)
-        deliveryWriteService.postDelivery(jwt, body = RequestDeliveryDto(content, time, title))
+        deliveryWriteService.postDelivery(
+            jwt,
+            requestBody = RequestDeliveryDto(content, time, title),
+        )
     }
 
-    override fun onGetDeliveryWriteResultSuccess() {
+    override fun onGetDeliveryWriteResultSuccess(response: BaseResponse) {
+        Log.d("write", "서버통신 성공")
         showToast("글 작성이 완료되었습니다.")
     }
 

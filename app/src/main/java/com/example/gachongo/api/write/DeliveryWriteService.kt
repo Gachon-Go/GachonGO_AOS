@@ -11,8 +11,8 @@ import retrofit2.Response
 
 class DeliveryWriteService(val deliveryWriteView: DeliveryWriteView) {
     val deliveryWriteService = NetworkModule.retrofit.create(DeliveryInterface::class.java)
-    fun postDelivery(jwt: String, body: RequestDeliveryDto) {
-        deliveryWriteService.postDelivery(jwt, body)
+    fun postDelivery(jwt: String, requestBody: RequestDeliveryDto) {
+        deliveryWriteService.postDelivery(jwt, requestBody)
             .enqueue(object : Callback<BaseResponse> {
                 override fun onResponse(
                     call: Call<BaseResponse>,
@@ -21,7 +21,7 @@ class DeliveryWriteService(val deliveryWriteView: DeliveryWriteView) {
                     val resp = response.body()
                     if (resp != null) {
                         when (resp.code) {
-                            1000 -> deliveryWriteView.onGetDeliveryWriteResultSuccess()
+                            1000 -> deliveryWriteView.onGetDeliveryWriteResultSuccess(resp)
                             else -> deliveryWriteView.onGetDeliveryWriteResultFailure(resp.message)
                         }
                     }

@@ -15,7 +15,7 @@ data class ResponseDeliveryDto(
     data class Result(
         @SerializedName("commentNum")
         val commentNum: Int,
-        @SerializedName("DeliveryId")
+        @SerializedName("deliveryId")
         val deliveryId: Int,
         @SerializedName("estimatedTime")
         val estimatedTime: String,

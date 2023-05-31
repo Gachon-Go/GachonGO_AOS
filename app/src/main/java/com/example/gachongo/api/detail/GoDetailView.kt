@@ -9,4 +9,7 @@ interface GoDetailView {
 
     fun onGetDeliveryCommentResultSuccess(result: MutableList<ResponseDeliveryCommentDto.Result>)
     fun onGetDeliveryCommentResultFailure(message: String)
+
+    fun onPostDeliveryCommentResultSuccess()
+    fun onPostDeliveryCommentResultFailure(message: String)
 }

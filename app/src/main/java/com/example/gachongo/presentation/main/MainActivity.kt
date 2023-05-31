@@ -19,7 +19,9 @@ import com.example.gachongo.api.LoginView
 import com.example.gachongo.data.Login
 import com.example.gachongo.data.LoginResponseResult
 import com.example.gachongo.presentation.main.alarm.AlarmFragment
+import com.example.gachongo.presentation.main.delivery.Constants
 import com.example.gachongo.presentation.main.delivery.DeliveryFragment
+import com.example.gachongo.presentation.main.delivery.LocationService
 import com.example.gachongo.presentation.main.home.HomeFragment
 import com.example.gachongo.presentation.main.home.go.GoDeliveryFragment
 import com.example.gachongo.presentation.main.home.want.WantDeliveryFragment
@@ -62,12 +64,19 @@ class MainActivity : AppCompatActivity(), LoginView {
         }
 
         // 백그라운드로 위치정보 전송
-        if (ContextCompat.checkSelfPermission(applicationContext, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), 1)
+        if (ContextCompat.checkSelfPermission(
+                applicationContext,
+                Manifest.permission.ACCESS_FINE_LOCATION,
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            ActivityCompat.requestPermissions(
+                this,
+                arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
+                1,
+            )
         } else {
             startLocationService()
         }
-
     }
 
     private fun initFirebase() {
@@ -133,7 +142,11 @@ class MainActivity : AppCompatActivity(), LoginView {
         stopLocationService()
     }
 
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<String>,
+        grantResults: IntArray,
+    ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == 1 && grantResults.isNotEmpty()) {
             if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
@@ -175,5 +188,4 @@ class MainActivity : AppCompatActivity(), LoginView {
             Log.d("LOCATION_UPDATE", "위치정보 서비스 종료")
         }
     }
-
 }

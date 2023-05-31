@@ -8,7 +8,6 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gachongo.data.response.ResponseDeliveryDto
 import com.example.gachongo.presentation.main.home.detail.GoDetailActivity
-import com.example.gachongo.util.getUserJwt
 import com.example.gachongo_aos.databinding.ItemDeliveryBinding
 
 class GoDeliveryAdapter(var result: MutableList<ResponseDeliveryDto.Result>) :
@@ -43,8 +42,7 @@ class GoDeliveryAdapter(var result: MutableList<ResponseDeliveryDto.Result>) :
 
             binding.root.setOnClickListener {
                 val intent = Intent(binding.root.context, GoDetailActivity::class.java)
-                intent.putExtra("deliveryPostId", item.deliveryId)
-                Log.d("ID", item.deliveryId.toString())
+                intent.putExtra("deliveryPostId", deliveryPostId)
                 ContextCompat.startActivity(binding.root.context, intent, null)
             }
         }

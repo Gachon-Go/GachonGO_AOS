@@ -41,9 +41,9 @@ interface DeliveryInterface {
     @GET("/delivery/{deliveryPostId}/comment")
     fun getDeliveryDetailComment(
         @Header("Authorization") jwt: String,
+        @Path("deliveryPostId") deliveryPostId: Int,
         @Query("page") page: Int,
         @Query("size") size: Int,
-        @Path("deliveryPostId") deliveryPostId: Int,
     ): Call<ResponseDeliveryCommentDto>
 
     // 배달 게시물 상세 댓글 작성

@@ -8,5 +8,5 @@ data class RequestDeliveryDto(
     @SerializedName("estimatedTime")
     val estimatedTime: String,
     @SerializedName("title")
-    val title: String
+    val title: String,
 )
