@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.example.gachongo.presentation.main.pay.CodePayActivity
+import com.example.gachongo.presentation.main.pay.TransactionActivity
 import com.example.gachongo.presentation.main.point.PointActivity
 import com.example.gachongo.presentation.main.write.WriteActivity
 import com.example.gachongo.presentation.qr.QrActivity
@@ -42,7 +44,7 @@ class HomeFragment : Fragment() {
 
     private fun initQRClickListener() {
         binding.layoutHomeQr.setOnClickListener {
-            val intent = Intent(getActivity(), QrActivity::class.java)
+            val intent = Intent(activity, TransactionActivity::class.java)
             startActivity(intent)
         }
     }
