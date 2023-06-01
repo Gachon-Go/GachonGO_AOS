@@ -14,8 +14,10 @@ import com.example.gachongo.data.MyPageResponseResult
 import com.example.gachongo_aos.databinding.FragmentMyPageBinding
 import com.example.gachongo.util.getUserJwt
 import com.example.gachongo.util.getUserNickname
+import com.example.gachongo.util.getUserPoint
 import com.example.gachongo.util.getUserProfileImg
 import com.example.gachongo.util.saveUserNickname
+import com.example.gachongo.util.saveUserProfileImg
 
 class MyPageFragment : Fragment(), MyPageView {
     private lateinit var binding: FragmentMyPageBinding
@@ -24,7 +26,6 @@ class MyPageFragment : Fragment(), MyPageView {
                                             "중앙도서관", "전자정보도서관", "대학원/평생교육원", "교육대학원", "산학협력관",
                                             "바이오나노연구원", "학생회관", "학생생활관", "AI관")
     private var adapter = ActHistoryAdapter(buildingName)
-    private var profileImg: String = ""
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentMyPageBinding.inflate(inflater, container, false)
 
@@ -44,13 +45,14 @@ class MyPageFragment : Fragment(), MyPageView {
     override fun onResume() {
         super.onResume()
         binding.myPageNicknameTv.text = getUserNickname(requireContext())
+        binding.myPagePointTv.text = getUserPoint(requireContext()).toString()
+        Log.d("image", getUserProfileImg(requireContext()))
+        Glide.with(this).load(getUserProfileImg(requireContext())).into(binding.myPageProfileIv)
     }
 
     private fun initView() {
         // recyclerview adapter
         binding.myPageActivityHistoryRv.adapter = adapter
-
-        profileImg = getUserProfileImg(requireContext())
         Glide.with(requireContext()).load(getUserProfileImg(requireContext())).into(binding.myPageProfileIv)
 
         getUserInfo()

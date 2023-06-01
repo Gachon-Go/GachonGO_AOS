@@ -93,12 +93,12 @@
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/point_manage_charging_btn"
-                android:layout_width="56dp"
-                android:layout_height="28dp"
+                android:layout_width="64dp"
+                android:layout_height="32dp"
                 android:background="@drawable/bg_gray_50"
                 android:text="@string/charging"
                 android:textColor="@color/gray900"
-                style="@style/PretendardSemibold12"
+                style="@style/PretendardSemibold14"
                 app:layout_constraintBottom_toBottomOf="@id/point_manage_point_tv"
                 app:layout_constraintEnd_toEndOf="parent" />
 

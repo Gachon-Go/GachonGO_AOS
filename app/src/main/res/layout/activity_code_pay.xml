@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/point_charge_main_cl"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/code_pay_main_cl"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/point_charge_top_cl"
+        android:id="@+id/code_pay_top_cl"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingVertical="22dp"
@@ -16,7 +16,7 @@
         app:layout_constraintTop_toTopOf="parent" >
 
         <ImageView
-            android:id="@+id/point_charge_back_iv"
+            android:id="@+id/code_pay_back_iv"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_marginStart="20dp"
@@ -26,36 +26,48 @@
             app:layout_constraintBottom_toBottomOf="parent"/>
 
         <TextView
-            android:id="@+id/point_charge_tv"
+            android:id="@+id/code_pay_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="22dp"
-            android:text="@string/point_charge"
+            android:text="@string/pay"
             android:textColor="@color/gray900"
             style="@style/PretendardBold20"
-            app:layout_constraintStart_toEndOf="@id/point_charge_back_iv"
+            app:layout_constraintStart_toEndOf="@id/code_pay_back_iv"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <TextView
+        android:id="@+id/code_pay_explanation_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginStart="37dp"
+        android:text="@string/enter_amount_pay"
+        style="@style/PretendardMedium20"
+        android:textColor="@color/gray900"
+        app:layout_constraintTop_toBottomOf="@id/code_pay_top_cl"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/point_charge_cl"
+        android:id="@+id/code_pay_cl"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="20dp"
         android:padding="21dp"
         android:background="@drawable/bg_stroke_bold_blue_400"
-        app:layout_constraintTop_toBottomOf="@id/point_charge_top_cl"
+        app:layout_constraintTop_toBottomOf="@id/code_pay_explanation_tv"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" >
 
         <TextView
-            android:id="@+id/point_charge_amount_tv"
+            android:id="@+id/code_pay_amount_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/charge_amount"
+            android:text="@string/pay_amount"
             android:textColor="@color/gray900"
             style="@style/PretendardMedium20"
             app:layout_constraintTop_toTopOf="parent"
@@ -67,11 +79,11 @@
             android:layout_marginEnd="14dp"
             android:background="@color/gray500"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="@id/point_charge_amount_point_et"
+            app:layout_constraintEnd_toEndOf="@id/code_pay_amount_point_et"
             app:layout_constraintBottom_toBottomOf="parent" />
 
         <EditText
-            android:id="@+id/point_charge_amount_point_et"
+            android:id="@+id/code_pay_amount_point_et"
             android:layout_width="310dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="18dp"
@@ -83,67 +95,33 @@
             android:textAlignment="viewEnd"
             android:inputType="number"
             android:focusable="true"
-            app:layout_constraintTop_toBottomOf="@id/point_charge_amount_tv"
-            app:layout_constraintEnd_toStartOf="@id/point_charge_amount_point_unit_tv"/>
+            app:layout_constraintTop_toBottomOf="@id/code_pay_amount_tv"
+            app:layout_constraintEnd_toStartOf="@id/code_pay_amount_point_unit_tv"/>
 
         <TextView
-            android:id="@+id/point_charge_amount_point_unit_tv"
+            android:id="@+id/code_pay_amount_point_unit_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/my_page_point_unit"
             android:textColor="@color/gray900"
             style="@style/PretendardBold28"
-            app:layout_constraintBottom_toBottomOf="@id/point_charge_amount_point_et"
+            app:layout_constraintBottom_toBottomOf="@id/code_pay_amount_point_et"
             app:layout_constraintEnd_toEndOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <TextView
-        android:id="@+id/point_charge_after_charge_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="20dp"
-        android:text="@string/after_charge"
-        android:textColor="@color/gray900"
-        style="@style/PretendardMedium18"
-        app:layout_constraintTop_toBottomOf="@id/point_charge_cl"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/point_charge_after_charge_point_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:text="99,999"
-        android:textColor="@color/gray900"
-        style="@style/PretendardMedium18"
-        app:layout_constraintEnd_toStartOf="@id/point_charge_after_charge_point_unit_tv"
-        app:layout_constraintTop_toTopOf="@id/point_charge_after_charge_tv" />
-
-    <TextView
-        android:id="@+id/point_charge_after_charge_point_unit_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="28dp"
-        android:text="@string/my_page_point_unit"
-        android:textColor="@color/gray900"
-        style="@style/PretendardMedium18"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/point_charge_after_charge_tv" />
-
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/point_charge_finish_btn"
+        android:id="@+id/code_pay_next_btn"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:layout_marginBottom="32dp"
         android:layout_marginHorizontal="30dp"
-        android:layout_marginBottom="72dp"
-        android:text="@string/finish_charge"
-        android:textColor="@color/gray900"
-        style="@style/PretendardSemibold20"
         android:background="@drawable/bg_blue_100_radius_15"
-        android:stateListAnimator="@null"
+        android:text="@string/pay"
+        android:textColor="@color/gray800"
+        style="@style/PretendardSemibold20"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

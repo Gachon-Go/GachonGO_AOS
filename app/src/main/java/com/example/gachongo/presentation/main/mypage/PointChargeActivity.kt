@@ -2,17 +2,11 @@ package com.example.gachongo.presentation.main.mypage
 
 import android.content.Context
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
-import android.view.View
 import android.view.inputmethod.InputMethodManager
-import android.webkit.WebChromeClient
-import android.webkit.WebResourceRequest
-import android.webkit.WebView
-import android.webkit.WebViewClient
 import androidx.appcompat.app.AppCompatActivity
 import com.example.gachongo.api.ChargePointService
 import com.example.gachongo.api.ChargePointView
@@ -84,25 +78,13 @@ class PointChargeActivity: AppCompatActivity(), ChargePointView {
 
     override fun onSendChargePointResultSuccess(result: ChargePointResult) {
         saveUserPoint(this, point)
-//        val intent = Intent(this, KakaoPayActivity::class.java)
-//        intent.putExtra("url", result.next_redirect_mobile_url)
-//        startActivity(intent)
-
-        binding.pointChargeWebviewCl.visibility = View.VISIBLE
-        binding.pointChargeNotWebviewCl.visibility = View.GONE
-
-        binding.pointChargeWv.webChromeClient = WebChromeClient()
-
-        // 자바 스크립트 허용
-        binding.pointChargeWv.settings.javaScriptEnabled = true
-        binding.pointChargeWv.loadUrl(result.next_redirect_app_url)
-
+        val intent = Intent(this, KakaoPayActivity::class.java)
+        intent.putExtra("url", result.next_redirect_app_url)
+        startActivity(intent)
+        finish()
     }
 
     override fun onSendChargePointResultFailure(message: String) {
         Log.d("포인트 충전", "실패")
-
-        binding.pointChargeWebviewCl.visibility = View.GONE
-        binding.pointChargeNotWebviewCl.visibility = View.VISIBLE
     }
 }

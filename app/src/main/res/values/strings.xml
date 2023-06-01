@@ -47,4 +47,14 @@
     <string name="charge_amount">충전 금액</string>
     <string name="after_charge">충전 후 금액</string>
     <string name="finish_charge">충전하기</string>
+
+    <!-- 결제하기 -->
+    <string name="pay">결제하기</string>
+    <string name="enter_transaction_id">결제를 위해\n상대방의 거래 ID를\n입력해주세요!</string>
+    <string name="hint_transaction_id">AaBbCc</string>
+    <string name="check_transaction_id">잘못된 거래 ID입니다.</string>
+    <string name="transaction_my_id">내 거래 ID :</string>
+    <string name="enter_amount_pay">결제할 금액을\n입력해주세요!</string>
+    <string name="pay_amount">결제 금액</string>
+    <string name="success_pay">성공적으로\n결제가 완료되었습니다!</string>
 </resources>

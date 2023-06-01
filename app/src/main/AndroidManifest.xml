@@ -14,7 +14,7 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_logo"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:usesCleartextTraffic="true"
@@ -46,6 +46,9 @@
         <activity android:name="com.example.gachongo.presentation.main.mypage.PointManageActivity" android:exported="false" />
         <activity android:name="com.example.gachongo.presentation.main.mypage.PointChargeActivity" android:exported="false" />
         <activity android:name="com.example.gachongo.presentation.main.mypage.KakaoPayActivity" android:exported="true" />
+        <activity android:name="com.example.gachongo.presentation.main.pay.TransactionActivity" android:exported="false" />
+        <activity android:name="com.example.gachongo.presentation.main.pay.CodePayActivity" android:exported="false" />
+        <activity android:name="com.example.gachongo.presentation.main.pay.FinishPayActivity" android:exported="false" />
         <activity android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity" android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
