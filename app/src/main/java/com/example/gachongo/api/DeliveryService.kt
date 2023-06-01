@@ -54,27 +54,4 @@ class DeliveryService(val deliveryView: DeliveryView) {
 //
 
 //
-//    fun postDeliveryDetailCommentSelect(deliveryPostId: Int, commentId: Int) {
-//        deliveryService.postDeliveryDetailCommentSelect(deliveryPostId, commentId)
-//            .enqueue(object : Callback<BaseResponse> {
-//                override fun onResponse(
-//                    call: Call<BaseResponse>,
-//                    response: Response<BaseResponse>,
-//                ) {
-////                    val resp = response.body()
-////                    if (resp != null) {
-////                        when (resp.code) {
-////                            1000 -> deliveryView.onGetDeliveryResultSuccess()
-////                            else -> deliveryView.onGetDeliveryResultFailure(resp.message)
-////                        }
-////                    }
-//                }
-//
-//                override fun onFailure(call: Call<BaseResponse>, t: Throwable) {
-//                    TODO("Not yet implemented")
-//                }
-//            })
-//    }
-//
-
 }

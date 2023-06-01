@@ -1,19 +1,30 @@
 package com.example.gachongo.presentation.main.home.want
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
-import com.example.gachongo.data.GoDeliveryInfo
+import com.example.gachongo.data.response.ResponseOrderDto
+import com.example.gachongo.presentation.main.home.detail.WantDetailActivity
 import com.example.gachongo_aos.databinding.ItemDeliveryBinding
 
-class WantDeliveryAdapter : RecyclerView.Adapter<WantDeliveryAdapter.ItemViewHolder>() {
-
-    var data = listOf<GoDeliveryInfo>()
+class WantDeliveryAdapter(var result: MutableList<ResponseOrderDto.Result>) :
+    RecyclerView.Adapter<WantDeliveryAdapter.ItemViewHolder>() {
 
     class ItemViewHolder(private val binding: ItemDeliveryBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun onBind(item: GoDeliveryInfo) {
-            // TO DO : 들어갈 내용 추가하기
+        fun bind(item: ResponseOrderDto.Result) {
+            binding.tvDeliveryTitle.text = item.title
+            binding.tvDeliveryTime.text = item.estimatedTime
+            binding.tvDeliveryComment.text = item.commentNum.toString()
+            val orderId = item.orderId
+
+            binding.root.setOnClickListener {
+                val intent = Intent(binding.root.context, WantDetailActivity::class.java)
+                intent.putExtra("orderPostId", orderId)
+                startActivity(binding.root.context, intent, null)
+            }
         }
     }
 
@@ -23,11 +34,9 @@ class WantDeliveryAdapter : RecyclerView.Adapter<WantDeliveryAdapter.ItemViewHol
         return ItemViewHolder(binding)
     }
 
-    override fun getItemCount(): Int {
-        return data.size
-    }
+    override fun getItemCount(): Int = result.size
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
-        holder.onBind(data[position])
+        holder.bind(result[position])
     }
 }
