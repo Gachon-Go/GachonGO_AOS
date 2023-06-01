@@ -1,6 +1,7 @@
 package com.example.gachongo.presentation.main.home.detail
 
 import android.os.Bundle
+import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.gachongo.api.detail.WantDetailService
 import com.example.gachongo.api.detail.WantDetailView
@@ -85,7 +86,7 @@ class WantDetailActivity :
     }
 
     override fun onPostOrderCommentResultSuccess() {
-        TODO("Not yet implemented")
+        Log.d("comment", "댓글 작성 완료")
     }
 
     override fun onPostOrderCommentResultFailure(message: String) {
