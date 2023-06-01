@@ -2,7 +2,10 @@ package com.example.gachongo.presentation.main.home.detail
 
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
+import coil.load
+import coil.transform.CircleCropTransformation
 import com.example.gachongo.api.detail.GoDetailService
 import com.example.gachongo.api.detail.GoDetailView
 import com.example.gachongo.data.request.RequestCommentDto
@@ -69,18 +72,27 @@ class GoDetailActivity :
             onPostComment(comment)
         }
     }
-    private fun initDeliveryDoneBtnClickListener(){
-        binding.btnDeliveryDone.setOnClickListener(){
-            val jwt: String = getUserJwt(this)
-            goDetailService.postDeliveryDone(jwt, deliveryPostId)
+
+    private fun initDeliveryDoneBtnClickListener() {
+        if (isMine) {
+            binding.btnDeliveryDone.visibility = View.VISIBLE
+            binding.btnDeliveryDone.setOnClickListener() {
+                val jwt: String = getUserJwt(this)
+                goDetailService.postDeliveryDone(jwt, deliveryPostId)
+            }
         }
     }
+
     override fun onGetDeliveryDetailResultSuccess(result: ResponseDeliveryDetailDto) {
         binding.tvGoDetailTitle.text = result.result.title
         binding.tvGoDetailContent.text = result.result.content
         binding.tvDeliveryTime.text = result.result.estimatedTime
         binding.tvGoDetailName.text = result.result.writer
         isMine = result.result.mine
+        binding.ivDetailProfile.load(result.result.writerImage) {
+            placeholder(R.drawable.bg_button_default)
+            transformations(CircleCropTransformation())
+        }
     }
 
     override fun onGetDeliveryDetailResultFailure(message: String) {

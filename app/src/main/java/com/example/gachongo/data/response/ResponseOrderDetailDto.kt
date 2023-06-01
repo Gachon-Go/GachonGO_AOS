@@ -25,5 +25,7 @@ data class ResponseOrderDetailDto(
         val title: String,
         @SerializedName("writer")
         val writer: String,
+        @SerializedName("writerImage")
+        val writerImage: String,
     )
 }

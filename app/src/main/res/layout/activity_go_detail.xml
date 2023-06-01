@@ -53,6 +53,18 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_go_delivery_detail">
 
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/iv_detail_profile"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="@color/gray200"
+                android:scaleType="centerInside"
+                android:src="@drawable/bg_button_default"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:riv_mutate_background="true"
+                app:riv_oval="true" />
+
             <ImageView
                 android:id="@+id/iv_delivery_time"
                 android:layout_width="wrap_content"
@@ -76,17 +88,20 @@
 
             <TextView
                 android:id="@+id/tv_go_detail_name"
+                style="@style/PretendardMedium16"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="해달조아"
-                style="@style/PretendardMedium16"
+                android:layout_marginStart="8dp"
                 android:textColor="@color/gray900"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"/>
+                app:layout_constraintBottom_toBottomOf="@+id/iv_detail_profile"
+                app:layout_constraintStart_toEndOf="@+id/iv_detail_profile"
+                app:layout_constraintTop_toTopOf="@+id/iv_detail_profile" />
             <TextView
                 android:id="@+id/tv_go_detail_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                style="@style/PretendardSemibold18"
                 android:text="AI 공학관, 매머드 커피 필요하신 분 "
                 style="@style/PretendardMedium14"
                 android:layout_marginTop="28dp"

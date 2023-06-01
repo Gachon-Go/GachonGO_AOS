@@ -3,6 +3,8 @@ package com.example.gachongo.presentation.main.home.detail
 import android.os.Bundle
 import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
+import coil.load
+import coil.transform.CircleCropTransformation
 import com.example.gachongo.api.detail.WantDetailService
 import com.example.gachongo.api.detail.WantDetailView
 import com.example.gachongo.data.request.RequestCommentDto
@@ -71,6 +73,10 @@ class WantDetailActivity :
         binding.tvDeliveryTime.text = result.result.estimatedTime
         binding.tvWantDetailName.text = result.result.writer
         isMine = result.result.mine
+        binding.ivDetailProfile.load(result.result.writerImage){
+            placeholder(R.drawable.bg_button_default)
+            transformations(CircleCropTransformation())
+        }
     }
 
     override fun onGetOrderDetailResultFailure(message: String) {
