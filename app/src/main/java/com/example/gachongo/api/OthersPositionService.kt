@@ -13,7 +13,7 @@ class OthersPositionService(val othersPositionView: OthersPositionView) {
         othersPositionService.getOthersPosition(jwt).enqueue(object : Callback<OthersPositionResponse> {
             override fun onResponse(call: Call<OthersPositionResponse>, response: Response<OthersPositionResponse>) {
                 val resp = response.body()
-                Log.d("resp", resp.toString())
+                Log.d("상대방위치", resp.toString())
                 if (resp != null) {
                     when (resp.code) {
                         1000 -> othersPositionView.onGetOthersPositionResultSuccess(resp.result)
@@ -23,7 +23,7 @@ class OthersPositionService(val othersPositionView: OthersPositionView) {
             }
 
             override fun onFailure(call: Call<OthersPositionResponse>, t: Throwable) {
-                Log.d("사용자 위치정보 받아오기를 실패했어요", t.message ?: "통신 오류")
+                Log.d("상대방위치", t.message ?: "통신 오류")
             }
         })
     }
