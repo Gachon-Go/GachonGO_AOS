@@ -2,5 +2,5 @@ package com.example.gachongo.api
 
 interface NicknameView {
     fun onGetNicknameResultSuccess()
-    fun onGetNicknameResultFailure()
+    fun onGetNicknameResultFailure(message: String)
 }

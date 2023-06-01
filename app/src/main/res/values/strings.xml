@@ -23,12 +23,44 @@
     <string name="welcome_message1"> 님,</string>
     <string name="welcome_message2">너와 나, Gachon Go! 에\n오신걸 환영해요!</string>
 
-    <!-- 임시 알림 텍스트 -->
-    <string name="alarm_message1">"가천관, 매머드커피.." 게시글에서 배달기사로 선택되었습니다.</string>
-    <string name="alarm_message2">"가천관, 매머드커피.." 에 대한 포인트 13,000P가 전송되었습니다.</string>
-    <string name="alarm_message3">"가천관, 매머드커피.." 배달이 완료되었습니다. 지금 확인해보세요!</string>
-    <string name="alarm_message4">내가 작성한 게시글 "가천관, 매머드커피.." 에 새로운 댓글이 작성되었습니다.</string>
+    <!-- 마이페이지 -->
+    <string name="my_page_point_balance">포인트 잔액:</string>
+    <string name="my_page_point_unit">P</string>
+    <string name="my_page_order">주문</string>
+    <string name="my_page_delivery">배달</string>
+    <string name="my_page_post">게시글</string>
+    <string name="my_page_edit_btn">편집</string>
+    <string name="my_page_point_manage_btn">포인트 관리</string>
+    <string name="my_page_activity_history">활동 내역</string>
+    <string name="my_page_activity_history_explanation">다양한 곳에 배달을 하여 뱃지를 모을 수 있어요.</string>
+
+    <!-- 프로필 편집 -->
+    <string name="my_page_edit">프로필 편집</string>
+    <string name="my_page_edit_finish">완료</string>
+
+    <!-- 포인트 관리 -->
+    <string name="point_manage">포인트 관리</string>
+    <string name="holding_point">보유 포인트</string>
+    <string name="charging">충전</string>
+    <string name="point_history">적립/사용 내역 </string>
+    <string name="point_charge">포인트 충전</string>
+    <string name="charge_amount">충전 금액</string>
+    <string name="after_charge">충전 후 금액</string>
+    <string name="finish_charge">충전하기</string>
+
+    <!-- 결제하기 -->
+    <string name="pay">결제하기</string>
+    <string name="enter_transaction_id">결제를 위해\n상대방의 거래 ID를\n입력해주세요!</string>
+    <string name="hint_transaction_id">AaBbCc</string>
+    <string name="check_transaction_id">잘못된 거래 ID입니다.</string>
+    <string name="transaction_my_id">내 거래 ID :</string>
+    <string name="enter_amount_pay">결제할 금액을\n입력해주세요!</string>
+    <string name="pay_amount">결제 금액</string>
+    <string name="success_pay">성공적으로\n결제가 완료되었습니다!</string>
+
+    <!-- 알람 -->
     <string name="alarm_today">오늘</string>
     <string name="alarm_yesterday">어제</string>
-    <string name="alarm_past">오래 전</string>
+    <string name="alarm_past">오래전</string>
+
 </resources>
