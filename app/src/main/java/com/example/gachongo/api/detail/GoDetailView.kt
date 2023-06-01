@@ -12,4 +12,7 @@ interface GoDetailView {
 
     fun onPostDeliveryCommentResultSuccess()
     fun onPostDeliveryCommentResultFailure(message: String)
+
+    fun onPostDeliveryDoneResultSuccess()
+    fun onPostDeliveryDoneResultFailure(message: String)
 }

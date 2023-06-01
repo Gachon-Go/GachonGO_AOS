@@ -9,6 +9,7 @@ import com.example.gachongo.data.request.RequestCommentDto
 import com.example.gachongo.data.response.ResponseDeliveryCommentDto
 import com.example.gachongo.data.response.ResponseDeliveryDetailDto
 import com.example.gachongo.util.binding.BindingActivity
+import com.example.gachongo.util.extension.showToast
 import com.example.gachongo.util.getUserJwt
 import com.example.gachongo_aos.R
 import com.example.gachongo_aos.databinding.ActivityGoDetailBinding
@@ -29,6 +30,7 @@ class GoDetailActivity :
         getDetail()
         getComment()
         initCommentBtnClickListener()
+        initDeliveryDoneBtnClickListener()
     }
 
     private fun initCommentAdapter(
@@ -67,7 +69,12 @@ class GoDetailActivity :
             onPostComment(comment)
         }
     }
-
+    private fun initDeliveryDoneBtnClickListener(){
+        binding.btnDeliveryDone.setOnClickListener(){
+            val jwt: String = getUserJwt(this)
+            goDetailService.postDeliveryDone(jwt, deliveryPostId)
+        }
+    }
     override fun onGetDeliveryDetailResultSuccess(result: ResponseDeliveryDetailDto) {
         binding.tvGoDetailTitle.text = result.result.title
         binding.tvGoDetailContent.text = result.result.content
@@ -93,6 +100,15 @@ class GoDetailActivity :
     }
 
     override fun onPostDeliveryCommentResultFailure(message: String) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onPostDeliveryDoneResultSuccess() {
+        showToast("배달을 시작해주세요")
+        finish()
+    }
+
+    override fun onPostDeliveryDoneResultFailure(message: String) {
         TODO("Not yet implemented")
     }
 }

@@ -69,10 +69,10 @@ class GoWriteActivity :
     override fun onGetDeliveryWriteResultSuccess(response: BaseResponse) {
         Log.d("write", "서버통신 성공")
         showToast("글 작성이 완료되었습니다.")
+        finish()
     }
 
     override fun onGetDeliveryWriteResultFailure(messageDigest: String) {
         TODO("Not yet implemented")
-        finish()
     }
 }

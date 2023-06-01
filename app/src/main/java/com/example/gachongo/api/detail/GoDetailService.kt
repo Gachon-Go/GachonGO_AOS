@@ -61,7 +61,8 @@ class GoDetailService(val goDetailView: GoDetailView) {
                 }
             })
     }
-        fun postDeliveryDetailComment(jwt: String, deliveryPostId: Int, body: RequestCommentDto) {
+
+    fun postDeliveryDetailComment(jwt: String, deliveryPostId: Int, body: RequestCommentDto) {
         goDetailService.postDeliveryDetailComment(jwt, deliveryPostId, body)
             .enqueue(object : Callback<BaseResponse> {
                 override fun onResponse(
@@ -73,6 +74,28 @@ class GoDetailService(val goDetailView: GoDetailView) {
                         when (resp.code) {
                             1000 -> goDetailView.onPostDeliveryCommentResultSuccess()
                             else -> goDetailView.onPostDeliveryCommentResultFailure(resp.message)
+                        }
+                    }
+                }
+
+                override fun onFailure(call: Call<BaseResponse>, t: Throwable) {
+                    TODO("Not yet implemented")
+                }
+            })
+    }
+
+    fun postDeliveryDone(jwt: String, deliveryPostId: Int) {
+        goDetailService.postDeliveryDone(jwt, deliveryPostId)
+            .enqueue(object : Callback<BaseResponse> {
+                override fun onResponse(
+                    call: Call<BaseResponse>,
+                    response: Response<BaseResponse>,
+                ) {
+                    val resp = response.body()
+                    if (resp != null) {
+                        when (resp.code) {
+                            1000 -> goDetailView.onPostDeliveryDoneResultSuccess()
+                            else -> goDetailView.onPostDeliveryDoneResultFailure(resp.message)
                         }
                     }
                 }
