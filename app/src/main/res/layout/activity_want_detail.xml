@@ -12,10 +12,10 @@
         android:background="@color/gray100">
 
         <TextView
-            android:id="@+id/tv_go_delivery_detail"
+            android:id="@+id/tv_want_delivery_detail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="배달갈게요"
+            android:text="배달해주세요"
             style="@style/PretendardBold20"
             android:textColor="@color/gray900"
             android:background="@android:color/transparent"
@@ -36,7 +36,7 @@
             android:layout_marginHorizontal="10dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_go_delivery_detail">
+            app:layout_constraintTop_toBottomOf="@id/tv_want_delivery_detail">
 
             <ImageView
                 android:id="@+id/iv_delivery_time"
@@ -60,7 +60,7 @@
                 app:layout_constraintEnd_toEndOf="parent"/>
 
             <TextView
-                android:id="@+id/tv_go_detail_name"
+                android:id="@+id/tv_want_detail_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="해달조아"
@@ -69,24 +69,24 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"/>
             <TextView
-                android:id="@+id/tv_go_detail_title"
+                android:id="@+id/tv_want_detail_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="AI 공학관, 매머드 커피 필요하신 분 "
                 style="@style/PretendardMedium14"
                 android:layout_marginTop="28dp"
                 android:textColor="@color/gray900"
-                app:layout_constraintTop_toBottomOf="@id/tv_go_detail_name"
+                app:layout_constraintTop_toBottomOf="@id/tv_want_detail_name"
                 app:layout_constraintStart_toStartOf="parent"/>
             <TextView
-                android:id="@+id/tv_go_detail_content"
+                android:id="@+id/tv_want_detail_content"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="3시에 AI관 도착예정입니다.\n 수고비 메뉴당 500원. "
                 style="@style/PretendardMedium14"
                 android:layout_marginTop="12dp"
                 android:textColor="@color/gray900"
-                app:layout_constraintTop_toBottomOf="@id/tv_go_detail_title"
+                app:layout_constraintTop_toBottomOf="@id/tv_want_detail_title"
                 app:layout_constraintStart_toStartOf="parent"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>

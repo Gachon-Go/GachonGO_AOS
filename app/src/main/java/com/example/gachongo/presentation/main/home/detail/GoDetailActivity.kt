@@ -20,7 +20,6 @@ class GoDetailActivity :
     private val goDetailService = GoDetailService(this)
     private var isMine: Boolean = false
 
-    //    private val deliveryPostId: Int = intent.getIntExtra("deliveryPostId", 0)
     private var commentAdapter: CommentAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {

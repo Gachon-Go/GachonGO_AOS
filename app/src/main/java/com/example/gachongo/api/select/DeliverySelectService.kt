@@ -8,7 +8,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class DeliverySelectService(val deliverySelectView: CommentAdapter.CommentViewHolder) {
+class DeliverySelectService(val deliverySelectView: DeliverySelectView) {
     val deliverySelectService = NetworkModule.retrofit.create(DeliveryInterface::class.java)
 
     fun postDeliveryDetailCommentSelect(jwt: String, deliveryPostId: Int, commentId: Int) {

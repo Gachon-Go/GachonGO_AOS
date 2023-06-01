@@ -10,7 +10,7 @@ data class ResponseOrderDetailDto(
     @SerializedName("message")
     val message: String,
     @SerializedName("result")
-    val result: List<ResponseDeliveryDto.Result>,
+    val result: Result,
 ) {
     data class Result(
         @SerializedName("commentNum")

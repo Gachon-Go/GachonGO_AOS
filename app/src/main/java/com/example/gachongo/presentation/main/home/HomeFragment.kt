@@ -41,7 +41,6 @@ class HomeFragment : Fragment() {
         initGoDeliveryClickListener()
         initWantDeliveryClickListener()
         initPointClickListener()
-        initNewWriteClickListener()
     }
 
     override fun onAttach(context: Context) {

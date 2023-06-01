@@ -42,7 +42,9 @@ interface OrderInterface {
     fun getOrderDetailComment(
         @Header("Authorization") jwt: String,
         @Path("orderPostId") orderPostId: Int,
-    ): Call<List<ResponseOrderCommentDto.Result>>
+        @Query("page") page: Int,
+        @Query("size") size: Int,
+    ): Call<ResponseOrderCommentDto>
 
     // 주문 게시물 상세 댓글 작성
     @POST("/order/{orderPostId}/comment")

@@ -10,11 +10,16 @@ data class ResponseOrderCommentDto(
     @SerializedName("message")
     val message: String,
     @SerializedName("result")
-    val result: MutableList<ResponseDeliveryDto.Result>,
+    val result: MutableList<Result>,
 ) {
     data class Result(
+        @SerializedName("commentId")
         val commentId: Int,
+        @SerializedName("commentWriter")
         val commentWriter: String,
+        @SerializedName("content")
         val content: String,
+        @SerializedName("isAccept")
+        val isAccept: Boolean,
     )
 }
