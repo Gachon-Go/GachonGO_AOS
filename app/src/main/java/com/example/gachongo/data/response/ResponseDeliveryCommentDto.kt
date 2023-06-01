@@ -19,5 +19,7 @@ data class ResponseDeliveryCommentDto(
         val commentWriter: String,
         @SerializedName("content")
         val content: String,
+        @SerializedName("isAccept")
+        val isAccept: Boolean,
     )
 }

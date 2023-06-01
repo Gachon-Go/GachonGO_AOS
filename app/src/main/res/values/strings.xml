@@ -31,4 +31,5 @@
     <string name="alarm_today">오늘</string>
     <string name="alarm_yesterday">어제</string>
     <string name="alarm_past">오래 전</string>
+    <string name="title_activity_want_write">WantWriteActivity</string>
 </resources>
