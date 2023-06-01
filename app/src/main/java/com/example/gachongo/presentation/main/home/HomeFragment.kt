@@ -7,7 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.gachongo.presentation.main.pay.CodePayActivity
+import com.example.gachongo.presentation.main.MainActivity
 import com.example.gachongo.presentation.main.pay.TransactionActivity
 import com.example.gachongo.presentation.main.point.PointActivity
 import com.example.gachongo_aos.databinding.FragmentHomeBinding
@@ -32,18 +32,23 @@ class HomeFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+
+        mainActivity = context as MainActivity
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        initPayClickListener()
+        initQRClickListener()
         initGoDeliveryClickListener()
         initWantDeliveryClickListener()
         initPointClickListener()
     }
 
     private fun initQRClickListener() {
-        binding.layoutHomeQr.setOnClickListener {
+        binding.layoutHomePay.setOnClickListener {
             val intent = Intent(activity, TransactionActivity::class.java)
             startActivity(intent)
         }
