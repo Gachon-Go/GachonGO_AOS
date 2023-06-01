@@ -53,7 +53,7 @@ class LocationService : Service(), SendPositionView {
             PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_MUTABLE,
         )
         val builder = NotificationCompat.Builder(applicationContext, channelId)
-        builder.setSmallIcon(R.mipmap.ic_launcher)
+        builder.setSmallIcon(R.drawable.ic_logo)
         builder.setContentTitle("Location Service")
         builder.setDefaults(NotificationCompat.DEFAULT_ALL)
         builder.setContentText("Running")

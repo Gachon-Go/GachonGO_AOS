@@ -7,13 +7,14 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:name="com.example.gachongo.GlobalApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_logo"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.GachonGOAOS"
@@ -46,21 +47,18 @@
             android:exported="false"/>
         <activity android:name="com.example.gachongo.presentation.main.home.detail.WantDetailActivity"
             android:exported="false"/>
-        <activity
-            android:name="com.example.gachongo.presentation.main.login.KakaoLoginActivity"
-            android:exported="true" />
-        <activity
-            android:name="com.example.gachongo.presentation.main.login.EmailAuthActivity"
-            android:exported="false" />
-        <activity
-            android:name="com.example.gachongo.presentation.main.login.NicknameActivity"
-            android:exported="false" />
-        <activity
-            android:name="com.example.gachongo.presentation.main.login.WelcomeActivity"
-            android:exported="false" />
-        <activity
-            android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity"
-            android:exported="true">
+        <activity android:name="com.example.gachongo.presentation.main.login.KakaoLoginActivity" android:exported="true" />
+        <activity android:name="com.example.gachongo.presentation.main.login.EmailAuthActivity" android:exported="false" />
+        <activity android:name="com.example.gachongo.presentation.main.login.NicknameActivity" android:exported="false" />
+        <activity android:name="com.example.gachongo.presentation.main.login.WelcomeActivity" android:exported="false" />
+        <activity android:name="com.example.gachongo.presentation.main.mypage.MyPageEditActivity" android:exported="false" />
+        <activity android:name="com.example.gachongo.presentation.main.mypage.PointManageActivity" android:exported="false" />
+        <activity android:name="com.example.gachongo.presentation.main.mypage.PointChargeActivity" android:exported="false" />
+        <activity android:name="com.example.gachongo.presentation.main.mypage.KakaoPayActivity" android:exported="true" />
+        <activity android:name="com.example.gachongo.presentation.main.pay.TransactionActivity" android:exported="false" />
+        <activity android:name="com.example.gachongo.presentation.main.pay.CodePayActivity" android:exported="false" />
+        <activity android:name="com.example.gachongo.presentation.main.pay.FinishPayActivity" android:exported="false" />
+        <activity android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity" android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 

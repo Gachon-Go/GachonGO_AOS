@@ -94,7 +94,7 @@ class NicknameActivity: AppCompatActivity(), NicknameView {
         changeNicknameAttr()
     }
 
-    override fun onGetNicknameResultFailure() {
+    override fun onGetNicknameResultFailure(message: String) {
         isValidNickname = false
         changeNicknameAttr()
     }
