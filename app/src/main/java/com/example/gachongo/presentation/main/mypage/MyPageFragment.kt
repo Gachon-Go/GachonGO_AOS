@@ -18,6 +18,7 @@ import com.example.gachongo.util.getUserPoint
 import com.example.gachongo.util.getUserProfileImg
 import com.example.gachongo.util.saveUserNickname
 import com.example.gachongo.util.saveUserProfileImg
+import java.text.DecimalFormat
 
 class MyPageFragment : Fragment(), MyPageView {
     private lateinit var binding: FragmentMyPageBinding
@@ -67,7 +68,7 @@ class MyPageFragment : Fragment(), MyPageView {
         saveUserNickname(requireContext(), result.nickname)
 
         binding.myPageNicknameTv.text = result.nickname
-        binding.myPagePointTv.text = result.point.toString()
+        binding.myPagePointTv.text = DecimalFormat("#,###").format(result.point).toString()
         binding.myPageInfoOrderCountTv.text = result.orderNum.toString()
         binding.myPageInfoDeliveryCountTv.text = result.deliveryNum.toString()
         binding.myPageInfoPostCountTv.text = result.postNum.toString()

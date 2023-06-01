@@ -17,6 +17,7 @@ import com.example.gachongo.util.extension.backPressed
 import com.example.gachongo.util.getUserJwt
 import com.example.gachongo.util.saveUserPoint
 import com.example.gachongo_aos.databinding.ActivityPointManageBinding
+import java.text.DecimalFormat
 
 
 class PointManageActivity : AppCompatActivity(), PointView, PointHistoryView {
@@ -70,7 +71,7 @@ class PointManageActivity : AppCompatActivity(), PointView, PointHistoryView {
     }
 
     override fun onGetPointResultSuccess(result: PointResponseResult) {
-        binding.pointManagePointTv.text = result.point.toString()
+        binding.pointManagePointTv.text = DecimalFormat("#,###").format(result.point).toString()
         saveUserPoint(this, result.point)
     }
 

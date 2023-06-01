@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gachongo.data.PointHistoryResponseResult
 import com.example.gachongo_aos.databinding.ItemPointHistoryBinding
+import java.text.DecimalFormat
 
 class PointHistoryAdapter(private val pointHistoryList: List<PointHistoryResponseResult>): RecyclerView.Adapter<PointHistoryAdapter.PointHistoryViewHolder>() {
     private val list = ArrayList<PointHistoryResponseResult>()
