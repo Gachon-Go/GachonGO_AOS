@@ -40,7 +40,7 @@ class WantDetailActivity :
 
     private fun postComment(comment: String) {
         val jwt: String = getUserJwt(this)
-        wantDetailService.postDeliveryDetailComment(
+        wantDetailService.postOrderDetailComment(
             jwt,
             orderPostId,
             body = RequestCommentDto(comment),

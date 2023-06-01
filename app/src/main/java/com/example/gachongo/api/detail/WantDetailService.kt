@@ -62,7 +62,7 @@ class WantDetailService(val wantDetailView: WantDetailView) {
             })
     }
 
-    fun postDeliveryDetailComment(jwt: String, orderPostId: Int, body: RequestCommentDto) {
+    fun postOrderDetailComment(jwt: String, orderPostId: Int, body: RequestCommentDto) {
         wantDetailService.postOrderDetailComment(jwt, orderPostId, body)
             .enqueue(object : Callback<BaseResponse> {
                 override fun onResponse(

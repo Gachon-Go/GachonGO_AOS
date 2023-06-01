@@ -49,12 +49,10 @@ class CommentAdapter(
         }
 
         override fun onGetDeliverySelectResultSuccess() {
-            TODO("Not yet implemented")
             Toast.makeText(binding.root.context, "거래가 시작되었습니다", Toast.LENGTH_LONG).show()
         }
 
         override fun onDeliverySelectResultFailure(message: String) {
-            TODO("Not yet implemented")
         }
     }
 
