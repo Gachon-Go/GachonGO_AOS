@@ -18,6 +18,7 @@ class GoDetailActivity :
 
     private val deliveryPostId: Int by lazy { intent.getIntExtra("deliveryPostId", 0) }
     private val goDetailService = GoDetailService(this)
+    private var isMine: Boolean = false
 
     //    private val deliveryPostId: Int = intent.getIntExtra("deliveryPostId", 0)
     private var commentAdapter: CommentAdapter? = null
@@ -27,12 +28,16 @@ class GoDetailActivity :
 
         Log.d("after", deliveryPostId.toString())
         getDetail()
-        initCommentBtnClickListener()
         getComment()
+        initCommentBtnClickListener()
     }
 
-    private fun initCommentAdapter(result: MutableList<ResponseDeliveryCommentDto.Result>) {
-        commentAdapter = CommentAdapter(result)
+    private fun initCommentAdapter(
+        result: MutableList<ResponseDeliveryCommentDto.Result>,
+        isMine: Boolean,
+        deliveryPostId: Int,
+    ) {
+        commentAdapter = CommentAdapter(result, isMine, deliveryPostId)
         binding.rvDetailComment.adapter = commentAdapter
         binding.rvDetailComment.layoutManager = LinearLayoutManager(this)
     }
@@ -54,7 +59,7 @@ class GoDetailActivity :
             deliveryPostId,
             body = RequestCommentDto(content),
         )
-        //TODO: post 후 새로고침
+        // TODO: post 후 새로고침
     }
 
     private fun initCommentBtnClickListener() {
@@ -69,6 +74,7 @@ class GoDetailActivity :
         binding.tvGoDetailContent.text = result.result.content
         binding.tvDeliveryTime.text = result.result.estimatedTime
         binding.tvGoDetailName.text = result.result.writer
+        isMine = result.result.mine
     }
 
     override fun onGetDeliveryDetailResultFailure(message: String) {
@@ -76,7 +82,7 @@ class GoDetailActivity :
     }
 
     override fun onGetDeliveryCommentResultSuccess(result: MutableList<ResponseDeliveryCommentDto.Result>) {
-        initCommentAdapter(result)
+        initCommentAdapter(result, isMine, deliveryPostId)
     }
 
     override fun onGetDeliveryCommentResultFailure(message: String) {

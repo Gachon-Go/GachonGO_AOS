@@ -8,7 +8,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.gachongo.api.DeliveryService
 import com.example.gachongo.api.DeliveryView
 import com.example.gachongo.data.response.ResponseDeliveryDto
-import com.example.gachongo.presentation.main.write.WriteActivity
+import com.example.gachongo.presentation.main.write.GoWriteActivity
+import com.example.gachongo.presentation.main.write.WantWriteActivity
 import com.example.gachongo.util.binding.BindingFragment
 import com.example.gachongo.util.getUserJwt
 import com.example.gachongo_aos.R
@@ -57,10 +58,12 @@ class GoDeliveryFragment :
             }
 
             R.id.fab_menu_want -> {
+                val intent = Intent(getActivity(), WantWriteActivity::class.java)
+                startActivity(intent)
             }
 
             R.id.fab_menu_go -> {
-                val intent = Intent(getActivity(), WriteActivity::class.java)
+                val intent = Intent(getActivity(), GoWriteActivity::class.java)
                 startActivity(intent)
             }
         }
