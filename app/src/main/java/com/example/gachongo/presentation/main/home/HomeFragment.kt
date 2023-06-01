@@ -9,15 +9,13 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.gachongo.presentation.main.MainActivity
 import com.example.gachongo.presentation.main.point.PointActivity
-import com.example.gachongo.presentation.main.write.GoWriteActivity
-import com.example.gachongo.presentation.qr.QrActivity
 import com.example.gachongo_aos.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
-    var mainActivity: MainActivity?=null
+    var mainActivity: MainActivity? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -48,6 +46,7 @@ class HomeFragment : Fragment() {
 
         mainActivity = context as MainActivity
     }
+
     private fun initPayClickListener() {
         binding.layoutHomePay.setOnClickListener {
             val intent = Intent(getActivity(), QrActivity::class.java)
@@ -56,7 +55,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun initGoDeliveryClickListener() {
-        binding.btnGoDelivery.setOnClickListener{
+        binding.btnGoDelivery.setOnClickListener {
             mainActivity?.changeFragment(1)
         }
     }

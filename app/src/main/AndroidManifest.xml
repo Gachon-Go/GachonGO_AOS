@@ -24,15 +24,13 @@
             android:exported="false"
             android:label="@string/title_activity_want_write"
             android:theme="@style/Theme.GachonGOAOS" />
-        <activity
-            android:name="com.example.gachongo.presentation.qr.QrActivity"
-            android:exported="false" />
+
         <activity
             android:name="com.example.gachongo.presentation.main.point.PointActivity"
             android:exported="false" />
         <activity
             android:name="com.example.gachongo.presentation.main.write.GoWriteActivity"
-            android:exported="false"></activity>
+            android:exported="false"/>
         <activity
             android:name="com.example.gachongo.presentation.main.MainActivity"
             android:exported="true">
