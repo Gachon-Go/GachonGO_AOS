@@ -2,21 +2,22 @@ package com.example.gachongo.presentation.main.write
 
 import android.app.TimePickerDialog
 import android.os.Bundle
-import android.util.Log
-import com.example.gachongo.api.write.DeliveryWriteService
-import com.example.gachongo.api.write.DeliveryWriteView
+import com.example.gachongo.api.write.OrderWriteService
+import com.example.gachongo.api.write.OrderWriteView
 import com.example.gachongo.data.BaseResponse
-import com.example.gachongo.data.request.RequestDeliveryDto
+import com.example.gachongo.data.request.RequestOrderDto
 import com.example.gachongo.util.binding.BindingActivity
 import com.example.gachongo.util.extension.showToast
 import com.example.gachongo.util.getUserJwt
 import com.example.gachongo_aos.R
-import com.example.gachongo_aos.databinding.ActivityGoWriteBinding
+import com.example.gachongo_aos.databinding.ActivityWantWriteBinding
 import java.text.SimpleDateFormat
 import java.util.Calendar
 
-class GoWriteActivity :
-    BindingActivity<ActivityGoWriteBinding>(R.layout.activity_go_write), DeliveryWriteView {
+class WantWriteActivity :
+    BindingActivity<ActivityWantWriteBinding>(R.layout.activity_want_write),
+    OrderWriteView {
+
     private lateinit var content: String
     private lateinit var time: String
     private lateinit var title: String
@@ -52,27 +53,26 @@ class GoWriteActivity :
             time = binding.btnWriteTime.text.toString()
             title = binding.etWriteTitle.text.toString()
 
-            postDelivery()
+            postOrder()
         }
     }
 
-    private fun postDelivery() {
+    private fun postOrder() {
         val jwt: String = getUserJwt(this)
 
-        val deliveryWriteService = DeliveryWriteService(this)
-        deliveryWriteService.postDelivery(
+        val orderWriteService = OrderWriteService(this)
+        orderWriteService.postOrder(
             jwt,
-            requestBody = RequestDeliveryDto(content, time, title),
+            requestBody = RequestOrderDto(content, time, title),
         )
     }
 
-    override fun onGetDeliveryWriteResultSuccess(response: BaseResponse) {
-        Log.d("write", "서버통신 성공")
+    override fun onGetWantWriteResultSuccess(response: BaseResponse) {
         showToast("글 작성이 완료되었습니다.")
+        finish()
     }
 
-    override fun onGetDeliveryWriteResultFailure(messageDigest: String) {
+    override fun onGetWantWriteResultFailure(messageDigest: String) {
         TODO("Not yet implemented")
-        finish()
     }
 }
