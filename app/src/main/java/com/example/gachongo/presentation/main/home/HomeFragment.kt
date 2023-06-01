@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.gachongo.presentation.main.MainActivity
 import com.example.gachongo.presentation.main.point.PointActivity
-import com.example.gachongo.presentation.main.write.WriteActivity
+import com.example.gachongo.presentation.main.write.GoWriteActivity
 import com.example.gachongo.presentation.qr.QrActivity
 import com.example.gachongo_aos.databinding.FragmentHomeBinding
 
@@ -71,12 +71,6 @@ class HomeFragment : Fragment() {
     private fun initPointClickListener() {
         binding.layoutHomePoint.setOnClickListener {
             val intent = Intent(getActivity(), PointActivity::class.java)
-            startActivity(intent)
-        }
-    }
-    private fun initNewWriteClickListener() {
-        binding.btnWrite.setOnClickListener {
-            val intent = Intent(getActivity(), WriteActivity::class.java)
             startActivity(intent)
         }
     }
