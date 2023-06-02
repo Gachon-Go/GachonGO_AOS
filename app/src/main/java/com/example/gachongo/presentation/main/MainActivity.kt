@@ -96,6 +96,7 @@ class MainActivity : AppCompatActivity(), LoginView {
             }
             // 토큰 요청 성공
             fcmId = it.result
+            Log.d("GachonLog #FCM", "나의 fcmID $fcmId")
         }
     }
 

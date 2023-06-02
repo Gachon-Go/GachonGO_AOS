@@ -85,23 +85,24 @@ class WantDetailActivity :
         startActivity(intent)
     }
     override fun onGetOrderDetailResultFailure(message: String) {
-        TODO("Not yet implemented")
+        Log.d("GachonLog #게시물", "게시물 상세내용 가져오기 실패 $message")
     }
 
     override fun onGetOrderCommentResultSuccess(result: MutableList<ResponseOrderCommentDto.Result>) {
+        Log.d("GachonLog #댓글", "배달해주세요: 댓글 목록 가져오기 성공, recycler view 적용 시작")
         initCommentAdapter(result, isMine, orderPostId)
     }
 
     override fun onGetOrderCommentResultFailure(message: String) {
-        TODO("Not yet implemented")
+        Log.d("GachonLog #댓글", "배달해주세요: 댓글 목록 가져오기 실패 $message")
     }
 
     override fun onPostOrderCommentResultSuccess() {
-        Log.d("GachonLog #comment", "댓글 작성 완료")
+        Log.d("GachonLog #댓글", "배달해주세요: 댓글 작성 완료")
         activityRestart()
     }
 
     override fun onPostOrderCommentResultFailure(message: String) {
-        TODO("Not yet implemented")
+        Log.d("GachonLog #댓글", "배달해주세요: 댓글 작성 실패")
     }
 }

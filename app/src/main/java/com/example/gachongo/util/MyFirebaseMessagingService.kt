@@ -50,6 +50,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         // RequestCode, Id를 고유값으로 지정하여 알림이 개별 표시되도록 함
         val uniId: Int = (System.currentTimeMillis() / 7).toInt()
 
+
         // 일회용 PendingIntent
         // PendingIntent : Intent 의 실행 권한을 외부의 어플리케이션에게 위임한다.
         val intent = Intent(this, MainActivity::class.java)
@@ -65,8 +66,8 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         // 알림에 대한 UI 정보와 작업을 지정한다.
         val notificationBuilder = NotificationCompat.Builder(this, channelId)
             .setSmallIcon(R.drawable.ic_logo) // 아이콘 설정
-            .setContentTitle(remoteMessage.data["body"].toString()) // 제목
-            .setContentText(remoteMessage.data["title"].toString()) // 메시지 내용
+            .setContentTitle(remoteMessage.notification?.title.toString()) // 제목
+            .setContentText(remoteMessage.notification?.body.toString()) // 메시지 내용
             .setAutoCancel(true)
             .setSound(soundUri) // 알림 소리
             .setContentIntent(pendingIntent) // 알림 실행 시 Intent
