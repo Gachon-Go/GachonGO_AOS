@@ -29,7 +29,7 @@ class GoDetailActivity :
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        Log.d("GachonLog #after", deliveryPostId.toString())
+        Log.d("GachonLog #게시글", "현재 게시글 #$deliveryPostId 에 대한 정보 불러오기")
         getDetail()
         getComment()
         initCommentBtnClickListener()
@@ -88,6 +88,8 @@ class GoDetailActivity :
     }
 
     override fun onGetDeliveryDetailResultSuccess(result: ResponseDeliveryDetailDto) {
+        Log.d("GachonLog #게시글", "배달갈게요: 게시글 상세정보 불러오기 성공")
+
         binding.tvGoDetailTitle.text = result.result.title
         binding.tvGoDetailContent.text = result.result.content
         binding.tvDeliveryTime.text = result.result.estimatedTime
@@ -102,32 +104,34 @@ class GoDetailActivity :
     }
 
     override fun onGetDeliveryDetailResultFailure(message: String) {
-        TODO("Not yet implemented")
+        Log.d("GachonLog #게시글", "배달갈게요: 게시글 상세정보 불러오기 실패")
     }
 
     override fun onGetDeliveryCommentResultSuccess(result: MutableList<ResponseDeliveryCommentDto.Result>) {
+        Log.d("GachonLog #댓글", "배달갈게요: 댓글 정보 조회 성공")
         initCommentAdapter(result, isMine, deliveryPostId)
     }
 
     override fun onGetDeliveryCommentResultFailure(message: String) {
-        Log.d("GachonLog #error", "댓글 정보 조회 실패 $message")
+        Log.d("GachonLog #댓글", "배달갈게요: 댓글 정보 조회 실패 $message")
     }
 
     override fun onPostDeliveryCommentResultSuccess() {
-        Log.d("GachonLog #comment", "댓글 작성 완료")
+        Log.d("GachonLog #댓글", "배달갈게요: 댓글 작성 완료")
         activityRestart()
     }
 
     override fun onPostDeliveryCommentResultFailure(message: String) {
-        TODO("Not yet implemented")
+        Log.d("GachonLog #댓글", "댓글 작성 실패")
     }
 
     override fun onPostDeliveryDoneResultSuccess() {
+        Log.d("GachonLog #게시글", "배달갈게요: 모집완료 성공")
         showToast("배달을 시작해주세요")
         finish()
     }
 
     override fun onPostDeliveryDoneResultFailure(message: String) {
-        TODO("Not yet implemented")
+        Log.d("GachonLog #게시글", "배달갈게요: 모집완료 실패")
     }
 }

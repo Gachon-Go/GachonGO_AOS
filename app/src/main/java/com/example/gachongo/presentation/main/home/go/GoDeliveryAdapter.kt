@@ -38,7 +38,7 @@ class GoDeliveryAdapter(var result: MutableList<ResponseDeliveryDto.Result>) :
             binding.tvDeliveryTime.text = item.estimatedTime
             binding.tvDeliveryComment.text = item.commentNum.toString()
             val deliveryPostId = item.deliveryId
-            Log.d("GachonLog #게시글", "현재 뷰에 업데이트 중인 게시글 번호 $deliveryPostId.toString()")
+            Log.d("GachonLog #게시글", "현재 뷰에 업데이트 중인 게시글 번호 $deliveryPostId")
 
             binding.root.setOnClickListener {
                 val intent = Intent(binding.root.context, GoDetailActivity::class.java)
