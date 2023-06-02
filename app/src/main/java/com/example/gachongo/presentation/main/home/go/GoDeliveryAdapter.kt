@@ -43,7 +43,7 @@ class GoDeliveryAdapter(var result: MutableList<ResponseDeliveryDto.Result>) :
                 binding.tvDeliveryStatus.setBackgroundResource(R.drawable.shape_pink400_fill_20_rect)
             }
             val deliveryPostId = item.deliveryId
-            Log.d("GachonLog #게시글", "현재 뷰에 업데이트 중인 게시글 번호 $deliveryPostId.toString()")
+            Log.d("GachonLog #게시글", "현재 뷰에 업데이트 중인 게시글 번호 $deliveryPostId")
 
             binding.root.setOnClickListener {
                 val intent = Intent(binding.root.context, GoDetailActivity::class.java)
