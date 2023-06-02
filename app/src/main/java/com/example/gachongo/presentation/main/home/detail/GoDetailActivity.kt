@@ -81,7 +81,7 @@ class GoDetailActivity :
             }
         }
     }
-    private fun activityRestart(){
+    private fun activityRestart() {
         val intent = intent
         finish()
         startActivity(intent)

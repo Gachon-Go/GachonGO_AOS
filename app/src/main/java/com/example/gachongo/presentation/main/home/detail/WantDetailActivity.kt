@@ -2,6 +2,7 @@ package com.example.gachongo.presentation.main.home.detail
 
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import coil.load
 import coil.transform.CircleCropTransformation
@@ -11,6 +12,7 @@ import com.example.gachongo.data.request.RequestCommentDto
 import com.example.gachongo.data.response.ResponseOrderCommentDto
 import com.example.gachongo.data.response.ResponseOrderDetailDto
 import com.example.gachongo.util.binding.BindingActivity
+import com.example.gachongo.util.extension.showToast
 import com.example.gachongo.util.getUserJwt
 import com.example.gachongo_aos.R
 import com.example.gachongo_aos.databinding.ActivityWantDetailBinding
@@ -67,6 +69,15 @@ class WantDetailActivity :
         binding.rvDetailComment.layoutManager = LinearLayoutManager(this)
     }
 
+    private fun initOrderDoneBtnClickListener() {
+        if (isMine) {
+            binding.btnOrderDone.visibility = View.VISIBLE
+            binding.btnOrderDone.setOnClickListener() {
+                val jwt: String = getUserJwt(this)
+                wantDetailService.postOrderDone(jwt, orderPostId)
+            }
+        }
+    }
     override fun onGetOrderDetailResultSuccess(result: ResponseOrderDetailDto) {
         binding.tvWantDetailTitle.text = result.result.title
         binding.tvWantDetailContent.text = result.result.content
@@ -77,9 +88,10 @@ class WantDetailActivity :
             placeholder(R.drawable.bg_button_default)
             transformations(CircleCropTransformation())
         }
+        initOrderDoneBtnClickListener()
     }
 
-    private fun activityRestart(){
+    private fun activityRestart() {
         val intent = intent
         finish()
         startActivity(intent)
@@ -104,5 +116,14 @@ class WantDetailActivity :
 
     override fun onPostOrderCommentResultFailure(message: String) {
         Log.d("GachonLog #댓글", "배달해주세요: 댓글 작성 실패")
+    }
+
+    override fun onPostOrderDoneResultSuccess() {
+        showToast("배달이 시작되었습니다.")
+        finish()
+    }
+
+    override fun onPostOrderDoneResultFailure(message: String) {
+        TODO("Not yet implemented")
     }
 }

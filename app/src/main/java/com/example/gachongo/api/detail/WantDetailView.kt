@@ -12,4 +12,6 @@ interface WantDetailView {
 
     fun onPostOrderCommentResultSuccess()
     fun onPostOrderCommentResultFailure(message: String)
+    fun onPostOrderDoneResultSuccess()
+    fun onPostOrderDoneResultFailure(message: String)
 }

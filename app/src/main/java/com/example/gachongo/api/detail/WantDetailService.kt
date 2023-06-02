@@ -83,4 +83,25 @@ class WantDetailService(val wantDetailView: WantDetailView) {
                 }
             })
     }
+    fun postOrderDone(jwt: String, deliveryPostId: Int) {
+        wantDetailService.postOrderDone(jwt, deliveryPostId)
+            .enqueue(object : Callback<BaseResponse> {
+                override fun onResponse(
+                    call: Call<BaseResponse>,
+                    response: Response<BaseResponse>,
+                ) {
+                    val resp = response.body()
+                    if (resp != null) {
+                        when (resp.code) {
+                            1000 -> wantDetailView.onPostOrderDoneResultSuccess()
+                            else -> wantDetailView.onPostOrderDoneResultFailure(resp.message)
+                        }
+                    }
+                }
+
+                override fun onFailure(call: Call<BaseResponse>, t: Throwable) {
+                    Log.d("GachonLog #게시글", "postOrderDeliveryDone API 연결 실패")
+                }
+            })
+    }
 }
