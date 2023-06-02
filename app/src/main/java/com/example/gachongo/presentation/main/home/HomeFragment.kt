@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.gachongo.presentation.main.MainActivity
+import com.example.gachongo.presentation.main.mypage.PointChargeActivity
 import com.example.gachongo.presentation.main.pay.TransactionActivity
 import com.example.gachongo.presentation.main.point.PointActivity
 import com.example.gachongo_aos.databinding.FragmentHomeBinding
@@ -68,7 +69,7 @@ class HomeFragment : Fragment() {
 
     private fun initPointClickListener() {
         binding.layoutHomePoint.setOnClickListener {
-            val intent = Intent(getActivity(), PointActivity::class.java)
+            val intent = Intent(activity, PointChargeActivity::class.java)
             startActivity(intent)
         }
     }
