@@ -33,7 +33,6 @@ class GoDetailActivity :
         getDetail()
         getComment()
         initCommentBtnClickListener()
-        initDeliveryDoneBtnClickListener()
     }
 
     private fun initCommentAdapter(
@@ -93,6 +92,8 @@ class GoDetailActivity :
             placeholder(R.drawable.bg_button_default)
             transformations(CircleCropTransformation())
         }
+
+        initDeliveryDoneBtnClickListener()
     }
 
     override fun onGetDeliveryDetailResultFailure(message: String) {

@@ -103,7 +103,6 @@
                 android:layout_height="wrap_content"
                 style="@style/PretendardSemibold18"
                 android:text="AI 공학관, 매머드 커피 필요하신 분 "
-                style="@style/PretendardMedium14"
                 android:layout_marginTop="28dp"
                 android:textColor="@color/gray900"
                 app:layout_constraintTop_toBottomOf="@id/tv_go_detail_name"
