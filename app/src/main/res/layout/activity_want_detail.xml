@@ -13,7 +13,7 @@
 
         <TextView
             android:id="@+id/tv_want_delivery_detail"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="배달해주세요"
             style="@style/PretendardBold20"
@@ -24,6 +24,20 @@
             android:paddingVertical="12dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
+        <TextView
+            android:id="@+id/btn_order_done"
+            style="@style/PretendardBold14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="5dp"
+            android:text="모집완료"
+            android:visibility="invisible"
+            android:textColor="@color/blue400"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_want_delivery_detail"
+            app:layout_constraintEnd_toEndOf="@+id/layout_want_detail_content"
+            app:layout_constraintTop_toTopOf="@+id/tv_want_delivery_detail" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layout_want_detail_content"
