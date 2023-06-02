@@ -53,10 +53,11 @@ class WantWriteActivity :
             time = binding.btnWriteTime.text.toString()
             title = binding.etWriteTitle.text.toString()
 
-            if (time == "예상 배달 시간을 입력해주세요.")
+            if (time == "예상 배달 시간을 입력해주세요.") {
                 showToast("예상 배달 시간을 입력해주세요.")
-            else
+            } else {
                 postOrder()
+            }
         }
     }
 

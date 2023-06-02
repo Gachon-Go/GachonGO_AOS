@@ -79,6 +79,11 @@ class WantDetailActivity :
         }
     }
 
+    private fun activityRestart(){
+        val intent = intent
+        finish()
+        startActivity(intent)
+    }
     override fun onGetOrderDetailResultFailure(message: String) {
         TODO("Not yet implemented")
     }
@@ -93,6 +98,7 @@ class WantDetailActivity :
 
     override fun onPostOrderCommentResultSuccess() {
         Log.d("GachonLog #comment", "댓글 작성 완료")
+        activityRestart()
     }
 
     override fun onPostOrderCommentResultFailure(message: String) {

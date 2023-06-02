@@ -81,6 +81,11 @@ class GoDetailActivity :
             }
         }
     }
+    private fun activityRestart(){
+        val intent = intent
+        finish()
+        startActivity(intent)
+    }
 
     override fun onGetDeliveryDetailResultSuccess(result: ResponseDeliveryDetailDto) {
         binding.tvGoDetailTitle.text = result.result.title
@@ -109,7 +114,8 @@ class GoDetailActivity :
     }
 
     override fun onPostDeliveryCommentResultSuccess() {
-        TODO("Not yet implemented")
+        Log.d("GachonLog #comment", "댓글 작성 완료")
+        activityRestart()
     }
 
     override fun onPostDeliveryCommentResultFailure(message: String) {
