@@ -44,7 +44,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="15dp"
                 android:paddingEnd="72dp"
-                android:text="QR코드로 \n결제하기"
+                android:text="고유번호로 \n결제하기"
                 android:textColor="@color/gray900"
                 app:layout_constraintStart_toStartOf="@id/layout_home_pay"
                 app:layout_constraintTop_toTopOf="@id/layout_home_pay" />
