@@ -25,7 +25,7 @@ class PointService(val pointView: PointView, val pointHistoryView: PointHistoryV
             }
 
             override fun onFailure(call: Call<PointResponse>, t: Throwable) {
-                Log.d("포인트 조회 실패", t.message ?: "통신 오류")
+                Log.d("GachonLog #포인트 조회 실패", t.message ?: "통신 오류")
             }
         })
     }
@@ -43,7 +43,7 @@ class PointService(val pointView: PointView, val pointHistoryView: PointHistoryV
             }
 
             override fun onFailure(call: Call<PointHistoryResponse>, t: Throwable) {
-                Log.d("포인트 내역 조회 실패", t.message ?: "통신 오류")
+                Log.d("GachonLog #포인트 내역 조회 실패", t.message ?: "통신 오류")
             }
         })
     }

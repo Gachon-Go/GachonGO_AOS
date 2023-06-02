@@ -90,6 +90,6 @@ class GoDeliveryFragment :
     }
 
     override fun onGetDeliveryResultFailure(message: String) {
-        Log.d("error", "페이지 정보 조회 실패 $message")
+        Log.d("GachonLog #error", "페이지 정보 조회 실패 $message")
     }
 }

@@ -38,7 +38,7 @@ class GoDeliveryAdapter(var result: MutableList<ResponseDeliveryDto.Result>) :
             binding.tvDeliveryTime.text = item.estimatedTime
             binding.tvDeliveryComment.text = item.commentNum.toString()
             val deliveryPostId = item.deliveryId
-            Log.d("before", deliveryPostId.toString())
+            Log.d("GachonLog #before", deliveryPostId.toString())
 
             binding.root.setOnClickListener {
                 val intent = Intent(binding.root.context, GoDetailActivity::class.java)

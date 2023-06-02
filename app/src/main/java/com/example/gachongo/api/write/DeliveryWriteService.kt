@@ -28,7 +28,7 @@ class DeliveryWriteService(val deliveryWriteView: DeliveryWriteView) {
                 }
 
                 override fun onFailure(call: Call<BaseResponse>, t: Throwable) {
-                    Log.d("글 작성 실패", t.message ?: "통신 오류")
+                    Log.d("GachonLog #글 작성 실패", t.message ?: "통신 오류")
                 }
             })
     }

@@ -24,7 +24,7 @@ class LoginService(val loginView: LoginView) {
             }
 
             override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
-                Log.d("로그인 실패", t.message ?: "통신 오류")
+                Log.d("GachonLog #로그인", t.message ?: "로그인 오류")
             }
         })
     }

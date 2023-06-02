@@ -48,8 +48,7 @@ class AlarmFragment : Fragment(), NotificationView {
     }
 
     override fun onGetNotificationSuccess(notificationBundle: NotificationBundle) {
-        Log.d("Notification", notificationBundle.toString())
-
+        Log.d("GachonLog #알림", "나의 알림 목록 가져오기 성공")
         binding.alarmTodayTv.visibility = if (notificationBundle.todayNotificationList.isNullOrEmpty()) View.GONE else View.VISIBLE
         binding.alarmTodayRv.visibility = if (notificationBundle.todayNotificationList.isNullOrEmpty()) View.GONE else View.VISIBLE
         binding.alarmYesterdayTv.visibility = if (notificationBundle.yesterdayNotificationList.isNullOrEmpty()) View.GONE else View.VISIBLE
@@ -64,7 +63,7 @@ class AlarmFragment : Fragment(), NotificationView {
     }
 
     override fun onGetNotificationFailure(message: String) {
-        Log.d("Notification", "알림가져오기 오류: $message")
+        Log.d("GachonLog #알림", "알림가져오기 오류: $message")
     }
 
 }

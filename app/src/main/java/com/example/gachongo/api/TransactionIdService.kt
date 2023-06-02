@@ -24,7 +24,7 @@ class TransactionIdService(val transactionIdView: TransactionIdView) {
             }
 
             override fun onFailure(call: Call<TransactionIdResponse>, t: Throwable) {
-                Log.d("결제 고유번호 발급 실패", t.message ?: "통신 오류")
+                Log.d("GachonLog #결제 고유번호 발급 실패", t.message ?: "통신 오류")
             }
         })
     }

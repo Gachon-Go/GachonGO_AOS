@@ -28,7 +28,7 @@ class PayService(val payView: PayView) {
             }
 
             override fun onFailure(call: Call<BaseResponse>, t: Throwable) {
-                Log.d("결제 실패", t.message ?: "통신 오류")
+                Log.d("GachonLog #결제", t.message ?: "send Pay API 통신 오류")
             }
         })
     }

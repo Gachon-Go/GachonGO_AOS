@@ -52,7 +52,6 @@ class MyPageFragment : Fragment(), MyPageView {
         super.onResume()
         binding.myPageNicknameTv.text = getUserNickname(requireContext())
         binding.myPagePointTv.text = getUserPoint(requireContext()).toString()
-        Log.d("image", getUserProfileImg(requireContext()))
         Glide.with(this).load(getUserProfileImg(requireContext())).into(binding.myPageProfileIv)
     }
 
@@ -81,6 +80,6 @@ class MyPageFragment : Fragment(), MyPageView {
     }
 
     override fun onGetMyPageFailure(message: String) {
-        Log.d("마이페이지 사용자 정보 요청 오류", message)
+        Log.d("GachonLog #마이페이지 사용자 정보 요청 오류", message)
     }
 }

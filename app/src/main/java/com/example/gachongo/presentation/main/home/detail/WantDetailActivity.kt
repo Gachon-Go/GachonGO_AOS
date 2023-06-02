@@ -92,7 +92,7 @@ class WantDetailActivity :
     }
 
     override fun onPostOrderCommentResultSuccess() {
-        Log.d("comment", "댓글 작성 완료")
+        Log.d("GachonLog #comment", "댓글 작성 완료")
     }
 
     override fun onPostOrderCommentResultFailure(message: String) {

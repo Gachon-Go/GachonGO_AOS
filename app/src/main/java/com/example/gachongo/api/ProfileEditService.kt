@@ -26,7 +26,7 @@ class ProfileEditService(val profileEditView: ProfileEditView) {
             }
 
             override fun onFailure(call: Call<BaseResponse>, t: Throwable) {
-                Log.d("프로필 이미지 변경 실패", t.message ?: "통신 오류")
+                Log.d("GachonLog #프로필 이미지 변경 실패", t.message ?: "통신 오류")
             }
         })
     }

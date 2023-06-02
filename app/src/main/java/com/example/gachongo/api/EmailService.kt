@@ -23,7 +23,7 @@ class EmailService(val emailView: EmailView, val emailCodeView: EmailCodeView) {
             }
 
             override fun onFailure(call: Call<BaseResponse>, t: Throwable) {
-                Log.d("이메일 전송 실패", t.message ?: "통신 오류")
+                Log.d("GachonLog #로그인", t.message ?: "이메일 전송 실패")
             }
         })
     }
@@ -43,7 +43,7 @@ class EmailService(val emailView: EmailView, val emailCodeView: EmailCodeView) {
             }
 
             override fun onFailure(call: Call<BaseResponse>, t: Throwable) {
-                Log.d("이메일 코드 전송 실패", t.message ?: "통신 오류")
+                Log.d("GachonLog #로그인", t.message ?: "이메일 인증 코드 전송 실패")
             }
         })
     }

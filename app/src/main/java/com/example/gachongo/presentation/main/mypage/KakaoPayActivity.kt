@@ -39,6 +39,6 @@ class KakaoPayActivity: AppCompatActivity() {
         binding.kakaoPayWv.settings.javaScriptEnabled = true
         binding.kakaoPayWv.loadUrl(intent.getStringExtra("url").toString())
 
-        Log.d("kakaopay", "결제 성공")
+        Log.d("GachonLog #결제", "카카오페이 결제 페이지로 이동")
     }
 }

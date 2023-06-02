@@ -76,7 +76,7 @@ class PointManageActivity : AppCompatActivity(), PointView, PointHistoryView {
     }
 
     override fun onGetPointResultFailure(message: String) {
-        Log.d("포인트 조회 오류", message)
+        Log.d("GachonLog #포인트 조회 오류", message)
     }
 
     override fun onGetPointHistoryResultSuccess(result: ArrayList<PointHistoryResponseResult>) {
@@ -85,6 +85,6 @@ class PointManageActivity : AppCompatActivity(), PointView, PointHistoryView {
     }
 
     override fun onGetPointHistoryResultFailure(message: String) {
-        Log.d("포인트 내역 조회 오류", message)
+        Log.d("GachonLog #포인트 내역 조회 오류", message)
     }
 }

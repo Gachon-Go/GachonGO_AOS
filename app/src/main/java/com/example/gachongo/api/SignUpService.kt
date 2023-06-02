@@ -24,7 +24,7 @@ class SignUpService(val signupView: SignUpView) {
             }
 
             override fun onFailure(call: Call<BaseResponse>, t: Throwable) {
-                Log.d("회원가입 실패", t.message ?: "통신 오류")
+                Log.d("GachonLog #회원가입 실패", t.message ?: "통신 오류")
             }
         })
     }

@@ -58,17 +58,17 @@ class CodePayActivity: AppCompatActivity(), PayView {
     }
 
     private fun sendPay() {
-        Log.d("결제", "포인트 전송 API 실행")
+        Log.d("GachonLog #결제", "포인트 전송 API 실행")
         val payService = PayService(this)
         payService.sendPay(getUserJwt(this), id, Point(payAmount))
     }
 
     override fun onSendPayResultSuccess() {
-        Log.d("결제", "성공")
+        Log.d("GachonLog #결제", "성공")
         startActivity(Intent(this, FinishPayActivity::class.java))
     }
 
     override fun onSendPayResultFailure(message: String) {
-        Log.d("결제", "실패 $message")
+        Log.d("GachonLog #결제", "실패 $message")
     }
 }

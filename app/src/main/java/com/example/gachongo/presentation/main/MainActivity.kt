@@ -137,7 +137,7 @@ class MainActivity : AppCompatActivity(), LoginView {
     }
 
     override fun onGetLoginResultSuccess(result: LoginResponseResult) {
-        Log.d("서버 로그인", "성공")
+        Log.d("GachonLog #로그인", "로그인 성공")
         saveUserId(this, result.id)
         saveUserJwt(this, result.jwt)
     }
@@ -183,8 +183,7 @@ class MainActivity : AppCompatActivity(), LoginView {
             val intent = Intent(applicationContext, LocationService::class.java)
             intent.action = Constants.ACTION_START_LOCATION_SERVICE
             startService(intent)
-            Log.d("LOCATION_UPDATE", "위치정보 서비스 시작")
-            showToast("Location service started")
+            Log.d("GachonLog #위치", "위치정보 서비스 시작")
         }
     }
 
@@ -193,8 +192,7 @@ class MainActivity : AppCompatActivity(), LoginView {
             val intent = Intent(applicationContext, LocationService::class.java)
             intent.action = Constants.ACTION_STOP_LOCATION_SERVICE
             stopService(intent)
-            showToast("Location service stopped")
-            Log.d("LOCATION_UPDATE", "위치정보 서비스 종료")
+            Log.d("GachonLog #위치", "위치정보 서비스 종료")
         }
     }
 

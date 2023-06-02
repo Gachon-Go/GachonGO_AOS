@@ -128,7 +128,7 @@ class MyPageEditActivity: AppCompatActivity(), NicknameEditView, ProfileEditView
     }
 
     override fun onGetProfileEditFailure(message: String) {
-        Log.d("image", "실패")
+        Log.d("GachonLog #image", "실패")
     }
 
     private fun editNickname() {

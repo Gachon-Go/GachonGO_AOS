@@ -22,7 +22,7 @@ class GoDetailService(val goDetailView: GoDetailView) {
                 response: Response<ResponseDeliveryDetailDto>,
             ) {
                 val resp = response.body()
-                Log.d("res", resp.toString())
+                Log.d("GachonLog #게시글", "getDetail API 결과: " + resp.toString())
                 if (resp != null) {
                     when (resp.code) {
                         1000 -> goDetailView.onGetDeliveryDetailResultSuccess(resp)
@@ -32,7 +32,7 @@ class GoDetailService(val goDetailView: GoDetailView) {
             }
 
             override fun onFailure(call: Call<ResponseDeliveryDetailDto>, t: Throwable) {
-                TODO("Not yet implemented")
+                Log.d("GachonLog #게시글", "getDetail API 연결 실패")
             }
         })
     }
@@ -57,7 +57,7 @@ class GoDetailService(val goDetailView: GoDetailView) {
                     call: Call<ResponseDeliveryCommentDto>,
                     t: Throwable,
                 ) {
-                    TODO("Not yet implemented")
+                    Log.d("GachonLog #게시글", "getDeliveryDetailComment API 연결 실패")
                 }
             })
     }
@@ -79,7 +79,7 @@ class GoDetailService(val goDetailView: GoDetailView) {
                 }
 
                 override fun onFailure(call: Call<BaseResponse>, t: Throwable) {
-                    TODO("Not yet implemented")
+                    Log.d("GachonLog #게시글", "postDeliveryDetailComment API 연결 실패")
                 }
             })
     }
@@ -101,7 +101,7 @@ class GoDetailService(val goDetailView: GoDetailView) {
                 }
 
                 override fun onFailure(call: Call<BaseResponse>, t: Throwable) {
-                    TODO("Not yet implemented")
+                    Log.d("GachonLog #게시글", "postDeliveryDone API 연결 실패")
                 }
             })
     }

@@ -41,7 +41,7 @@ class LocationService : Service(), SendPositionView {
     }
 
     private fun startLocationService() {
-        Log.d("LOCATION_UPDATE", "startLocationService() 호출")
+        Log.d("GachonLog #위치", "startLocationService() 호출")
         val channelId = "location_notification_channel"
         val notificationManager =
             getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
@@ -52,11 +52,12 @@ class LocationService : Service(), SendPositionView {
             resultIntent,
             PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_MUTABLE,
         )
+
         val builder = NotificationCompat.Builder(applicationContext, channelId)
         builder.setSmallIcon(R.drawable.ic_logo)
-        builder.setContentTitle("Location Service")
+        builder.setContentTitle("위치 정보 서비스")
         builder.setDefaults(NotificationCompat.DEFAULT_ALL)
-        builder.setContentText("Running")
+        builder.setContentText("실행중")
         builder.setContentIntent(pendingIntent)
         builder.setAutoCancel(false)
         builder.priority = NotificationCompat.PRIORITY_MAX
@@ -109,7 +110,7 @@ class LocationService : Service(), SendPositionView {
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
-        Log.d("LOCATION_UPDATE", "onStartCommand() 호출")
+        Log.d("GachonLog #위치", "onStartCommand() 호출")
         if (intent != null) {
             val action = intent.action
             if (action != null) {
@@ -132,10 +133,10 @@ class LocationService : Service(), SendPositionView {
     }
 
     override fun onGetSendPositionResultSuccess() {
-        Log.d("LOCATION_UPDATE", "내 위치 전송 성공")
+        Log.d("GachonLog #위치", "내 위치 전송 성공")
     }
 
     override fun onGetSendPositionResultFailure(message: String) {
-        Log.d("LOCATION_UPDATE", "내 위치 전송 실패")
+        Log.d("GachonLog #위치", "내 위치 전송 실패")
     }
 }

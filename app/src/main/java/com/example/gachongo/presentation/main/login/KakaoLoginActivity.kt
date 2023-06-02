@@ -67,7 +67,7 @@ class KakaoLoginActivity : AppCompatActivity() {
                 }
             } else if (token != null) {
                 // 로그인에 성공하면
-                Log.d(TAG, "카카오톡 계정 연결 성공")
+                Log.d("GachonLog #로그인", "카카오톡 계정 연결 성공")
 
                 // provider, token 저장
                 saveUserLoginProvider(this, "Kakao")
@@ -76,7 +76,7 @@ class KakaoLoginActivity : AppCompatActivity() {
                 // 사용자 정보 요청
                 UserApiClient.instance.me { kakaoUser, error ->
                     if (error != null) {
-                        Log.e(TAG, "사용자 정보 요청 실패", error)
+                        Log.e("로그인", "사용자 정보 요청 실패", error)
                     } else if (kakaoUser != null) {
                         profileImg = kakaoUser.kakaoAccount?.profile?.profileImageUrl.toString()
                         saveUserProfileImg(this, profileImg)

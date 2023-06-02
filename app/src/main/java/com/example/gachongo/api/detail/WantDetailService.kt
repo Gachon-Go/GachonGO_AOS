@@ -22,7 +22,7 @@ class WantDetailService(val wantDetailView: WantDetailView) {
                 response: Response<ResponseOrderDetailDto>,
             ) {
                 val resp = response.body()
-                Log.d("res", resp.toString())
+                Log.d("GachonLog #게시글", "getDetail API 호출 결과: " + resp.toString())
                 if (resp != null) {
                     when (resp.code) {
                         1000 -> wantDetailView.onGetOrderDetailResultSuccess(resp)
@@ -32,7 +32,7 @@ class WantDetailService(val wantDetailView: WantDetailView) {
             }
 
             override fun onFailure(call: Call<ResponseOrderDetailDto>, t: Throwable) {
-                TODO("Not yet implemented")
+                Log.d("GachonLog #게시글", "getDetail API 호출 실패")
             }
         })
     }
@@ -57,7 +57,7 @@ class WantDetailService(val wantDetailView: WantDetailView) {
                     call: Call<ResponseOrderCommentDto>,
                     t: Throwable,
                 ) {
-                    TODO("Not yet implemented")
+                    Log.d("GachonLog #게시글", "getOrderDetailComment API 호출 실패")
                 }
             })
     }
@@ -79,7 +79,7 @@ class WantDetailService(val wantDetailView: WantDetailView) {
                 }
 
                 override fun onFailure(call: Call<BaseResponse>, t: Throwable) {
-                    TODO("Not yet implemented")
+                    Log.d("GachonLog #게시글", "postOrderDetailComment API 호출 실패")
                 }
             })
     }

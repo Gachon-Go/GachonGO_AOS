@@ -29,7 +29,7 @@ class GoDetailActivity :
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        Log.d("after", deliveryPostId.toString())
+        Log.d("GachonLog #after", deliveryPostId.toString())
         getDetail()
         getComment()
         initCommentBtnClickListener()
@@ -105,7 +105,7 @@ class GoDetailActivity :
     }
 
     override fun onGetDeliveryCommentResultFailure(message: String) {
-        Log.d("error", "댓글 정보 조회 실패 $message")
+        Log.d("GachonLog #error", "댓글 정보 조회 실패 $message")
     }
 
     override fun onPostDeliveryCommentResultSuccess() {
