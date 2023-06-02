@@ -8,6 +8,7 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gachongo.data.response.ResponseDeliveryDto
 import com.example.gachongo.presentation.main.home.detail.GoDetailActivity
+import com.example.gachongo_aos.R
 import com.example.gachongo_aos.databinding.ItemDeliveryBinding
 
 class GoDeliveryAdapter(var result: MutableList<ResponseDeliveryDto.Result>) :
@@ -37,6 +38,10 @@ class GoDeliveryAdapter(var result: MutableList<ResponseDeliveryDto.Result>) :
             binding.tvDeliveryTitle.text = item.title
             binding.tvDeliveryTime.text = item.estimatedTime
             binding.tvDeliveryComment.text = item.commentNum.toString()
+            if (item.progress == "모집완료"){
+                binding.tvDeliveryStatus.text = item.progress
+                binding.tvDeliveryStatus.setBackgroundResource(R.drawable.shape_pink400_fill_20_rect)
+            }
             val deliveryPostId = item.deliveryId
             Log.d("GachonLog #게시글", "현재 뷰에 업데이트 중인 게시글 번호 $deliveryPostId.toString()")
 
