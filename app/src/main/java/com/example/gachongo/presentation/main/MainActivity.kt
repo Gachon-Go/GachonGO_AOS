@@ -35,7 +35,6 @@ import com.example.gachongo.presentation.main.home.go.GoDeliveryFragment
 import com.example.gachongo.presentation.main.home.want.WantDeliveryFragment
 import com.example.gachongo.presentation.main.login.KakaoLoginActivity
 import com.example.gachongo.presentation.main.mypage.MyPageFragment
-import com.example.gachongo.presentation.main.pay.CodePayActivity
 import com.example.gachongo.presentation.main.pay.TransactionActivity
 import com.example.gachongo.util.extension.showToast
 import com.example.gachongo.util.getUserLoginProvider
@@ -51,6 +50,7 @@ import kotlin.math.sqrt
 class MainActivity : AppCompatActivity(), LoginView, SensorEventListener {
     private lateinit var binding: ActivityMainBinding
     private lateinit var sensorManager: SensorManager
+    private var transactionActivityStarted = false
 
     private var fcmId: String = ""
     private var provider: String = ""
@@ -65,6 +65,7 @@ class MainActivity : AppCompatActivity(), LoginView, SensorEventListener {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // 센서 값 기초 세팅
         this.sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
         accel = 10f
         accelCurrent = SensorManager.GRAVITY_EARTH
@@ -112,6 +113,7 @@ class MainActivity : AppCompatActivity(), LoginView, SensorEventListener {
             SensorManager.SENSOR_DELAY_NORMAL,
         )
         super.onResume()
+        transactionActivityStarted = false
     }
 
     override fun onPause() {
@@ -272,7 +274,8 @@ class MainActivity : AppCompatActivity(), LoginView, SensorEventListener {
         val delta: Float = accelCurrent - accelLast
         accel = accel * 0.9f + delta
 
-        if (accel > 20) {
+        if (accel > 30 && !transactionActivityStarted) {
+            transactionActivityStarted = true
             Log.d("shake", "흔들림 감지완료.")
             val intent = Intent(this, TransactionActivity::class.java)
             startActivity(intent)
