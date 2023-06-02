@@ -71,7 +71,7 @@ class MyPageFragment : Fragment(), MyPageView {
 
     override fun onGetMyPageSuccess(result: MyPageResponseResult) {
         saveUserNickname(requireContext(), result.nickname)
-
+        Log.d("GachonLog #마이페이지", result.toString())
         binding.myPageNicknameTv.text = result.nickname
         binding.myPagePointTv.text = DecimalFormat("#,###").format(result.point).toString()
         binding.myPageInfoOrderCountTv.text = result.orderNum.toString()
@@ -80,6 +80,6 @@ class MyPageFragment : Fragment(), MyPageView {
     }
 
     override fun onGetMyPageFailure(message: String) {
-        Log.d("GachonLog #마이페이지 사용자 정보 요청 오류", message)
+        Log.d("GachonLog #마이페이지", "사용자 정보 요청 오류 $message")
     }
 }
