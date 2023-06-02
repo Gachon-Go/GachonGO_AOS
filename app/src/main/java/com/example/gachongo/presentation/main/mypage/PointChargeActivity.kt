@@ -85,6 +85,6 @@ class PointChargeActivity: AppCompatActivity(), ChargePointView {
     }
 
     override fun onSendChargePointResultFailure(message: String) {
-        Log.d("포인트 충전", "실패")
+        Log.d("GachonLog #포인트 충전", "실패")
     }
 }

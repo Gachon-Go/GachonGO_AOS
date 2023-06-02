@@ -23,7 +23,7 @@ class MyPageService(val myPageView: MyPageView) {
             }
 
             override fun onFailure(call: Call<MyPageResponse>, t: Throwable) {
-                Log.d("닉네임 변경 실패", t.message ?: "통신 오류")
+                Log.d("GachonLog #유저페이지", t.message ?: "닉네임 변경 실패")
             }
         })
     }

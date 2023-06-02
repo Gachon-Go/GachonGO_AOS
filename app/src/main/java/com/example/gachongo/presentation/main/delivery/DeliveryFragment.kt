@@ -72,7 +72,6 @@ class DeliveryFragment : Fragment(), OnMapReadyCallback, OthersPositionView {
         // 다른 사용자들의 위치들을 받아와요
         job = lifecycleScope.launch {
             while (true) {
-                Log.d("DeliveryFragment", "위치 정보 요청중..")
                 getOthersPosition()
                 delay(2000)
             }
@@ -117,7 +116,7 @@ class DeliveryFragment : Fragment(), OnMapReadyCallback, OthersPositionView {
     }
 
     override fun onGetOthersPositionResultSuccess(result: OthersPositionResult) {
-        Log.d("DeliveryFragment", result.mapPoints.toString())
+        Log.d("GachonLog #위치", "상대방 위치 정보: " + result.mapPoints.toString())
 
         // Clear existing markers
         markerList.forEach { it.map = null }
@@ -134,12 +133,12 @@ class DeliveryFragment : Fragment(), OnMapReadyCallback, OthersPositionView {
     }
 
     override fun onGetOthersPositionResultFailure(message: String) {
-        Log.d("DeliveryFragment", message)
+        Log.d("GachonLog #위치", "상대방 위치정보 가져오기 실패 + $message")
     }
 
     override fun onDestroyView() {
         if (::job.isInitialized) {
-            Log.d("DeliveryFragment", "위치 정보 업데이트 process 중지")
+            Log.d("GachonLog #위치", "위치 정보 업데이트 process 중지")
             job.cancel() // Cancel the job when the view is destroyed
         }
         super.onDestroyView()

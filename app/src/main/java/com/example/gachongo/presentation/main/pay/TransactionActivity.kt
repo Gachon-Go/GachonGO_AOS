@@ -65,6 +65,6 @@ class TransactionActivity: AppCompatActivity(), TransactionIdView {
     }
 
     override fun onGetTransactionIdResultFailure(message: String) {
-        Log.d("거래 고유번호", "실패")
+        Log.d("GachonLog #거래 고유번호", "실패")
     }
 }

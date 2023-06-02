@@ -23,7 +23,7 @@ class NicknameService(val nicknameView: NicknameView) {
             }
 
             override fun onFailure(call: Call<BaseResponse>, t: Throwable) {
-                Log.d("닉네임 중복 확인 실패", t.message ?: "통신 오류")
+                Log.d("GachonLog #로그인", "checkNickName API 호출 실패")
             }
         })
     }

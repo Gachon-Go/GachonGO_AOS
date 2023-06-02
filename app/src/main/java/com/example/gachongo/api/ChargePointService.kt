@@ -23,7 +23,7 @@ class ChargePointService(val chargePointView: ChargePointView) {
             }
 
             override fun onFailure(call: Call<ChargePointResponse>, t: Throwable) {
-                Log.d("포인트 충전 실패", t.message ?: "통신 오류")
+                Log.d("GachonLog #결제", t.message ?: "카카오페이 포인트 충전 실패")
             }
         })
     }

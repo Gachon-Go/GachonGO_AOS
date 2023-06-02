@@ -14,7 +14,6 @@ class AlarmRVAdapter(var context: Context, private var notificationContentList: 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AlarmViewHolder {
         val binding:ItemAlarmBinding = ItemAlarmBinding.inflate(LayoutInflater.from(parent.context),parent,false)
-        Log.d("Notification", notificationContentList.toString())
         return AlarmViewHolder(binding)
     }
 

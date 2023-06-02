@@ -25,7 +25,7 @@ class NotificationService(val notificationView: NotificationView) {
                 }
 
                 override fun onFailure(call: Call<ResponseNotification>, t: Throwable) {
-                    Log.d("Notification", t.message ?: "알림 받아오기 실패")
+                    Log.d("GachonLog #알림", t.message ?: "알림 받아오기 실패")
                 }
             })
     }

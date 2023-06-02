@@ -17,27 +17,33 @@
         android:icon="@drawable/ic_logo"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:usesCleartextTraffic="true"
         android:theme="@style/Theme.GachonGOAOS"
-        >
+        android:usesCleartextTraffic="true">
         <activity
-            android:name="com.example.gachongo.presentation.qr.QrActivity"
-            android:exported="false" />
+            android:name="com.example.gachongo.presentation.main.write.WantWriteActivity"
+            android:exported="false"
+            android:label="@string/title_activity_want_write"
+            android:theme="@style/Theme.GachonGOAOS" />
+
         <activity
             android:name="com.example.gachongo.presentation.main.point.PointActivity"
             android:exported="false" />
-
-        <activity android:name="com.example.gachongo.presentation.main.write.WriteActivity"
-            android:exported="false">
-        </activity>
+        <activity
+            android:name="com.example.gachongo.presentation.main.write.GoWriteActivity"
+            android:exported="false"/>
         <activity
             android:name="com.example.gachongo.presentation.main.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.example.gachongo.presentation.main.home.detail.GoDetailActivity"
+            android:exported="false"/>
+        <activity android:name="com.example.gachongo.presentation.main.home.detail.WantDetailActivity" android:exported="false"/>
         <activity android:name="com.example.gachongo.presentation.main.login.KakaoLoginActivity" android:exported="true" />
         <activity android:name="com.example.gachongo.presentation.main.login.EmailAuthActivity" android:exported="false" />
         <activity android:name="com.example.gachongo.presentation.main.login.NicknameActivity" android:exported="false" />
@@ -52,20 +58,19 @@
         <activity android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity" android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
 
-                <data android:host="oauth" android:scheme="kakao${kakaoApiKey}" />
+                <data
+                    android:host="oauth"
+                    android:scheme="kakao${kakaoApiKey}" />
             </intent-filter>
-        </activity>
-
-        <!-- 백그라운드 위치정보 받아오기 -->
+        </activity> <!-- 백그라운드 위치정보 받아오기 -->
         <service
             android:name="com.example.gachongo.presentation.main.delivery.LocationService"
             android:exported="true"
-            android:foregroundServiceType="location"/>
-
-        <!-- FCM -->
+            android:foregroundServiceType="location" /> <!-- FCM -->
         <service
             android:name="com.example.gachongo.util.MyFirebaseMessagingService"
             android:exported="false">
@@ -73,7 +78,10 @@
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-        <meta-data android:name="com.naver.maps.map.CLIENT_ID" android:value="${naverMapClientId}" />
+
+        <meta-data
+            android:name="com.naver.maps.map.CLIENT_ID"
+            android:value="${naverMapClientId}" />
     </application>
 
 </manifest>

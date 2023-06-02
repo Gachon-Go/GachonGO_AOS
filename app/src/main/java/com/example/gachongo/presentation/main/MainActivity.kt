@@ -8,6 +8,10 @@ import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.hardware.Sensor
+import android.hardware.SensorEvent
+import android.hardware.SensorEventListener
+import android.hardware.SensorManager
 import android.net.Uri
 import android.os.Bundle
 import android.provider.Settings
@@ -27,8 +31,11 @@ import com.example.gachongo.presentation.main.delivery.Constants
 import com.example.gachongo.presentation.main.delivery.DeliveryFragment
 import com.example.gachongo.presentation.main.delivery.LocationService
 import com.example.gachongo.presentation.main.home.HomeFragment
+import com.example.gachongo.presentation.main.home.go.GoDeliveryFragment
+import com.example.gachongo.presentation.main.home.want.WantDeliveryFragment
 import com.example.gachongo.presentation.main.login.KakaoLoginActivity
 import com.example.gachongo.presentation.main.mypage.MyPageFragment
+import com.example.gachongo.presentation.main.pay.TransactionActivity
 import com.example.gachongo.util.extension.showToast
 import com.example.gachongo.util.getUserLoginProvider
 import com.example.gachongo.util.getUserToken
@@ -38,18 +45,31 @@ import com.example.gachongo_aos.R
 import com.example.gachongo_aos.databinding.ActivityMainBinding
 import com.google.firebase.messaging.FirebaseMessaging
 import com.kakao.sdk.user.UserApiClient
+import kotlin.math.sqrt
 
-class MainActivity : AppCompatActivity(), LoginView {
+class MainActivity : AppCompatActivity(), LoginView, SensorEventListener {
     private lateinit var binding: ActivityMainBinding
+    private lateinit var sensorManager: SensorManager
+    private var transactionActivityStarted = false
 
     private var fcmId: String = ""
     private var provider: String = ""
     private var token: String = ""
 
+    private var accel: Float = 0.0f
+    private var accelCurrent: Float = 0.0f
+    private var accelLast: Float = 0.0f
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        // 센서 값 기초 세팅
+        this.sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
+        accel = 10f
+        accelCurrent = SensorManager.GRAVITY_EARTH
+        accelLast = SensorManager.GRAVITY_EARTH
 
         initFirebase()
         initBnvItemSelectedListener()
@@ -71,11 +91,34 @@ class MainActivity : AppCompatActivity(), LoginView {
         }
 
         // 백그라운드로 위치정보 전송
-        if (ContextCompat.checkSelfPermission(applicationContext, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), 1)
+        if (ContextCompat.checkSelfPermission(
+                applicationContext,
+                Manifest.permission.ACCESS_FINE_LOCATION,
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            ActivityCompat.requestPermissions(
+                this,
+                arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
+                1,
+            )
         } else {
             startLocationService()
         }
+    }
+
+    override fun onResume() {
+        sensorManager.registerListener(
+            this,
+            sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),
+            SensorManager.SENSOR_DELAY_NORMAL,
+        )
+        super.onResume()
+        transactionActivityStarted = false
+    }
+
+    override fun onPause() {
+        sensorManager.unregisterListener(this)
+        super.onPause()
     }
 
     private fun initFirebase() {
@@ -86,6 +129,7 @@ class MainActivity : AppCompatActivity(), LoginView {
             }
             // 토큰 요청 성공
             fcmId = it.result
+            Log.d("GachonLog #FCM", "나의 fcmID $fcmId")
         }
     }
 
@@ -101,6 +145,13 @@ class MainActivity : AppCompatActivity(), LoginView {
                 R.id.menu_mypage -> navigateTo<MyPageFragment>()
             }
             true
+        }
+    }
+
+    fun changeFragment(index: Int) {
+        when (index) {
+            1 -> navigateTo<GoDeliveryFragment>()
+            2 -> navigateTo<WantDeliveryFragment>()
         }
     }
 
@@ -120,7 +171,7 @@ class MainActivity : AppCompatActivity(), LoginView {
     }
 
     override fun onGetLoginResultSuccess(result: LoginResponseResult) {
-        Log.d("서버 로그인", "성공")
+        Log.d("GachonLog #로그인", "로그인 성공")
         saveUserId(this, result.id)
         saveUserJwt(this, result.jwt)
     }
@@ -134,7 +185,11 @@ class MainActivity : AppCompatActivity(), LoginView {
         stopLocationService()
     }
 
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<String>,
+        grantResults: IntArray,
+    ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == 1 && grantResults.isNotEmpty()) {
             if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
@@ -162,8 +217,7 @@ class MainActivity : AppCompatActivity(), LoginView {
             val intent = Intent(applicationContext, LocationService::class.java)
             intent.action = Constants.ACTION_START_LOCATION_SERVICE
             startService(intent)
-            Log.d("LOCATION_UPDATE", "위치정보 서비스 시작")
-            showToast("Location service started")
+            Log.d("GachonLog #위치", "위치정보 서비스 시작")
         }
     }
 
@@ -172,8 +226,7 @@ class MainActivity : AppCompatActivity(), LoginView {
             val intent = Intent(applicationContext, LocationService::class.java)
             intent.action = Constants.ACTION_STOP_LOCATION_SERVICE
             stopService(intent)
-            showToast("Location service stopped")
-            Log.d("LOCATION_UPDATE", "위치정보 서비스 종료")
+            Log.d("GachonLog #위치", "위치정보 서비스 종료")
         }
     }
 
@@ -208,5 +261,28 @@ class MainActivity : AppCompatActivity(), LoginView {
         val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
         intent.data = Uri.fromParts("package", context.packageName, null)
         context.startActivity(intent)
+    }
+
+    override fun onSensorChanged(event: SensorEvent?) {
+        val x: Float = event?.values?.get(0) as Float
+        val y: Float = event?.values?.get(0) as Float
+        val z: Float = event?.values?.get(0) as Float
+
+        accelLast = accelCurrent
+        accelCurrent = sqrt((x * x + y * y + z * z).toDouble()).toFloat()
+
+        val delta: Float = accelCurrent - accelLast
+        accel = accel * 0.9f + delta
+
+        if (accel > 30 && !transactionActivityStarted) {
+            transactionActivityStarted = true
+            Log.d("shake", "흔들림 감지완료.")
+            val intent = Intent(this, TransactionActivity::class.java)
+            startActivity(intent)
+        }
+    }
+
+    override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {
+        Log.d("sensor", "정확도가 변경되면 호출되는 함수")
     }
 }

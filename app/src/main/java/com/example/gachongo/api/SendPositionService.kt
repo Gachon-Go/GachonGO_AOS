@@ -23,7 +23,7 @@ class SendPositionService(val sendPositionView: SendPositionView) {
             }
 
             override fun onFailure(call: Call<BaseResponse>, t: Throwable) {
-                Log.d("LOCATION_UPDATE", t.message ?: "통신 오류")
+                Log.d("GachonLog #위치", t.message ?: "sendPositionAPI 응답 실패")
             }
         })
     }
